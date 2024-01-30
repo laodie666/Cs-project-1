@@ -1,4 +1,4 @@
-READ STORY
+READ STORY & QUEST
 
 Required
 
@@ -45,5 +45,5 @@ Character and dialogue []
   - quest design []
     - retrieve each item from a character 
 
-Quests read quest file []
-  - interact attribute with location []
+Quests (read story %quest file) []
+  - puzzles and win condition []
