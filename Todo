@@ -4,13 +4,15 @@ Required
 
 map.txt (NESW location description) []
 
+locations (instances of locations containing their description, interactable, interactable conditions like items and quest stage.) []
+
 items.txt (T-card, Cheat Sheet, Lucky Pen) []
 
 Go (direction) []
 
 Look []
 
-Pick up and drop []
+Pick up []
 
 Inventory []
 
@@ -39,13 +41,17 @@ Save & Load game []
   - auto save and load into that file (10 Saves, empty save has attribute that shows its empty, save game
     states like locations, items, quest progress) []
 
-Map (output the map) []
+Map method (output the map) []
 
 Character and dialogue []
   - talk to (person) []
   - dialogue options (number) []
-  - quest design []
+  - quest design [x]
     - retrieve each item from a character 
 
 Quests (read story %quest file) []
-  - puzzles and win condition []
+  - different stages of quest class being boolean to unlock certain interactable []
+	- cheat sheet quest []
+	- lucky pen quest []
+	- T-card quest []
+	- ending []
