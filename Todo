@@ -28,7 +28,11 @@ so the player doesn't get overwhelmed by multiple paragraphs of console output.
 Add on:
 
 Save & Load game []
-  - 
+  - establish a save game format []
+  - auto save and load into that file (10 Saves, empty save has attribute that shows its empty, save game
+    states like locations, items, quest progress) []
+
+Map (output the map) []
 
 Character and dialogue []
   - talk to (person) []
@@ -36,3 +40,5 @@ Character and dialogue []
   - quest design []
     - retrieve each item from a character 
 
+Quests read quest file []
+  - interact attribute with location []
