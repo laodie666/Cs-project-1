@@ -27,6 +27,11 @@ so the player doesn't get overwhelmed by multiple paragraphs of console output.
 
 Add on:
 
+Interact []
+  The specifics of interact should be in the location attribute. Each interactable location should mention they are 
+  interactable in their description. Preferably after interaction there will be chioces depending on console output 
+  with player picking numbers of choices (type in number from 1 to 3 for an option kinda thing).
+
 Save & Load game []
   - establish a save game format []
   - auto save and load into that file (10 Saves, empty save has attribute that shows its empty, save game
@@ -36,7 +41,7 @@ Map (output the map) []
 
 Character and dialogue []
   - talk to (person) []
-  - dialogue options []
+  - dialogue options (number) []
   - quest design []
     - retrieve each item from a character 
 
