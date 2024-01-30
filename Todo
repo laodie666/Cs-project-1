@@ -1,1 +1,33 @@
+Required
+
+map.txt (NESW location description) []
+
+items.txt (T-card, Cheat Sheet, Lucky Pen) []
+
+Go (direction) []
+
+Look []
+
+Pick up and drop []
+
+Inventory []
+
+Score []
+
+Quit []
+
+
+Notes: move limit, lose the game if max moves are reached, ability to win the game
+
+Have Player input (promt with type anything andpress enter) between console output 
+so the player doesn't get overwhelmed by multiple paragraphs of console output.
+
+
+Optional:
+
+Save game []
+
+Character and dialogue []
+  - talk to (person) []
+  - dialogue options 
 
