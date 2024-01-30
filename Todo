@@ -27,6 +27,8 @@ so the player doesn't get overwhelmed by multiple paragraphs of console output.
 
 Add on:
 
+Help method (list out the actions/player inputs and their purpose) []
+
 Interact []
   The specifics of interact should be in the location attribute. Each interactable location should mention they are 
   interactable in their description. Preferably after interaction there will be chioces depending on console output 
