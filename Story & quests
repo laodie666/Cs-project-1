@@ -1,1 +1,21 @@
+Intro:
 
+You have just returned from your visit to your grandparents at Markham and have now arrived in Toronto again for your test tomorrow. When you arrive at your dorm, 
+you suddenly realize you don't have your T-card. You start to panic and think about things you are missing. You realize you forgot to take your grandma's lucky pen 
+for good luck on the exam, and you have also yet to make a cheat sheet.
+
+[insert player input]
+
+You contemplate your options and decide to bus back to Markham again. Your mom at home probably still has the T-card that she asked you to give her so she can show  
+off to her friends about how her child got into UofT. You can also get the lucky pen from your grandma, and visit your super smart friend to study together and make  
+the cheat sheet. 
+
+Game begins:
+
+
+
+[Ok so this is mainly where the game's mechanics are going to be implemented via locations and interaction. I'm just gonna go over the overall progression of the game]
+
+The player begins at dorm and has to move to the bus station. 
+
+The player go to bus station by using the method and then interact
