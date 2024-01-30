@@ -1,3 +1,5 @@
+READ STORY
+
 Required
 
 map.txt (NESW location description) []
@@ -23,11 +25,14 @@ Have Player input (promt with type anything andpress enter) between console outp
 so the player doesn't get overwhelmed by multiple paragraphs of console output.
 
 
-Optional:
+Add on:
 
-Save game []
+Save & Load game []
+  - 
 
 Character and dialogue []
   - talk to (person) []
-  - dialogue options 
+  - dialogue options []
+  - quest design []
+    - retrieve each item from a character 
 
