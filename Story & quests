@@ -21,16 +21,16 @@ The player goes to the Downtown Go Bus Station by using the method and then inte
 
 Quests (Markham):
 
-Note to implementation: For each quest line, there would be a boolean value storing whether the quest is active or not. Locations will behave differently according to whether the quest is active or not. For example: the Mother's friend's house would be not interactable if the T-card quest isn't active, but if it is, another line of the prompt will be output when looking "Your mother should be in there", and now you can interact with it by knocking the door. 
+Implementation note: For each quest line, there would be a boolean value storing whether the quest is active or not. Locations will behave differently according to whether the quest is active or not. For example: the Mother's friend's house would be not interactable if the T-card quest isn't active, but if it is, another line of the prompt will be output when looking "Your mother should be in there", and now you can interact with it by knocking the door. 
 
 
-The player is now at Markham and is free to do what they wish to do. They are prompted that they can now go wherever, and if they are done with whatever they want 
-to do, they can interact at the Markham Go Bus Station to go back to Toronto and rest for sleep. See more in Game Endings. 
+The player is now at Markham and is free to do what they wish to do. They are prompted that they can now go wherever, and if they are done with whatever they want to do, they can interact at the Markham Go Bus Station to go back to Toronto and rest for sleep. See more in Game Endings. 
 
 
 T-card quest:
 
-You will have to go to your parent's house. Realize no one is home. 
+You will have to go to your parent's house. Realize no one is home. If you look, you will see a calendar with your mother's friend's birthday marked on it. It is prompted that your mom is probably at her friend's place. It is also prompted the T-card quest is now active. 
+
 
 
 
