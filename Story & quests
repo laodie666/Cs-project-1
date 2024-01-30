@@ -1,4 +1,6 @@
-Note when writing game prompt: put **insert text** around important info such as location and item. 
+Note when writing game prompt: 
+  - put **insert text** around important info such as location and item. 
+  - All locations should have their index noted after them in brackets.
 
 Intro:
 
@@ -6,22 +8,23 @@ You have just returned from your visit to your grandparents at Markham and have 
 
 [insert player input]
 
-You contemplate your options and decide to bus back to Markham again. Your mom at home probably still has the T-card that she asked you to give her so she can show off to her friends about how her child got into UofT. You can also get the lucky pen from your grandma, and visit your super smart friend to study together and make the cheat sheet. 
+You contemplate your options and decide to bus back to Markham again. Your mom at home probably still has the T-card that she asked you to give her so she can show off to her friends about how her child got into UofT. You can also get the lucky pen from your grandma. In addition, you also want to catch up with your friend, so you decide you will also ask him to study with you. 
 
 Game begins:
 
 [Ok so this is mainly where the game's mechanics are going to be implemented via locations and interaction. I'm just gonna go over the overall progression of the game]
 
-[insert basic introduction to the various inputs the players can do and how they should use them, for example: "type in look and press enter after arriving at a new location to obtain the detailed description of the location, and see whether it is interactable. "]
+[insert basic introduction to the various inputs the players can do and how they should use them, for example: "type in look and press enter after arriving at a new location to obtain the detailed description of the location, and see whether it is interactable."]
 
 The player begins at the dorm and has to move to the Downtown Go Bus Station. 
 
-The player goes to the Downtown Go Bus Station by using the method and then interacts to get on the Go Bus and go back to Markham. This serves as a tutorial so the player gets a hang of how to use the commands before starting quests. 
+The player goes to the Downtown Go Bus Station by using the method, when look is used, it is indicated that a person is giving out free tickets. The pick-up method is prompted for the user to use to obtain the ticket. Interact with the location to get on the Go Bus and go back to Markham. This serves as a tutorial so the player gets a hang of how to use the commands before starting quests. 
 
 
 Quests (Markham):
 
 Implementation note: For each quest line, there would be a boolean value storing whether the quest is active or not. Locations will behave differently according to whether the quest is active or not. For example: the Mother's friend's house would be not interactable if the T-card quest isn't active, but if it is, another line of the prompt will be output when looking "Your mother should be in there", and now you can interact with it by knocking the door. 
+  - You can only enter specific buildings if the quest is active, if not the game will not let you go past the door area. 
 
 
 The player is now at Markham and is free to do what they wish to do. They are prompted that they can now go wherever, and if they are done with whatever they want to do, they can interact at the Markham Go Bus Station to go back to Toronto and rest for sleep. See more in Game Endings. 
@@ -29,9 +32,59 @@ The player is now at Markham and is free to do what they wish to do. They are pr
 
 T-card quest:
 
-You will have to go to your parent's house. Realize no one is home. If you look, you will see a calendar with your mother's friend's birthday marked on it. It is prompted that your mom is probably at her friend's place. It is also prompted the T-card quest is now active. 
+You will have to go to your parent's house. Realize no one is home. If you look, you will see a calendar with your mother's friend, Jean's birthday, marked on it. It is prompted that your mom is probably at Jean's house. It is also prompted that the T-card quest is now active. 
 
+When you arrive at Jean's door and interact, you knock on the door and Jean opens the door. Dialogue options now show up. Two are nice and one is very rude. If the rude one is picked she will be disappointed at you, and close the door. Then it would be prompted T-card quest has failed. If the other two options are picked, she will lead you in, and in the dining room, you see your mom. You can interact and chat with your mom, all dialogue options end with obtaining the T-card.
 
+T-card quest is prompted to be complete
 
+Lucky Pen quest:
+
+You can go to your grandparent's door and knock on the door by interacting, your grandma will open the door and ask how you are. After a few dialogue options, you can ask your grandma for the lucky pen. She asks you to stay behind to help her with her errands while you are here. If you decline, she will give you a normal pen and you will be prompted the lucky pen quest has failed. 
+
+If you say yes, she will tell you that you need to go scoop cat poop and water the plants in the back garden. Player has to pick up a poop shovel from Grandma's Living Room then interact with the living room to scoop cat poop. You also need to go to the backyard, pick up the watering can and then interact to water. 
+
+After completing both activities, go back to the Grandma's living room to talk to her. She will hand you an antique pen, a bag of food, and tell you to eat well and study well, and wish you good luck. 
+
+Lucky pen quest is prompted to be completed.
+
+Cheat sheet quest:
+
+If you go to the friend's door then interact, Your friend Eric, who is taking a gap year for his own projects, will open the door and greet you. When you ask him to study together, he will accept and invite you to go to McDonald's and eat first. Cheat sheet quest is prompted to start. 
+
+When arriving at McDonald's you can interact to obtain a happy meal in your inventory, after you eat it, it will prompt "it was great, you feel like a child again", and Eric will ask you to go back to his room with him now. You can choose to talk to Eric at McDonald's, and he will appreciate you for taking the time to catch up with him, and how many high school friends have now distant away. 
+
+After arriving at his room, interact to study together. you are then prompted that after studying for a while, you've made your cheat sheet and feel b
+etter prepared for the exam. Eric tells you that he misses your company, and is excited to meet again next time. He says farewell and wishes you good luck. 
+
+Cheat sheet quest is prompted to be completed.
 
 Game Endings:
+
+Game ending quest begings after going back to downtown.
+
+After going back to markham go station, you go back to downtown go station, and now you should not be able to return. You are prompted to go to your dorm and sleep. After going back to your room, interact to go to sleep. 
+
+After sleep is post game ending prompt:
+
+Exam prompts:
+
+No items: prompt you that due to the fact that you have nothing prepared, you decides that the exam is impossible anyway, so you decide to stay home and not go. 
+
+No T-card but has other items: You enter the exam hall but at the middle of the test when they ask you for T-card your exam is disqualified due to your inability to identify yourself. 
+
+Has T-card: each of these prompt will print depends on item ownership
+  - has lucky Pen: There are some very difficult question, yet as you spin the antique pen on your hand, you get a revelation and solve the problem. 
+  - has no lucky Pen: There are some very difficult question, yet the more you work on it the more irriated you get. You look at your pen and all the eraser marks, and decides to give up on those questions. 
+
+  - has cheat sheet: You ran into the knowledge questions but can't remember the answer, luckily you studied and has it on your cheat sheet, and you breezed through it. 
+  - has no cheat sheet: You ran into the knowledge questions, and for many of them you remember learning them but cant remember the answer, and now you are in despair and regrets for not studying more.
+
+
+Exam results prompts:
+
+Has all items: You aced the exam, appreciate blah blah blah go back markham and visit everyone again. 
+
+Has no item: You not even showing up to the exam results in a email sent to you. Your mom who has access to your email sees it, words spread and now people are disappointed in you. 
+
+else: You did suboptimally on the exam, and to save your GPA you decides to spend your summer retaking this course rather than relaxing. 
