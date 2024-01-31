@@ -1,7 +1,7 @@
 Nowhere
 -1
-You can't enter here. Somehow you face a hollow abyss.
-You can't enter here. Somehow you face a hollow abyss.
+You can't enter here. For one reason or another you face a hollow abyss.
+You can't enter here. For one reason or another you face a hollow abyss.
 END
 New University College
 0
