@@ -23,7 +23,7 @@ Quit []
 
 Notes: move limit, lose the game if max moves are reached, ability to win the game
 
-Have Player input (promt with type anything andpress enter) between console output 
+Have Player input (promt with type anything andpress enter) between console output
 so the player doesn't get overwhelmed by multiple paragraphs of console output.
 
 
@@ -32,8 +32,8 @@ Add on:
 Help method (list out the actions/player inputs and their purpose) []
 
 Interact []
-  The specifics of interact should be in the location attribute. Each interactable location should mention they are 
-  interactable in their description. Preferably after interaction there will be chioces depending on console output 
+  The specifics of interact should be in the location attribute. Each interactable location should mention they are
+  interactable in their description. Preferably after interaction there will be chioces depending on console output
   with player picking numbers of choices (type in number from 1 to 3 for an option kinda thing).
 
 Save & Load game []
@@ -47,7 +47,7 @@ Character and dialogue []
   - talk to (person) []
   - dialogue options (number) []
   - quest design [x]
-    - retrieve each item from a character 
+    - retrieve each item from a character
 
 Quests (read story %quest file) []
   - different stages of quest class being boolean to unlock certain interactable []
