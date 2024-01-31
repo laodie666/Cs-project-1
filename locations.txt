@@ -1,4 +1,4 @@
-New University College 0
+New University College
 0
 You are at your residence, New University College. To the north is Union Station.
 You are at your residence, New University College. This is a new U of T residence 
@@ -7,12 +7,12 @@ happier with all the space especially since you were able to get a single room. 
 room for your bed and a desk. The location is very convenient since Union Station is just 
 north of here.
 
-Union Station 1
-0 
+Union Station
+1
 You are at Union Station. Back south is New University College.
 You are at Union Station you always take the GO Train here to travele to Markham and the
 business is not unfamiliar, but it appears especially busy at this time of day. Through 
 the crowd a man approaches you offering a free go train ticket.
 
-Unionville GO 2 
-0 
+Unionville GO
+2
