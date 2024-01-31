@@ -34,13 +34,17 @@ Road 1
 You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
 You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
 also your childhood home but its beggining to look smaller after arriving at U of T. You hope you 
-will find your mom there. To your east is aunt Jean's house. It's a wonder she lives so close, 
+will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close, you 
+can just smell her homemade pie. 
 END
 Jean's Door
 5
-
+You are at aunt Jean's door. The intersection is to your west.
+You are at aunt Jean's door. It doesn't take super hearing to know that she has guests over. 
+END
 Jean's Living Room
 6
+END
 
 
 
