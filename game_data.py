@@ -38,8 +38,8 @@ class Quest:
         self.name = name
         self.progress = 0
 
-class Location:
-    """A location in our text adventure game world.
+class Interact:
+    """Possible interactions  adventure game world.
 
     Instance Attributes:
         - name: name of location
