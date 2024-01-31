@@ -6,12 +6,18 @@ although your room is a bit messy after digging around for your t-card, you coul
 happier with all the space especially since you were able to get a single room. You have 
 room for your bed and a desk. The location is very convenient since Union Station is just 
 north of here.
+END
 
 Union Station
 1
 You are at Union Station. Back south is New University College.
 You are at Union Station you always take the GO Train here to travel to Markham and the
-busyness is not unfamiliar, but it appears especially busy at this time of day. 
+busyness is not unfamiliar, but at this time of day, there appears to be more people 
+seperating you from the platform. 
+END
 
 Unionville GO
 2
+You are at Unionville GO, in Markham. Continuing north, you can explore more of this city.
+You're at Unionville GO, in Markham. You are welcomed with a gentle breeze as you laugh 
+about how you were just here yesterday. To o matter where you are headed in Markham, 
