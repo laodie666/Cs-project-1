@@ -26,16 +26,17 @@ class Location:
     """A location in our text adventure game world.
 
     Instance Attributes:
-        - # TODO
+        - name: name of location
+        - short_description: short description in a string.
+        - long_description: long description with each line stored in a list.
 
     Representation Invariants:
         - # TODO
     """
 
-    def __init__(self) -> None:
-        """Initialize a new location.
-
-        # TODO Add more details here about the initialization if needed
+    def __init__(self, name: str, short_description: str, long_description: list[str]) -> None:
+        """
+        Initialize a new location. with name, short description, and long description
         """
 
         # NOTES:
@@ -54,7 +55,9 @@ class Location:
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
 
-        # TODO: Complete this method
+        self.name = name
+        self.short_description = short_description
+        self.long_description = long_description
 
     def available_actions(self):
         """
@@ -67,21 +70,23 @@ class Location:
         # i.e. You may remove/modify/rename this as you like, and complete the
         # function header (e.g. add in parameters, complete the type contract) as needed
 
-        # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
+    # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
 
 
 class Item:
     """An item in our text adventure game world.
 
     Instance Attributes:
-        - # TODO
+        - name: name
+        - description: description of the item
 
     Representation Invariants:
         - # TODO
     """
 
-    def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
-        """Initialize a new item.
+    def __init__(self, name: str, description: list[str]) -> None:
+        """
+        Initialize a new item, with name and description.
         """
 
         # NOTES:
@@ -94,9 +99,7 @@ class Item:
         # All item objects in your game MUST be represented as an instance of this class.
 
         self.name = name
-        self.start_position = start
-        self.target_position = target
-        self.target_points = target_points
+        self.description = description
 
 
 class Player:
@@ -179,7 +182,7 @@ class World:
         lines = [line.strip() for line in map_data]
         return [[int(place) for place in line.split(" ")] for line in lines]
 
-    def load_locations(self, location_data: TextIO) -> dict[int: list[typing.Any]]:
+    def load_locations(self, location_data: TextIO) -> dict[int: Location]:
         """
         Store locations from location file into format like this for each location:
 
@@ -190,23 +193,24 @@ class World:
         locations = {}
         counter = 0
         lines = [line.strip() for line in location_data]
+        name = ''
         position = -1
-        current_place = []
+        short_description = ''
         long_description = []
         for line in lines:
             # next location
             if line == "END":
                 counter = 0
-                current_place.append(long_description)
-                locations[position] = current_place
+                locations[position] = Location(name, short_description, long_description)
                 position = -1
-                current_place = []
+                name = ''
+                short_description = ''
                 long_description = []
                 continue
 
             # name
             if counter == 0:
-                current_place.append(line)
+                name = line
 
             # index
             elif counter == 1:
@@ -214,7 +218,7 @@ class World:
 
             # short description
             elif counter == 2:
-                current_place.append(line)
+                short_description = line
 
             else:
                 long_description.append(line)
@@ -235,20 +239,20 @@ class World:
         lines = [line.strip() for line in items_data]
         counter = 0
         description = []
-        current_item = []
+        name = ''
         position = -1
         items = {}
         for line in lines:
             if line == "END":
                 counter = 0
-                current_item.append(description)
-                items[position] = current_item
+                items[position] = Item(name, description)
+                name = ''
                 description = []
                 position = -1
                 continue
 
             if counter == 0:
-                current_item.append(line)
+                name = line
 
             elif counter == 1:
                 position = int(line)
@@ -267,7 +271,11 @@ class World:
          return None.)
         """
 
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
+        if 0 > x  or  x > len(self.map[0]) or 0 > y or y > len(self.map) or self.map[x][y] == -1:
+            return None
+        else:
+            return self.locations[self.map[x][y]]
+
 
 
 def test_world() -> World:
