@@ -271,10 +271,10 @@ class World:
          return None.)
         """
 
-        if 0 > x  or  x > len(self.map[0]) or 0 > y or y > len(self.map) or self.map[x][y] == -1:
+        if 0 > x  or  x >= len(self.map[0]) or 0 > y or y >= len(self.map) or self.map[y][x] == -1:
             return None
         else:
-            return self.locations[self.map[x][y]]
+            return self.locations[self.map[y][x]]
 
 
 
