@@ -22,14 +22,22 @@ import typing
 from typing import Optional, TextIO
 
 class Quest:
-    """
-
-
-
-
-
 
     """
+     Instance Attributes:
+        - name: name of location
+        - progress: int storing the progress of the quest, 0 being not started.
+
+    Representation Invariants:
+        - self.name != ''
+    """
+    def __init__(self, name: str) -> None:
+        """
+        Initialize a new Quest. with name, and progress starting as 0
+        """
+        self.name = name
+        self.progress = 0
+
 
 class Location:
     """A location in our text adventure game world.
@@ -111,6 +119,22 @@ class Item:
         self.score = score
         self.description = description
 
+        # Entering parent house increase progress by 1: can only knock Jean's door with progress 1
+        # Finish talking to Jean increase progress by 1: can only go into Jean's living room with progress 2
+        # If the mean dialogue option is picked when talking to Jean, the quest progress go to -1 and the quest ends.
+        # Finish talking to Mom to end the quest: obtain T-card
+        self.T_card_quest = Quest("T_card_quest")
+
+
+        # Talking to Eric increase progress by 1: can only go to macdonalds if progress by 1.
+        #
+        # Interact at macdonalds to eat increase progress by 1
+        self.Cheat_sheet = Quest("Cheat_sheet_quest")
+
+
+        self.Lucky_pen = Quest("Lucky_pen_quest")
+
+
 
 class Player:
     """
@@ -134,7 +158,10 @@ class Player:
 
         self.x = x
         self.y = y
+
+        # the inverntroy stores the location at which the itemis found rather than the item name to use the dictionary
         self.inventory = []
+
         self.victory = False
 
 
