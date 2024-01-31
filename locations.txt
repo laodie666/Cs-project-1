@@ -10,9 +10,8 @@ north of here.
 Union Station
 1
 You are at Union Station. Back south is New University College.
-You are at Union Station you always take the GO Train here to travele to Markham and the
-business is not unfamiliar, but it appears especially busy at this time of day. Through 
-the crowd a man approaches you offering a free go train ticket.
+You are at Union Station you always take the GO Train here to travel to Markham and the
+busyness is not unfamiliar, but it appears especially busy at this time of day. 
 
 Unionville GO
 2
