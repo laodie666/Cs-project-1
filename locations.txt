@@ -7,7 +7,6 @@ happier with all the space especially since you were able to get a single room. 
 room for your bed and a desk. The location is very convenient since Union Station is just 
 north of here.
 END
-
 Union Station
 1
 You are at Union Station. Back south is New University College.
@@ -15,7 +14,6 @@ You are at Union Station you always take the GO Train here to travel to Markham 
 busyness is not unfamiliar, but at this time of day, there appears to be more people 
 seperating you from the platform. 
 END
-
 Unionville GO
 2
 You are at Unionville GO, in Markham. Continuing north, you can explore more of this city.
@@ -23,7 +21,6 @@ You're at Unionville GO, in Markham. You are welcomed with a gentle breeze as yo
 about how you were just here yesterday. To your north there is an intersection no matter 
 where you are headed in Markham, you have to go through there.
 END
-
 Intersection
 3
 You are at an intersection. A little down West is your grandparent's house, farther north is your friend Eric's house and Mcdonalds and to get to your parent's house and your aunt Jean's house you travel east.
@@ -32,13 +29,13 @@ grandparents' house, a nostalgic haven, while northward awaits Eric's gaming str
 and the tempting delights of McDonald's. Venture eastward for quests leading to your parents' 
 home and Aunt Jean's enchanted abode. 
 END
-
 Road 1
 4
 You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
-You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north 
+You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
+also your childhood home but its beggining to look smaller after arriving at U of T. You hope you 
+will find your mom there. To your east is aunt Jean's house. It's a wonder she lives so close, 
 END
-
 Jean's Door
 5
 
