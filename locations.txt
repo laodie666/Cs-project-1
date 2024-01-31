@@ -1,6 +1,8 @@
 Nowhere
 -1
-You can't enter here. Somehow there is an abyss surrou
+You can't enter here. Somehow you face a hollow abyss.
+You can't enter here. Somehow you face a hollow abyss.
+END
 New University College
 0
 You are at your residence, New University College. To the north is Union Station.
