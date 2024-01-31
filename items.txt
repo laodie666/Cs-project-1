@@ -1,15 +1,18 @@
 Cheat Sheet
 14
+35
 testext
 testtext
 END
 Lucky Pen
 9
+18
 testtext
 testtext
 END
 T-card
 6
+47
 testtext
 test_text
 END
