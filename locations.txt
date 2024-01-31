@@ -69,15 +69,45 @@ You are at the door of your grandparent's house. You have always admired the pla
 END
 Grandparent's Living Room 
 9 
-You have entered your grandparent's house. 
+You have entered your grandparent's living room. To the north is their backyard and the door out is east.
+You have entered your grandparent's living room. You can tell they are in love with Mittens by the number 
+of toys splayed out on the floor. You look around and you can still see your scrap notes at their dining 
+table from the day before. Their backyard is north and the way out is east.
 END
-Road To Friends House and Mcdonalds
+Road To Friends House and McDonalds
 10
-This is the road between the intersection and Erics house and Mcdonalds. Go north to reach Eric's house or Mcdonalds and south to get back to the intersection. 
+This is the road between the intersection and Erics house and McDonalds. Go north to reach Eric's house or McDonalds and south to get back to the intersection. 
 This is the road between the intersection and Erics house and Mcdonalds. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks. 
+END
 Parent's House
 11
-You are at your parent's house. 
+You are in your parent's house. To leave to the road you go south.
+You are in your parent's house. This is your childhood home. You can see your little brother, 
+James, taking over the place. He should be at school right now. You see his action figures and 
+algebra textbooks but you don't see your mom. You look at the calendar and you see that today is 
+marked: "Jean's Birthday"
+END
+Eric's Neighbourhood
+12
+You are in Eric's neihbourhood. North is Eric's house and East is McDonalds.
+You are in Eric's neihbourhood. It is pretty lively here since there are many food spots and this
+area is popular among high schoolers. Without looking, you already know that Eric's house is north 
+of you and McDonalds is just to your east.
+END
+McDonalds
+13
+You are at McDonalds. Its 
+You are at McDonalds. 
+END
+Eric's House
+14
+You are at Eric's House.
+You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood home too. 
+END
+Grandparent's Garden
+15
+You are in your grandparent's garden. 
+You are in your grandparent's garden.
 
 
 
