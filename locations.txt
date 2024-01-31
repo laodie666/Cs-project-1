@@ -109,8 +109,9 @@ the house by going south.
 END
 Grandparent's Garden
 15
-You are in your grandparent's garden. 
-You are in your grandparent's garden.
+You are in your grandparent's garden. Go south to go back inside your grandparent's house.
+You are in your grandparent's garden. They like to keep it organized, everything is in strict
+rows and columns and the colours all blend together perfectly. To go back to the house, go south.  
 
 
 
