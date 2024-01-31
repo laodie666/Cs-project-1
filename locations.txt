@@ -49,7 +49,21 @@ You are at aunt Jean's door. It doesn't take super hearing to know that she has 
 END
 Jean's Living Room
 6
+You are in Jean's house. Your mom is also there.
+You are in Jean's house. She seemed prepared for guests she has her signature brownies and the 
+flowers on the table are fresh. It seems she had just finished her birthday cake. Looking around 
+more you see your mom!
 END
+Road 4
+7
+This is the road between your grandparent's house and the intersection. West is your grandparent's house and east is the intersection.
+This is the road between your grandparent's house and the intersection. You always forget how
+long the trip between your grandparent's house and the intersection. You come across few people 
+on this road, but it is not short of squirrels. If you head west, you can reach your grandparent's 
+house and east is the intersection. 
+END
+Grandparent's Door
+8
 
 
 
