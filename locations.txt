@@ -96,8 +96,10 @@ of you and McDonalds is just to your east.
 END
 McDonalds
 13
-You are at McDonalds. Its 
-You are at McDonalds. 
+You are at McDonalds. To go back to the road go west. 
+You are at McDonalds. The smell of the resturant only makes you more hungry. You see families, 
+highschoolers and construction workers. The line is long but you think that it wouldnt take long 
+for everyone to get served. The road is west.
 END
 Eric's House
 14
@@ -109,8 +111,9 @@ the house by going south.
 END
 Grandparent's Garden
 15
-You are in your grandparent's garden. 
-You are in your grandparent's garden.
+You are in your grandparent's garden. Go south to go back inside your grandparent's house.
+You are in your grandparent's garden. They like to keep it organized, everything is in strict
+rows and columns and the colours all blend together perfectly. To go back to the house, go south.  
 
 
 
