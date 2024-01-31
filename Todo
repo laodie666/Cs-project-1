@@ -2,11 +2,11 @@ READ STORY & QUEST
 
 Required
 
-map.txt (NESW location description) []
+map.txt (NESW location description) [x]
 
-locations (instances of locations containing their description, interactable, interactable conditions like items and quest stage.) []
+locations (instances of locations containing their description, interactable, interactable conditions like items and quest stage.) [x]
 
-items.txt (T-card, Cheat Sheet, Lucky Pen) []
+items.txt (T-card, Cheat Sheet, Lucky Pen) [x]
 
 Go (direction) []
 
