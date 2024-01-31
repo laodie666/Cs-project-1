@@ -51,7 +51,7 @@ Character and dialogue []
   - quest design [x]
     - retrieve each item from a character
 
-Quests (read story %quest file) [x]
+Quests (read story quest file) [x]
   - different stages of quest class being boolean to unlock certain interactable []
 	- cheat sheet quest [x]
 	- lucky pen quest [x]
