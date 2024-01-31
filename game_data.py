@@ -21,6 +21,15 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 import typing
 from typing import Optional, TextIO
 
+class Quest:
+    """
+
+
+
+
+
+
+    """
 
 class Location:
     """A location in our text adventure game world.
@@ -84,7 +93,7 @@ class Item:
         - # TODO
     """
 
-    def __init__(self, name: str, description: list[str]) -> None:
+    def __init__(self, name: str, score:int, description: list[str]) -> None:
         """
         Initialize a new item, with name and description.
         """
@@ -99,6 +108,7 @@ class Item:
         # All item objects in your game MUST be represented as an instance of this class.
 
         self.name = name
+        self.score = score
         self.description = description
 
 
@@ -241,14 +251,16 @@ class World:
         description = []
         name = ''
         position = -1
+        score = -1
         items = {}
         for line in lines:
             if line == "END":
                 counter = 0
-                items[position] = Item(name, description)
+                items[position] = Item(name, score, description)
                 name = ''
                 description = []
                 position = -1
+                score = -1
                 continue
 
             if counter == 0:
@@ -256,7 +268,8 @@ class World:
 
             elif counter == 1:
                 position = int(line)
-
+            elif counter == 2:
+                score = int(line)
             else:
                 description.append(line)
 
