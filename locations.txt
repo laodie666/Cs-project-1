@@ -1,26 +1,18 @@
-LOCATION -1
+New University College 0
 0
-That way is blocked.
-That way is blocked.
-END
+You are at your residence, New University College. To the north is Union Station.
+You are at your residence, New University College. This is a new U of T residence 
+although your room is a bit messy after digging around for your t-card, you couldn’t be 
+happier with all the space especially since you were able to get a single room. You have 
+room for your bed and a desk. The location is very convenient since Union Station is just 
+north of here.
 
-LOCATION 1
-0
-You are on the first floor of the Robarts Library. There is an empty study room to the South, an exit from the library to the East.
-You are on the first floor of the Robarts Library. It's usually crowded at this time of the day, but today it's eerily quiet.
-Only a few students are studying inside one of the study rooms. You better not disturb them. A librarian stands near the
-service desk, looking bored and sleepy. There is an empty study room to the South, an exit from the library to the East.
-END
+Union Station 1
+0 
+You are at Union Station. Back south is New University College.
+You are at Union Station you always take the GO Train here to travele to Markham and the
+business is not unfamiliar, but it appears especially busy at this time of day. Through 
+the crowd a man approaches you offering a free go train ticket.
 
-LOCATION 2
-0
-This study room is completely empty.
-You are in an empty study room. And by empty, we mean, absolutely empty. All the tables and chairs have been taken out,
-the whiteboards taken off the wall, not even the carpeting is left. Are they planning to do something else with this space?
-END
-
-LOCATION 3
-0
-You are outside the Robarts library.
-You are outside the Robarts library on a crowded street. There is a smell of coffee in the air.
-END
+Unionville GO 2 
+0 
