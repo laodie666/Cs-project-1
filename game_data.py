@@ -38,6 +38,18 @@ class Quest:
         self.name = name
         self.progress = 0
 
+class Location:
+    """A location in our text adventure game world.
+
+    Instance Attributes:
+        - name: name of location
+        - short_description: short description in a string.
+        - long_description: long description with each line stored in a list.
+
+    Representation Invariants:
+        - # TODO
+    """
+
 
 class Location:
     """A location in our text adventure game world.
@@ -87,8 +99,8 @@ class Location:
         # i.e. You may remove/modify/rename this as you like, and complete the
         # function header (e.g. add in parameters, complete the type contract) as needed
 
-    # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
 
+# TODO: Complete this method, if you'd like or remove/replace it if you're not using it
 
 class Item:
     """An item in our text adventure game world.
@@ -126,14 +138,18 @@ class Item:
         self.T_card_quest = Quest("T_card_quest")
 
 
-        # Talking to Eric increase progress by 1: can only go to macdonalds if progress by 1.
-        #
-        # Interact at macdonalds to eat increase progress by 1
+        # Talking to Eric increase progress by 1: can only go to macdonalds if progress is 1.
+        # Picking the "make me cheat sheet" dialogue will result in quest failure
+        # Interact at macdonalds to eat increase progress by 1: Can only go back to Eric's house is 2
+        # Interact at Eric's house at progress 2 of the house ends the quest, and obtain the cheat sheet.
         self.Cheat_sheet = Quest("Cheat_sheet_quest")
 
-
+        # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
+        # Failing the dialogue option with Grandma fail the quest. make progress go -1
+        # Watering the plant with watering can increase progress by 1
+        # Scoop cat poop with cat litter shovel increase progress by 1: Can only talk to Grandma at progress 3
+        # Taking to Gradnma at progress three ends the quest, results in you getting the lucky pen.
         self.Lucky_pen = Quest("Lucky_pen_quest")
-
 
 
 class Player:

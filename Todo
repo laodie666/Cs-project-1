@@ -29,6 +29,8 @@ so the player doesn't get overwhelmed by multiple paragraphs of console output.
 
 Add on:
 
+
+
 Help method (list out the actions/player inputs and their purpose) []
 
 Interact []
@@ -49,9 +51,9 @@ Character and dialogue []
   - quest design [x]
     - retrieve each item from a character
 
-Quests (read story %quest file) []
+Quests (read story %quest file) [x]
   - different stages of quest class being boolean to unlock certain interactable []
-	- cheat sheet quest []
-	- lucky pen quest []
-	- T-card quest []
+	- cheat sheet quest [x]
+	- lucky pen quest [x]
+	- T-card quest [x]
 	- ending []
