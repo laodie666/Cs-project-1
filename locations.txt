@@ -3,10 +3,10 @@ Nowhere
 You can't enter here. For one reason or another you face a hollow abyss.
 You can't enter here. For one reason or another you face a hollow abyss.
 END
-New University College
+New University College Dorm
 0
-You are at your residence, New University College. To the north is Union Station.
-You are at your residence, New University College. This is a new U of T residence 
+You are at your residence, New University College Dorm. To the north is Union Station.
+You are at your residence, New University College Dorm. This is a new U of T residence 
 although your room is a bit messy after digging around for your t-card, you couldn’t be 
 happier with all the space especially since you were able to get a single room. You have 
 room for your bed and a desk. The location is very convenient since Union Station is just 
@@ -38,9 +38,9 @@ Road 1
 4
 You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
 You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
-also your childhood home but its beggining to look smaller after arriving at U of T. You hope you 
-will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close, you 
-can just smell her homemade pie. 
+also your childhood home but its beggining to look smaller after entering U of T. You hope you 
+will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close,
+you can just smell her homemade pie. 
 END
 Jean's Door
 5
@@ -64,6 +64,54 @@ house and east is the intersection.
 END
 Grandparent's Door
 8
+You are at the door of your grandparent's house. You can return to the intersection by going east. 
+You are at the door of your grandparent's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens. 
+END
+Grandparent's Living Room 
+9 
+You have entered your grandparent's living room. To the north is their backyard and the door out is east.
+You have entered your grandparent's living room. You can tell they are in love with Mittens by the number 
+of toys splayed out on the floor. You look around and you can still see your scrap notes at their dining 
+table from the day before. Their backyard is north and the way out is east.
+END
+Road To Friends House and McDonalds
+10
+This is the road between the intersection and Erics house and McDonalds. Go north to reach Eric's house or McDonalds and south to get back to the intersection. 
+This is the road between the intersection and Erics house and Mcdonalds. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks. 
+END
+Parent's House
+11
+You are in your parent's house. To leave to the road you go south.
+You are in your parent's house. This is your childhood home. You can see your little brother, 
+James, taking over the place. He should be at school right now. You see his action figures and 
+algebra textbooks but you don't see your mom. You look at the calendar and you see that today is 
+marked: "Jean's Birthday"
+END
+Eric's Neighbourhood
+12
+You are in Eric's neihbourhood. North is Eric's house and East is McDonalds.
+You are in Eric's neihbourhood. It is pretty lively here since there are many food spots and this
+area is popular among high schoolers. Without looking, you already know that Eric's house is north 
+of you and McDonalds is just to your east.
+END
+McDonalds
+13
+You are at McDonalds. Its 
+You are at McDonalds. 
+END
+Eric's House
+14
+You are at Eric's House. To return to the road, go south. 
+You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood 
+home too. Their family is covered in sports equiptment, family pictures while camping and Eric's 
+various horsebackriding medals. You've always thought Eric's family was very gung-ho. You can leave 
+the house by going south.
+END
+Grandparent's Garden
+15
+You are in your grandparent's garden. 
+You are in your grandparent's garden.
+
 
 
 
