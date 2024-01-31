@@ -3,10 +3,10 @@ Nowhere
 You can't enter here. For one reason or another you face a hollow abyss.
 You can't enter here. For one reason or another you face a hollow abyss.
 END
-New University College
+New University College Dorm
 0
-You are at your residence, New University College. To the north is Union Station.
-You are at your residence, New University College. This is a new U of T residence 
+You are at your residence, New University College Dorm. To the north is Union Station.
+You are at your residence, New University College Dorm. This is a new U of T residence 
 although your room is a bit messy after digging around for your t-card, you couldn’t be 
 happier with all the space especially since you were able to get a single room. You have 
 room for your bed and a desk. The location is very convenient since Union Station is just 
@@ -101,8 +101,11 @@ You are at McDonalds.
 END
 Eric's House
 14
-You are at Eric's House.
-You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood home too. 
+You are at Eric's House. To return to the road, go south. 
+You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood 
+home too. Their family is covered in sports equiptment, family pictures while camping and Eric's 
+various horsebackriding medals. You've always thought Eric's family was very gung-ho. You can leave 
+the house by going south.
 END
 Grandparent's Garden
 15
