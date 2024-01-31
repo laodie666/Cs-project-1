@@ -18,6 +18,7 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2024 CSC111 Teaching Team
 """
+import typing
 from typing import Optional, TextIO
 
 
@@ -159,6 +160,9 @@ class World:
         # accordingly. The only requirements:
         # 1. Make sure the Location class is used to represent each location.
         # 2. Make sure the Item class is used to represent each item.
+        self.locations = self.load_locations(location_data)
+
+        self.items = self.load_items(items_data)
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:
@@ -172,10 +176,89 @@ class World:
 
         Return this list representation of the map.
         """
+        lines = [line.strip() for line in map_data]
+        return [[int(place) for place in line.split(" ")] for line in lines]
 
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
+    def load_locations(self, location_data: TextIO) -> dict[int: list[typing.Any]]:
+        """
+        Store locations from location file into format like this for each location:
 
-    # TODO: Add methods for loading location data and item data (see note above).
+        {position: [name, short description, long descriptions]}
+
+        Return this dictionary representation of the location, its index, its short and long description.
+        """
+        locations = {}
+        counter = 0
+        lines = [line.strip() for line in location_data]
+        position = -1
+        current_place = []
+        long_description = []
+        for line in lines:
+            # next location
+            if line == "END":
+                counter = 0
+                current_place.append(long_description)
+                locations[position] = current_place
+                position = -1
+                current_place = []
+                long_description = []
+                continue
+
+            # name
+            if counter == 0:
+                current_place.append(line)
+
+            # index
+            elif counter == 1:
+                position = int(line)
+
+            # short description
+            elif counter == 2:
+                current_place.append(line)
+
+            else:
+                long_description.append(line)
+
+            counter += 1
+
+        return locations
+
+    def load_items(self, items_data: TextIO) -> dict[int: list[str]]:
+        """
+        Store items from item file into format like this for each item:
+
+        {position: [name, description]}
+
+        Return this dictionary representation of the name, its location, and description.
+        """
+
+        lines = [line.strip() for line in items_data]
+        counter = 0
+        description = []
+        current_item = []
+        position = -1
+        items = {}
+        for line in lines:
+            if line == "END":
+                counter = 0
+                current_item.append(description)
+                items[position] = current_item
+                description = []
+                position = -1
+                continue
+
+            if counter == 0:
+                current_item.append(line)
+
+            elif counter == 1:
+                position = int(line)
+
+            else:
+                description.append(line)
+
+            counter += 1
+
+        return items
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
@@ -185,3 +268,10 @@ class World:
         """
 
         # TODO: Complete this method as specified. Do not modify any of this function's specifications.
+
+
+def test_world() -> World:
+    map_data = open("map.txt", "r")
+    location_data = open("locations.txt", "r")
+    items_data = open("items.txt", "r")
+    return World(map_data, location_data, items_data)
