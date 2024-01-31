@@ -38,9 +38,9 @@ Road 1
 4
 You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
 You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
-also your childhood home but its beggining to look smaller after arriving at U of T. You hope you 
-will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close, you 
-can just smell her homemade pie. 
+also your childhood home but its beggining to look smaller after entering U of T. You hope you 
+will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close,
+you can just smell her homemade pie. 
 END
 Jean's Door
 5
@@ -64,6 +64,21 @@ house and east is the intersection.
 END
 Grandparent's Door
 8
+You are at the door of your grandparent's house. You can return to the intersection by going east. 
+You are at the door of your grandparent's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens. 
+END
+Grandparent's Living Room 
+9 
+You have entered your grandparent's house. 
+END
+Road To Friends House and Mcdonalds
+10
+This is the road between the intersection and Erics house and Mcdonalds. Go north to reach Eric's house or Mcdonalds and south to get back to the intersection. 
+This is the road between the intersection and Erics house and Mcdonalds. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks. 
+Parent's House
+11
+You are at your parent's house. 
+
 
 
 
