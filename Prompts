@@ -1,22 +1,26 @@
 In the format Prompt, After prompt text?
+Pick Up:
+13
+You're curious which toy you got too. You didn't really pay attention. Type <interact> to pick up your happy meal.
+You picked up your *happy meal*. The toy is some skateboard keychain.
+15
+There is a watering can at the side. Type <interact> to pick it up.
+You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do it.
+
+9
+There is a shovel right beside the litter box. Type <interact> to pick it up.
+You picked up the *litter shovel*.
+
+Interact:
 5
 She's definately home. Type <interact> to knock on her door.
 Jean answered the door, she looks shocked to see you there, afterall, you should be at school.
 13
-You're curious which toy you got too. You didn't really pay attention. Type <interact> to pick up your happy meal.
-You picked up your *happy meal*. The toy is some skateboard keychain.
-13
 Gurgle. You're hungry. Type <interact> to eat.
 You ate your cheeseburger. It was great. You feel like you've turned back time.
 15
-There is a watering can at the side. Type <interact> to pick it up.
-You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do it.
-15
 Now theres only one thing to do. Type <interact> to water the plants
 You watered the plants. You feel refreshed in the process.
-9
-There is a shovel right beside the litter box. Type <interact> to pick it up.
-You picked up the *litter shovel*.
 9
 Time for the moment of truth. Type <interact> to shovel the litter.
 You shovelled the litter. Why does something so little poop so much?
