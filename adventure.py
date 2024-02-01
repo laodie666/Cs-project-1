@@ -28,7 +28,16 @@ if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = Player(3, 7)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
-    menu = ["look", "inventory", "score", "quit", "back"]
+    menu = ["go: to go in one of the four directions, north, south, east, west",
+            "look: obtain the long description of the location",
+            "inventory: check your own inverntory",
+            "score: check your current store based on the items you own",
+            "quit: quit the game",
+            "save: save the current game state into a save slot",
+            "load: load the game state from a save slot",
+            "interact: interact with whatever is in the current location",
+            "talk: talk to whoever is available to talk in the current location"
+            ]
 
     while not p.victory:
         location = w.get_location(p.x, p.y)
@@ -49,19 +58,16 @@ if __name__ == "__main__":
                 print(option)
             choice = input("\nChoose action: ")
 
-
-
-
-    def look(p: Player, w: World):
-        for line in w.get_location(p.x, p.y).long_description:
+    def look(player: Player, world: World):
+        for line in world.get_location(player.x, player.y).long_description:
             print(line)
 
-    def go(d:str, p: Player, w: World) -> bool:
+    def go(d: str, player: Player, world: World) -> bool:
         """
         Move the player in the direct, returning True if the move is valid and False if it is not
         """
-        current_x = p.x
-        current_y = p.y
+        current_x = player.x
+        current_y = player.y
 
         # Check direction to go
         if d == 'north':
@@ -77,7 +83,7 @@ if __name__ == "__main__":
             return False
 
         # check validity of destination
-        if 0 > current_x or current_x >= len(w.map[0]) or 0 > current_y or current_y >= len(w.map) or w.map[current_x][current_y] == -1:
+        if 0 > current_x or current_x >= len(world.map[0]) or 0 > current_y or current_y >= len(world.map) or world.map[current_x][current_y] == -1:
             print("Invalid direction to go, try again")
             return True
         return False

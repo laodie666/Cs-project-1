@@ -179,9 +179,6 @@ class Location:
         # i.e. You may remove/modify/rename this as you like, and complete the
         # function header (e.g. add in parameters, complete the type contract) as needed
 
-
-# TODO: Complete this method, if you'd like or remove/replace it if you're not using it
-
 class Item:
     """An item in our text adventure game world.
 
