@@ -28,9 +28,9 @@ where you are headed in Markham, you have to go through there.
 END
 Intersection
 3
-You are at an intersection. A little down West is your *grandparent's house*, farther north is your friend *Eric's house* and *Mcdonalds* and to get to your *parent's house* and your *aunt Jean's house* you travel east.
+You are at an intersection. A little down West is your *grandparents's house*, farther north is your friend *Eric's house* and *Mcdonalds* and to get to your *parent's house* and your *aunt Jean's house* you travel east.
 You are at an intersection and you ponder where to travel first. To the west lies your 
-*grandparents' house*, a nostalgic haven, while northward awaits *Eric's house* and the tempting 
+*grandparents's house*, a nostalgic haven, while northward awaits *Eric's house* and the tempting 
 delights of *McDonald's*. Venture eastward for quests leading to your *parents' home* and *Aunt 
 Jean's house*. 
 END
@@ -56,23 +56,23 @@ more you see your mom!
 END
 Road 4
 7
-This is the road between your grandparent's house and the intersection. West is your grandparent's house and east is the intersection.
-This is the road between your *grandparent's house* and *the intersection*. You always forget how
-long the trip between your grandparent's house and the intersection. You come across few people 
-on this road, but it is not short of squirrels. If you head west, you can reach your *grandparent's 
+This is the road between your grandparents's house and the intersection. West is your grandparents's house and east is the intersection.
+This is the road between your *grandparents's house* and *the intersection*. You always forget how
+long the trip between your grandparents's house and the intersection. You come across few people 
+on this road, but it is not short of squirrels. If you head west, you can reach your *grandparents's 
 house* and east is the *intersection*. 
 END
-Grandparent's Door
+Grandparents's Door
 8
-You are at the door of your grandparent's house. You can return to *the intersection* by going east. 
-You are at the door of your grandparent's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens. 
+You are at the door of your grandparents's house. You can return to *the intersection* by going east. 
+You are at the door of your grandparents's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens. 
 END
-Grandparent's Living Room 
+Grandparents's Living Room 
 9 
-You have entered your grandparent's living room. To the north is their *backyard* and the door out is east.
-You have entered your grandparent's living room. You can tell they are in love with Mittens by the number 
+You have entered your grandparents's living room. To the north is their *backyard* and the door out is east and south is the *kitchen*.
+You have entered your grandparents's living room. You can tell they are in love with Mittens by the number 
 of toys splayed out on the floor. You look around and you can still see your scrap notes at their dining 
-table from the day before. Their *backyard* is north and the way out is east.
+table from the day before. Their *backyard* is north and the way out is east and south is the *kitchen*.
 END
 Road To Friends House and McDonalds
 10
@@ -109,13 +109,17 @@ home too. Their family is covered in sports equiptment, family pictures while ca
 various horsebackriding medals. You've always thought Eric's family was very gung-ho. You can leave 
 the house by going south.
 END
-Grandparent's Garden
+Grandparents's Garden
 15
-You are in your grandparent's garden. Go south to go back inside your grandparent's house.
-You are in your grandparent's garden. They like to keep it organized, everything is in strict
-rows and columns and the colours all blend together perfectly. To go back to *the house*, go south.  
-
-
+You are in your grandparents's garden. Go south to go back inside your grandparents's living room.
+You are in your grandparents's garden. They like to keep it organized, everything is in strict
+rows and columns and the colours all blend together perfectly. To go back to *the living room*, go south.  
+END
+Grandparents's Kitchen
+16
+You are in your grandparents's kitchen. The *living room* is north.
+You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there for as long as you can remember. You can return to the living room north.
+END
 
 
 
