@@ -78,6 +78,8 @@ if __name__ == "__main__":
 
             continue
 
+
+
     def look(player: Player, world: World):
         for line in world.get_location(player.x, player.y).long_description:
             print(line)
