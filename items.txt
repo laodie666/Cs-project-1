@@ -22,15 +22,15 @@ END
 Watering can
 15
 0
-insert description
+This is the watering can. It's already full. It's a cute elephant, the spout is it's trunk. You are now able to water the plants.
 END
 Cat litter shovel
 9
 0
-insert description
+This is Mittens's litter shovel. It's kind of dusty from all it's use but grandma got the top of the line most durable one for sure!
 END
 Happy Meal
 13
 0
-insert description
+One cheeseburger, fries, chocolate milk, yogurt, fruit AND a toy. What a steal. 
 END
