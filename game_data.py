@@ -38,17 +38,31 @@ class Quest:
         self.name = name
         self.progress = 0
 
-class Interact:
-    """Possible interactions  adventure game world.
+class Interaction:
+    """Possible interactions in the adventure game world.
 
     Instance Attributes:
-        - name: name of location
-        - short_description: short description in a string.
-        - long_description: long description with each line stored in a list.
+        - loccation: location at which the
+        - Required_quest_name: name of required quest initiate as 'no_quest' without input
+        - Required_quest_progress: needed progress number for the interaction, initiate as 0 without input
+        - Required_item: position of the item needed, initiate as -1 without input
+        - Prompt: The prompt that is provided when interacted.
 
     Representation Invariants:
         - # TODO
     """
+    def __init__(self, location: int, Required_quest_name: str, Required_quest_progress: int, Required_item: int, Prompt: [str]) -> None:
+        """
+        Initialize a new interaction. with location, required quest name, required quest progress, and required item
+        """
+        self.location = location
+        self.Required_quest_name = Required_quest_name
+        self.Required_quest_progress: Required_quest_progress
+        self.Required_item = Required_item
+        self.Prompt = Prompt
+
+    def special_action(self):
+        raise NotImplementedError
 
 
 class Location:
@@ -151,6 +165,9 @@ class Item:
         # Taking to Gradnma at progress three ends the quest, results in you getting the lucky pen.
         self.Lucky_pen = Quest("Lucky_pen_quest")
 
+        # Place holder quest for interactions that doesn't require a quest active.
+        self.no_quest = Quest("no_quest")
+
 
 class Player:
     """
@@ -175,8 +192,9 @@ class Player:
         self.x = x
         self.y = y
 
-        # the inverntroy stores the location at which the itemis found rather than the item name to use the dictionary
-        self.inventory = []
+        # The inverntroy stores the location at which the itemis found rather than the item name to use the dictionary
+        # -1 for placeholder quests that doesn't need an item.
+        self.inventory = [-1]
 
         self.victory = False
 
@@ -189,7 +207,8 @@ class World:
         - # TODO add more instance attributes as needed; do NOT remove the map attribute
 
     Representation Invariants:
-        - # TODO
+        - Two interact can not be in the same location
+        - Two items can not be in the same location
     """
 
     def __init__(self, map_data: TextIO, location_data: TextIO, items_data: TextIO) -> None:

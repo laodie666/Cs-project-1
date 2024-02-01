@@ -47,7 +47,7 @@ Map method (output the map) []
 
 Character and dialogue []
   - talk to (person) []
-  - dialogue options (number) []
+  - dialogue options (number) [x]
   - quest design [x]
     - retrieve each item from a character
 
