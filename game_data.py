@@ -70,18 +70,26 @@ class Quest_Interaction (Interaction):
     inherit Interaction but change speciaal_action to increase quest progress
     """
 
-    def __init__(self, location: int, prompt: [str], quest:Quest, required_quest_name='no_quest', required_quest_progress=0, required_item=-1, ) -> None:
+    def __init__(self, location: int, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
-        self.location = location
-        self.required_quest_name = required_quest_name
-        self.required_quest_progress: required_quest_progress
-        self.required_item = required_item
-        self.prompt = prompt
+        super().__init__(location, prompt, required_quest_name, required_quest_progress, required_item)
         self.quest = quest
     def special_action(self):
         self.quest.progress += 1
+
+class Teleport_Interaction (Interaction):
+    """
+    inherit Interaction but change speciaal_action to increase quest progress
+    """
+    def __init__(self, location: int, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
+        """
+        Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
+        """
+        super().__init__(location, prompt, required_quest_name, required_quest_progress, required_item)
+    def special_action(self):
+
 
 class Location:
     """A location in our text adventure game world.
