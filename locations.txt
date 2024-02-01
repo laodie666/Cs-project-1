@@ -5,42 +5,42 @@ You can't enter here. For one reason or another you face a hollow abyss.
 END
 New University College Dorm
 0
-You are at your residence, New University College Dorm. To the north is Union Station.
+You are at your residence, New University College Dorm. To the north is *Union Station*.
 You are at your residence, New University College Dorm. This is a new U of T residence 
 although your room is a bit messy after digging around for your t-card, you couldn’t be 
 happier with all the space especially since you were able to get a single room. You have 
-room for your bed and a desk. The location is very convenient since Union Station is just 
+room for your bed and a desk. The location is very convenient since *Union Station* is just 
 north of here.
 END
 Union Station
 1
-You are at Union Station. Back south is New University College.
+You are at Union Station. Back south is *New University College*.
 You are at Union Station you always take the GO Train here to travel to Markham and the
 busyness is not unfamiliar, but at this time of day, there appears to be more people 
-seperating you from the platform. 
+seperating you from the platform. You can go south to return to *New University College*.
 END
 Unionville GO
 2
 You are at Unionville GO, in Markham. Continuing north, you can explore more of this city.
 You're at Unionville GO, in Markham. You are welcomed with a gentle breeze as you laugh 
-about how you were just here yesterday. To your north there is an intersection no matter 
+about how you were just here yesterday. To your north there is an *intersection* no matter 
 where you are headed in Markham, you have to go through there.
 END
 Intersection
 3
-You are at an intersection. A little down West is your grandparent's house, farther north is your friend Eric's house and Mcdonalds and to get to your parent's house and your aunt Jean's house you travel east.
+You are at an intersection. A little down West is your *grandparent's house*, farther north is your friend *Eric's house* and *Mcdonalds* and to get to your *parent's house* and your *aunt Jean's house* you travel east.
 You are at an intersection and you ponder where to travel first. To the west lies your 
-grandparents' house, a nostalgic haven, while northward awaits Eric's gaming stronghold
-and the tempting delights of McDonald's. Venture eastward for quests leading to your parents' 
-home and Aunt Jean's enchanted abode. 
+*grandparents' house*, a nostalgic haven, while northward awaits *Eric's house* and the tempting 
+delights of *McDonald's*. Venture eastward for quests leading to your *parents' home* and *Aunt 
+Jean's house*. 
 END
 Road 1
 4
-You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
-You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
+You are in your parent's and aunt Jean's neihbourhood. North is your *parent's house*, east is *Jean's*. *The intersection* is west.
+You are in your parent's and aunt Jean's neihbourhood. You see your *parent's house* north, it's 
 also your childhood home but its beggining to look smaller after entering U of T. You hope you 
-will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close,
-you can just smell her homemade pie. 
+will find your mom there. To your east is *aunt Jean's* house. It's a blessing she lives so close,
+you can just smell her homemade brownies. 
 END
 Jean's Door
 5
