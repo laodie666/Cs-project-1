@@ -43,27 +43,45 @@ class Interaction:
 
     Instance Attributes:
         - loccation: location at which the
+        - Prompt: The prompt that is provided when interacted.
         - Required_quest_name: name of required quest initiate as 'no_quest' without input
         - Required_quest_progress: needed progress number for the interaction, initiate as 0 without input
         - Required_item: position of the item needed, initiate as -1 without input
-        - Prompt: The prompt that is provided when interacted.
+
 
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, location: int, Required_quest_name: str, Required_quest_progress: int, Required_item: int, Prompt: [str]) -> None:
+    def __init__(self, location: int, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
         self.location = location
-        self.Required_quest_name = Required_quest_name
-        self.Required_quest_progress: Required_quest_progress
-        self.Required_item = Required_item
-        self.Prompt = Prompt
+        self.required_quest_name = required_quest_name
+        self.required_quest_progress: required_quest_progress
+        self.required_item = required_item
+        self.prompt = prompt
 
     def special_action(self):
         raise NotImplementedError
 
+class Quest_Interaction (Interaction):
+    """
+    inherit Interaction but change speciaal_action to increase quest progress
+    """
+
+    def __init__(self, location: int, prompt: [str], quest:Quest, required_quest_name='no_quest', required_quest_progress=0, required_item=-1, ) -> None:
+        """
+        Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
+        """
+        self.location = location
+        self.required_quest_name = required_quest_name
+        self.required_quest_progress: required_quest_progress
+        self.required_item = required_item
+        self.prompt = prompt
+        self.quest = quest
+    def special_action(self):
+        self.quest.progress += 1
 
 class Location:
     """A location in our text adventure game world.
@@ -145,29 +163,6 @@ class Item:
         self.score = score
         self.description = description
 
-        # Entering parent house increase progress by 1: can only knock Jean's door with progress 1
-        # Finish talking to Jean increase progress by 1: can only go into Jean's living room with progress 2
-        # If the mean dialogue option is picked when talking to Jean, the quest progress go to -1 and the quest ends.
-        # Finish talking to Mom to end the quest: obtain T-card
-        self.T_card_quest = Quest("T_card_quest")
-
-
-        # Talking to Eric increase progress by 1: can only go to macdonalds if progress is 1.
-        # Picking the "make me cheat sheet" dialogue will result in quest failure
-        # Interact at macdonalds to eat increase progress by 1: Can only go back to Eric's house is 2
-        # Interact at Eric's house at progress 2 of the house ends the quest, and obtain the cheat sheet.
-        self.Cheat_sheet = Quest("Cheat_sheet_quest")
-
-        # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
-        # Failing the dialogue option with Grandma fail the quest. make progress go -1
-        # Watering the plant with watering can increase progress by 1
-        # Scoop cat poop with cat litter shovel increase progress by 1: Can only talk to Grandma at progress 3
-        # Taking to Gradnma at progress three ends the quest, results in you getting the lucky pen.
-        self.Lucky_pen = Quest("Lucky_pen_quest")
-
-        # Place holder quest for interactions that doesn't require a quest active.
-        self.no_quest = Quest("no_quest")
-
 
 class Player:
     """
@@ -238,6 +233,28 @@ class World:
         self.locations = self.load_locations(location_data)
 
         self.items = self.load_items(items_data)
+
+        # Entering parent house increase progress by 1: can only knock Jean's door with progress 1
+        # Finish talking to Jean increase progress by 1: can only go into Jean's living room with progress 2
+        # If the mean dialogue option is picked when talking to Jean, the quest progress go to -1 and the quest ends.
+        # Finish talking to Mom to end the quest: obtain T-card
+        self.T_card_quest = Quest("T_card_quest")
+
+        # Talking to Eric increase progress by 1: can only go to macdonalds if progress is 1.
+        # Picking the "make me cheat sheet" dialogue will result in quest failure
+        # Interact at macdonalds to eat increase progress by 1: Can only go back to Eric's house is 2
+        # Interact at Eric's house at progress 2 of the house ends the quest, and obtain the cheat sheet.
+        self.Cheat_sheet_quest = Quest("Cheat_sheet_quest")
+
+        # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
+        # Failing the dialogue option with Grandma fail the quest. make progress go -1
+        # Watering the plant with watering can increase progress by 1
+        # Scoop cat poop with cat litter shovel increase progress by 1: Can only talk to Grandma at progress 3
+        # Taking to Gradnma at progress three ends the quest, results in you getting the lucky pen.
+        self.Lucky_pen_quest = Quest("Lucky_pen_quest")
+
+        # Place holder quest for interactions that doesn't require a quest active.
+        self.no_quest = Quest("no_quest")
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:
