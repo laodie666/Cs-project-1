@@ -38,6 +38,36 @@ class Quest:
         self.name = name
         self.progress = 0
 
+class Player:
+    """
+    A Player in the text advanture game.
+
+    Instance Attributes:
+        - # TODO
+
+    Representation Invariants:
+        - # TODO
+    """
+
+    def __init__(self, x: int, y: int) -> None:
+        """
+        Initializes a new Player at position (x, y).
+        """
+
+        # NOTES:
+        # This is a suggested starter class for Player.
+        # You may change these parameters and the data available for the Player object as you see fit.
+
+        self.x = x
+        self.y = y
+
+        # The inverntroy stores the location at which the itemis found rather than the item name to use the dictionary
+        # -1 for placeholder quests that doesn't need an item.
+        self.inventory = [-1]
+
+        self.victory = False
+
+
 class Interaction:
     """Possible interactions in the adventure game world.
 
@@ -52,7 +82,7 @@ class Interaction:
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, location: int, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
+    def __init__(self, location: int, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
@@ -70,7 +100,7 @@ class Quest_Interaction (Interaction):
     inherit Interaction but change speciaal_action to increase quest progress
     """
 
-    def __init__(self, location: int, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
+    def __init__(self, location: int, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
@@ -79,17 +109,23 @@ class Quest_Interaction (Interaction):
     def special_action(self):
         self.quest.progress += 1
 
+
 class Teleport_Interaction (Interaction):
     """
     inherit Interaction but change speciaal_action to increase quest progress
     """
-    def __init__(self, location: int, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1, ) -> None:
+    def __init__(self, location: int, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
         super().__init__(location, prompt, required_quest_name, required_quest_progress, required_item)
-    def special_action(self):
+        self.player = player
 
+    def special_action(self):
+        if self.player.x == 3 and self.player.y == 6:
+            self.player.y = 4
+        elif self.player.x == 3 and self.player.y == 4:
+            self.player.y = 6
 
 class Location:
     """A location in our text adventure game world.
@@ -172,34 +208,6 @@ class Item:
         self.description = description
 
 
-class Player:
-    """
-    A Player in the text advanture game.
-
-    Instance Attributes:
-        - # TODO
-
-    Representation Invariants:
-        - # TODO
-    """
-
-    def __init__(self, x: int, y: int) -> None:
-        """
-        Initializes a new Player at position (x, y).
-        """
-
-        # NOTES:
-        # This is a suggested starter class for Player.
-        # You may change these parameters and the data available for the Player object as you see fit.
-
-        self.x = x
-        self.y = y
-
-        # The inverntroy stores the location at which the itemis found rather than the item name to use the dictionary
-        # -1 for placeholder quests that doesn't need an item.
-        self.inventory = [-1]
-
-        self.victory = False
 
 
 class World:
