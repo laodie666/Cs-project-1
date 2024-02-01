@@ -66,7 +66,6 @@ class Player:
         # -1 for placeholder quests that doesn't need an item.
         self.inventory = [-1]
 
-        self.victory = False
 
 
 class Interaction:
@@ -312,6 +311,7 @@ class World:
         # Interact at Eric's house at progress 2 of the house ends the quest, and obtain the cheat sheet.
         self.Cheat_sheet_quest = Quest("Cheat_sheet_quest")
 
+
         # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
         # Failing the dialogue option with Grandma fail the quest. make progress go -1
         # Watering the plant with watering can increase progress by 1
@@ -321,6 +321,12 @@ class World:
 
         # Place holder quest for interactions that doesn't require a quest active.
         self.no_quest = Quest("no_quest")
+
+        # Ending quest, start with 0 and end with 1 being when you return Markham
+        self.ending_quest = Quest("ending_quest")
+
+        # store all quests in  dictionary for easy access.
+        self.Quests = {"Cheat_sheet_quest": self.Cheat_sheet_quest, "T_card_quest": self.T_card_quest, "Lucky_pen_quest": self.Lucky_pen_quest, "no_quest": self.no_quest, "ending_quest": self.ending_quest}
 
 
         #Interactions

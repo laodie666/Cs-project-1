@@ -118,5 +118,5 @@ END
 Grandparents's Kitchen
 16
 You are in your grandparents's kitchen. The *living room* is north.
-You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there for as long as you can remember. You can return to the living room north. 
+You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there for as long as you can remember. You can return to the living room north.
 END

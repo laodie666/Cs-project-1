@@ -97,16 +97,22 @@ if __name__ == "__main__":
         location = w.get_location(p.x, p.y)
 
         if location.visited == False:
-            for line in location.long_description:
-                print(line)
+            look(p, w)
 
             location.visited = True
 
+
+        # short description, and showing what is there.
         else:
             print(location.short_description)
             index = location.index
-            if index in w.interactables and w.interactables[index]:
-                print("This location can be interacted")
+
+            # check whether there is
+            if index in w.interactables:
+
+                interactable = w.interactables[index]
+                if interactable.required_quest_name in w.Quests and w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression:
+                    print("This location can be interacted")
             if index in w.dialogues and w.dialogues[index].status != -1:
                 print("There is a character that can be talked to here")
             if index in w.items and index not in p.inventory:
