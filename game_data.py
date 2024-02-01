@@ -205,6 +205,28 @@ class Item:
         self.score = score
         self.description = description
 
+class Dialogue:
+    """ Dialogue stored in recursive Structure
+
+    Instance Attributes:
+        - name: name of this dialogue
+        - content: content of the dialogue
+        - Dictionary of options: further dialogue options
+
+    Representation Invariants:
+        - # TODO
+
+    """
+
+    def __init__(self, content: str, future_dialogue = None, name = '') -> None:
+        """
+        Content cant be empty as dialogue need content
+        If there is no future dialogue it is defaulted as None
+        name is defaulted as none as not all dialogue are important and require name
+        """
+        self.content = content
+        self.future_dialogue = future_dialogue
+        self.name = name
 
 class World:
     """A text adventure game world storing all location, item and map data.
@@ -271,6 +293,8 @@ class World:
 
         # lists of interactable locations
         interactables = {}
+
+        # lists of interactable locations
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:
