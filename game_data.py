@@ -72,7 +72,6 @@ class Interaction:
     """Possible interactions in the adventure game world.
 
     Instance Attributes:
-        - loccation: location at which the
         - Prompt: The prompt that is provided when interacted.
         - Required_quest_name: name of required quest initiate as 'no_quest' without input
         - Required_quest_progress: needed progress number for the interaction, initiate as 0 without input
@@ -82,11 +81,11 @@ class Interaction:
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, location: int, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
-        self.location = location
+
         self.required_quest_name = required_quest_name
         self.required_quest_progress: required_quest_progress
         self.required_item = required_item
@@ -95,30 +94,29 @@ class Interaction:
     def special_action(self):
         raise NotImplementedError
 
-class Quest_Interaction (Interaction):
+class Quest_progress_Interaction (Interaction):
     """
     inherit Interaction but change speciaal_action to increase quest progress
     """
 
-    def __init__(self, location: int, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
-        super().__init__(location, prompt, required_quest_name, required_quest_progress, required_item)
+        super().__init__(prompt, required_quest_name, required_quest_progress, required_item)
         self.quest = quest
     def special_action(self):
         self.quest.progress += 1
-
 
 class Teleport_Interaction (Interaction):
     """
     inherit Interaction but change speciaal_action to increase quest progress
     """
-    def __init__(self, location: int, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
-        super().__init__(location, prompt, required_quest_name, required_quest_progress, required_item)
+        super().__init__(prompt, required_quest_name, required_quest_progress, required_item)
         self.player = player
 
     def special_action(self):
@@ -208,8 +206,6 @@ class Item:
         self.description = description
 
 
-
-
 class World:
     """A text adventure game world storing all location, item and map data.
 
@@ -271,6 +267,10 @@ class World:
 
         # Place holder quest for interactions that doesn't require a quest active.
         self.no_quest = Quest("no_quest")
+
+
+        # lists of interactable locations
+        interactables = {}
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:

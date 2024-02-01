@@ -29,3 +29,8 @@ Cat litter shovel
 0
 insert description
 END
+Happy Meal
+13
+0
+insert description
+END
