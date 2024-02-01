@@ -23,6 +23,69 @@ from game_data import World, Item, Location, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
 
+
+def look(player: Player, world: World):
+    for description_line in world.get_location(player.x, player.y).long_description:
+        print(description_line)
+
+
+def go(d: str, player: Player, world: World):
+    """
+    Move the player in the direct, also take in quest progression into consideration for specific locations
+    """
+    current_x = player.x
+    current_y = player.y
+
+    # Check direction to go
+    if d == 'north':
+        current_y -= 1
+    elif d == 'south':
+        current_y += 1
+    elif d == 'east':
+        current_x += 1
+    elif d == 'west':
+        current_x -= 1
+    else:
+        print("Invalid direction input, either type in north, south, east, or west")
+
+    # check validity of destination
+    if 0 > current_x or current_x >= len(world.map[0]) or 0 > current_y or current_y >= len(world.map) or \
+            world.map[current_y][current_x] == -1:
+        print("Invalid direction to go, try again")
+
+    # T-card quest location restrictions
+    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress < 2:
+        print("Jean is still at the door, not letting you in.")
+
+    # Cheat sheet quest locaiton restrictions
+    elif current_x == 4 and current_y == 1 and w.Cheat_sheet_quest.progress < 1:
+        print("You aren't hungry and have no reason to go there.")
+    # Can't go back to Eric's house before eating at macdonalds.
+    elif current_x == 3 and current_y == 0 and w.Cheat_sheet_quest.progress == 1:
+        print("Eric is waiting for you are Macdonalds.")
+
+    # Lucky pen quest location restrictions
+    elif current_x == 0 and current_y == 3 and w.Lucky_pen_quest.progress < 1:
+        print("Grandma is still waiting for you to explain why you are here. ")
+
+    # valid move
+    else:
+        p.x = current_x
+        p.y = current_y
+
+    # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
+    #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
+    #  the choice the player made was just a movement, so only updating player's position is enough to change the
+    #  location to the next appropriate location
+    #  Possibilities:
+    #  A helper function such as do_action(w, p, location, choice)
+    #  OR A method in World class w.do_action(p, location, choice)
+    #  OR Check what type of action it is, then modify only player or location accordingly
+    #  OR Method in Player class for move or updating inventory
+    #  OR Method in Location class for updating location item info, or other location data etc....
+
+
+
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
@@ -33,7 +96,15 @@ if __name__ == "__main__":
     while not p.victory:
         location = w.get_location(p.x, p.y)
 
-        # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
+        if location.visited == False:
+            for line in location.long_description:
+                print(line)
+
+            location.visited = True
+
+        else:
+            print(location.short_description)
+
         # Depending on whether or not it's been visited before,
         # print either full description (first time visit) or brief description (every subsequent visit)
         print()
@@ -78,46 +149,5 @@ if __name__ == "__main__":
 
             continue
 
-
-
-    def look(player: Player, world: World):
-        for line in world.get_location(player.x, player.y).long_description:
-            print(line)
-
-    def go(d: str, player: Player, world: World) -> bool:
-        """
-        Move the player in the direct, returning True if the move is valid and False if it is not
-        """
-        current_x = player.x
-        current_y = player.y
-
-        # Check direction to go
-        if d == 'north':
-            current_y -= 1
-        elif d == 'south':
-            current_y += 1
-        elif d == 'east':
-            current_x += 1
-        elif d == 'west':
-            current_x -= 1
-        else:
-            print("Invalid direction input, either type in north, south, east, or west")
-            return False
-
-        # check validity of destination
-        if 0 > current_x or current_x >= len(world.map[0]) or 0 > current_y or current_y >= len(world.map) or world.map[current_x][current_y] == -1:
-            print("Invalid direction to go, try again")
-            return True
-        return False
-
-
-        # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
-        #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
-        #  the choice the player made was just a movement, so only updating player's position is enough to change the
-        #  location to the next appropriate location
-        #  Possibilities:
-        #  A helper function such as do_action(w, p, location, choice)
-        #  OR A method in World class w.do_action(p, location, choice)
-        #  OR Check what type of action it is, then modify only player or location accordingly
-        #  OR Method in Player class for move or updating inventory
-        #  OR Method in Location class for updating location item info, or other location data etc....
+        if "go" in choice:
+            go(choice.split(" ")[1], p,  w)

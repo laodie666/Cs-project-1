@@ -126,6 +126,7 @@ class Teleport_Interaction (Interaction):
         elif self.player.x == 3 and self.player.y == 4:
             self.player.y = 6
 
+
 class Location:
     """A location in our text adventure game world.
 
