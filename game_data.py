@@ -210,6 +210,7 @@ class Dialogue:
 
     Instance Attributes:
         - name: name of this dialogue
+        - player: whether it is the player speaking or not
         - content: content of the dialogue
         - Dictionary of options: further dialogue options
 
@@ -227,6 +228,38 @@ class Dialogue:
         self.content = content
         self.future_dialogue = future_dialogue
         self.name = name
+
+    def Progress_dialogue(self):
+        """
+        method to proprogate through an entire dialogue tree
+
+        """
+
+        if self.future_dialogue is not None:
+
+            # if there is only one option then the player doesn't have to choose
+            if len(self.future_dialogue) == 1:
+                # print own content
+                print(self.content)
+                # pass in only next one
+                self.future_dialogue[-1].Progress_dialogue()
+           # player has to choose
+            else:
+                # print own content
+                print(self.content)
+
+                # print available options
+                for choice in self.future_dialogue:
+                    type(choice)
+                    print(str(choice) + ")" + self.future_dialogue[choice].content)
+
+                #take input then proceed in that direction
+                user_choice = input("select option")
+                self.future_dialogue[int(user_choice)].Progress_dialogue()
+
+        else:
+            print(self.content)
+            print("Dialogue ends")
 
 class World:
     """A text adventure game world storing all location, item and map data.
@@ -291,10 +324,23 @@ class World:
         self.no_quest = Quest("no_quest")
 
 
-        # lists of interactable locations
-        interactables = {}
+        #Interactions
 
-        # lists of interactable locations
+        # lists of interactable locations in form of location: interactable
+        self.interactables = {}
+
+        # Dialogues
+
+        j7 = Dialogue("Jean: Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!")
+        j6 = Dialogue("Jean: Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.")
+        j5 = Dialogue("Jean: Where are your manners!? Go back to school!",  name = 'Jean fail')
+        j4 = Dialogue("You: Happy Birthday Aunt Jean! Can I come in?",  {-1: j7})
+        j3 = Dialogue("You: Hi Aunt Jean, have you seen my mom?",  {-1: j6})
+        j2 = Dialogue("You: I don’t have time for you right now, let me in.",  {-1: j5})
+        j1 = Dialogue("Jean: Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3:j4})
+
+        # lists of dialogues in form of location: dialogue
+        self.dialogues = {5: j1}
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:
@@ -329,8 +375,8 @@ class World:
         for line in lines:
             # next location
             if line == "END":
-                counter = 0
                 locations[position] = Location(name, short_description, long_description)
+                counter = 0
                 position = -1
                 name = ''
                 short_description = ''
