@@ -28,16 +28,7 @@ if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = Player(3, 7)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
-    menu = ["go: to go in one of the four directions, north, south, east, west",
-            "look: obtain the long description of the location",
-            "inventory: check your own inverntory",
-            "score: check your current store based on the items you own",
-            "quit: quit the game",
-            "save: save the current game state into a save slot",
-            "load: load the game state from a save slot",
-            "interact: interact with whatever is in the current location",
-            "talk: talk to whoever is available to talk in the current location"
-            ]
+
 
     while not p.victory:
         location = w.get_location(p.x, p.y)
@@ -45,18 +36,47 @@ if __name__ == "__main__":
         # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
         # Depending on whether or not it's been visited before,
         # print either full description (first time visit) or brief description (every subsequent visit)
-
+        print()
         print("What to do? \n")
-        print("[menu]")
-        for action in location.available_actions():
+        print("Available actions:")
+        for action in w.available_actions(p.x, p.y):
             print(action)
+        print("type help to see all possible actions")
+        print("type actions to see all the available actions at this location again")
         choice = input("\nEnter action: ")
 
-        if choice == "[menu]":
-            print("Menu Options: \n")
-            for option in menu:
-                print(option)
-            choice = input("\nChoose action: ")
+        if choice == "help":
+            menu = ["map: print out the map and where you currently are"
+                    "go: to go in one of the four directions, north, south, east, west",
+                    "look: obtain the long description of the location",
+                    "inventory: check your own inverntory",
+                    "score: check your current store based on the items you own",
+                    "quit: quit the game",
+                    "save: save the current game state into a save slot",
+                    "load: load the game state from a save slot",
+                    "interact: interact with whatever is in the current location",
+                    "talk: talk to whoever is available to talk in the current location",
+                    "pick up: pick up the item at the ccurrent location"
+                    ]
+
+            for commands in menu:
+                print(commands)
+
+            continue
+
+        if choice == "actions":
+            for action in w.available_actions(p.x, p.y):
+                print(action)
+
+            continue
+
+        if choice == "map":
+            for line in w.map:
+                print(line)
+
+            print("You are at " + w.get_location(p.x, p.y).name + ", index of " + str(w.get_location(p.x, p.y).index))
+
+            continue
 
     def look(player: Player, world: World):
         for line in world.get_location(player.x, player.y).long_description:

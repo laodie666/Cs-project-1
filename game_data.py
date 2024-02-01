@@ -38,6 +38,7 @@ class Quest:
         self.name = name
         self.progress = 0
 
+
 class Player:
     """
     A Player in the text advanture game.
@@ -166,18 +167,6 @@ class Location:
         self.visited = visited
         self.index = index
 
-    def available_actions(self):
-        """
-        Return the available actions in this location.
-        The actions should depend on the items available in the location
-        and the x,y position of this location on the world map.
-        """
-
-
-
-        # NOTE: This is just a suggested method
-        # i.e. You may remove/modify/rename this as you like, and complete the
-        # function header (e.g. add in parameters, complete the type contract) as needed
 
 class Item:
     """An item in our text adventure game world.
@@ -352,6 +341,8 @@ class World:
         # lists of dialogues in form of location: dialogue
         self.dialogues = {5: j1}
 
+
+
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def load_map(self, map_data: TextIO) -> list[list[int]]:
         """
@@ -464,6 +455,35 @@ class World:
         else:
             return self.locations[self.map[y][x]]
 
+    def available_actions(self, x, y):
+        """
+        Return the available actions in this location.
+
+        """
+
+        menu = ["map: print out the map and where you currently are"
+                "go: to go in one of the four directions, north, south, east, west",
+                "look: obtain the long description of the location",
+                "inventory: check your own inverntory",
+                "score: check your current store based on the items you own",
+                "quit: quit the game",
+                "save: save the current game state into a save slot",
+                "load: load the game state from a save slot",
+                ]
+
+
+
+        index = self.get_location(x, y)
+        if index in self.items:
+            menu.append("pick up: pick up the item at the ccurrent location")
+
+        if index in self.interactables:
+            menu.append("interact: interact with whatever is in the current location")
+
+        if index in self.dialogues:
+            menu.append("talk: talk to whoever is available to talk in the current location")
+
+        return menu
 
 
 def test_world() -> World:
