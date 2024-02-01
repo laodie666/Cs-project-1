@@ -104,6 +104,13 @@ if __name__ == "__main__":
 
         else:
             print(location.short_description)
+            index = location.index
+            if index in w.interactables:
+                print("This location can be interacted")
+            if index in w.dialogues and w.dialogues[index].status != -1:
+                print("There is a character that can be talked to here")
+            if index in w.items and index not in p.inventory:
+                print("There is an item here to be picked up")
 
         # Depending on whether or not it's been visited before,
         # print either full description (first time visit) or brief description (every subsequent visit)

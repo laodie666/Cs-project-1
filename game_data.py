@@ -73,7 +73,8 @@ class Interaction:
     """Possible interactions in the adventure game world.
 
     Instance Attributes:
-        - Prompt: The prompt that is provided when interacted.
+        - Pre_prompt: The prompt that is provided before interacted
+        - Post_prompt: The prompt that is provided when interacted
         - Required_quest_name: name of required quest initiate as 'no_quest' without input
         - Required_quest_progress: needed progress number for the interaction, initiate as 0 without input
         - Required_item: position of the item needed, initiate as -1 without input
@@ -82,7 +83,7 @@ class Interaction:
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt:[str], Post_prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
@@ -90,7 +91,8 @@ class Interaction:
         self.required_quest_name = required_quest_name
         self.required_quest_progress: required_quest_progress
         self.required_item = required_item
-        self.prompt = prompt
+        self.Post_prompt = Post_prompt
+        self.Pre_prompt = Pre_prompt
 
     def special_action(self):
         raise NotImplementedError
@@ -100,11 +102,11 @@ class Quest_progress_Interaction (Interaction):
     inherit Interaction but change speciaal_action to increase quest progress
     """
 
-    def __init__(self, prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
-        super().__init__(prompt, required_quest_name, required_quest_progress, required_item)
+        super().__init__(Pre_prompt, Post_prompt, required_quest_name, required_quest_progress, required_item)
         self.quest = quest
     def special_action(self):
         self.quest.progress += 1
@@ -113,11 +115,11 @@ class Teleport_Interaction (Interaction):
     """
     inherit Interaction but change speciaal_action to increase quest progress
     """
-    def __init__(self, prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
-        super().__init__(prompt, required_quest_name, required_quest_progress, required_item)
+        super().__init__(Pre_prompt, Post_prompt, required_quest_name, required_quest_progress, required_item)
         self.player = player
 
     def special_action(self):
