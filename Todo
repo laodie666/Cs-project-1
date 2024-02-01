@@ -18,6 +18,8 @@ Inventory []
 
 Score []
 
+Step limit (50 steps max) []
+
 Quit []
 
 
@@ -41,13 +43,14 @@ Interact [x]
 
 Save & Load game []
   - establish a save game format []
-  - auto save and load into that file (10 Saves, empty save has attribute that shows its empty, save game
+  - save and load into that file (5 Saves, empty save has attribute that shows its empty, save game
     states like locations, items, quest progress) []
 
 Map method (output the map) []
 
 Character and dialogue []
   - talk to (person) []
+  - talk input [] 
   - dialogue options (number) [x]
   - quest design [x]
     - retrieve each item from a character
