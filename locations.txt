@@ -5,83 +5,83 @@ You can't enter here. For one reason or another you face a hollow abyss.
 END
 New University College Dorm
 0
-You are at your residence, New University College Dorm. To the north is Union Station.
+You are at your residence, New University College Dorm. To the north is *Union Station*.
 You are at your residence, New University College Dorm. This is a new U of T residence 
 although your room is a bit messy after digging around for your t-card, you couldn’t be 
 happier with all the space especially since you were able to get a single room. You have 
-room for your bed and a desk. The location is very convenient since Union Station is just 
+room for your bed and a desk. The location is very convenient since *Union Station* is just 
 north of here.
 END
 Union Station
 1
-You are at Union Station. Back south is New University College.
+You are at Union Station. Back south is *New University College*.
 You are at Union Station you always take the GO Train here to travel to Markham and the
 busyness is not unfamiliar, but at this time of day, there appears to be more people 
-seperating you from the platform. 
+seperating you from the platform. You can go south to return to *New University College*.
 END
 Unionville GO
 2
 You are at Unionville GO, in Markham. Continuing north, you can explore more of this city.
 You're at Unionville GO, in Markham. You are welcomed with a gentle breeze as you laugh 
-about how you were just here yesterday. To your north there is an intersection no matter 
+about how you were just here yesterday. To your north there is an *intersection* no matter 
 where you are headed in Markham, you have to go through there.
 END
 Intersection
 3
-You are at an intersection. A little down West is your grandparent's house, farther north is your friend Eric's house and Mcdonalds and to get to your parent's house and your aunt Jean's house you travel east.
+You are at an intersection. A little down West is your *grandparent's house*, farther north is your friend *Eric's house* and *Mcdonalds* and to get to your *parent's house* and your *aunt Jean's house* you travel east.
 You are at an intersection and you ponder where to travel first. To the west lies your 
-grandparents' house, a nostalgic haven, while northward awaits Eric's gaming stronghold
-and the tempting delights of McDonald's. Venture eastward for quests leading to your parents' 
-home and Aunt Jean's enchanted abode. 
+*grandparents' house*, a nostalgic haven, while northward awaits *Eric's house* and the tempting 
+delights of *McDonald's*. Venture eastward for quests leading to your *parents' home* and *Aunt 
+Jean's house*. 
 END
 Road 1
 4
-You are in your parent's and aunt Jean's neihbourhood. North is your parent's house, east is Jean's. The intersection is west.
-You are in your parent's and aunt Jean's neihbourhood. You see your parent's house north, it's 
+You are in your parent's and aunt Jean's neihbourhood. North is your *parent's house*, east is *Jean's*. *The intersection* is west.
+You are in your parent's and aunt Jean's neihbourhood. You see your *parent's house* north, it's 
 also your childhood home but its beggining to look smaller after entering U of T. You hope you 
-will find your mom there. To your east is aunt Jean's house. It's a blessing she lives so close,
-you can just smell her homemade pie. 
+will find your mom there. To your east is *aunt Jean's* house. It's a blessing she lives so close,
+you can just smell her homemade brownies. 
 END
 Jean's Door
 5
-You are at aunt Jean's door. The intersection is to your west.
+You are at aunt Jean's door. *The intersection* is to your west.
 You are at aunt Jean's door. It doesn't take super hearing to know that she has guests over. 
 END
 Jean's Living Room
 6
 You are in Jean's house. Your mom is also there.
-You are in Jean's house. She seemed prepared for guests she has her signature brownies and the 
+You are in Jean's house. She seemed prepared for guests you can smell remnants of her brownies and the 
 flowers on the table are fresh. It seems she had just finished her birthday cake. Looking around 
 more you see your mom!
 END
 Road 4
 7
 This is the road between your grandparent's house and the intersection. West is your grandparent's house and east is the intersection.
-This is the road between your grandparent's house and the intersection. You always forget how
+This is the road between your *grandparent's house* and *the intersection*. You always forget how
 long the trip between your grandparent's house and the intersection. You come across few people 
-on this road, but it is not short of squirrels. If you head west, you can reach your grandparent's 
-house and east is the intersection. 
+on this road, but it is not short of squirrels. If you head west, you can reach your *grandparent's 
+house* and east is the *intersection*. 
 END
 Grandparent's Door
 8
-You are at the door of your grandparent's house. You can return to the intersection by going east. 
+You are at the door of your grandparent's house. You can return to *the intersection* by going east. 
 You are at the door of your grandparent's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens. 
 END
 Grandparent's Living Room 
 9 
-You have entered your grandparent's living room. To the north is their backyard and the door out is east.
+You have entered your grandparent's living room. To the north is their *backyard* and the door out is east.
 You have entered your grandparent's living room. You can tell they are in love with Mittens by the number 
 of toys splayed out on the floor. You look around and you can still see your scrap notes at their dining 
-table from the day before. Their backyard is north and the way out is east.
+table from the day before. Their *backyard* is north and the way out is east.
 END
 Road To Friends House and McDonalds
 10
-This is the road between the intersection and Erics house and McDonalds. Go north to reach Eric's house or McDonalds and south to get back to the intersection. 
-This is the road between the intersection and Erics house and Mcdonalds. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks. 
+This is the road between *the intersection* and *Erics house* and *McDonalds*. Go north to reach *Eric's house* or *McDonalds* and south to get back to *the intersection*. 
+This is the road between the intersection and *Erics house* and *Mcdonalds*. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks. 
 END
 Parent's House
 11
-You are in your parent's house. To leave to the road you go south.
+You are in your parent's house. To leave to *the road* you go south.
 You are in your parent's house. This is your childhood home. You can see your little brother, 
 James, taking over the place. He should be at school right now. You see his action figures and 
 algebra textbooks but you don't see your mom. You look at the calendar and you see that today is 
@@ -91,19 +91,19 @@ Eric's Neighbourhood
 12
 You are in Eric's neihbourhood. North is Eric's house and East is McDonalds.
 You are in Eric's neihbourhood. It is pretty lively here since there are many food spots and this
-area is popular among high schoolers. Without looking, you already know that Eric's house is north 
-of you and McDonalds is just to your east.
+area is popular among high schoolers. Without looking, you already know that *Eric's house* is north 
+of you and *McDonalds* is just to your east.
 END
 McDonalds
 13
 You are at McDonalds. To go back to the road go west. 
 You are at McDonalds. The smell of the resturant only makes you more hungry. You see families, 
 highschoolers and construction workers. The line is long but you think that it wouldnt take long 
-for everyone to get served. The road is west.
+for everyone to get served. *The road* is west.
 END
 Eric's House
 14
-You are at Eric's House. To return to the road, go south. 
+You are at Eric's House. To return to *the road*, go south. 
 You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood 
 home too. Their family is covered in sports equiptment, family pictures while camping and Eric's 
 various horsebackriding medals. You've always thought Eric's family was very gung-ho. You can leave 
@@ -113,7 +113,7 @@ Grandparent's Garden
 15
 You are in your grandparent's garden. Go south to go back inside your grandparent's house.
 You are in your grandparent's garden. They like to keep it organized, everything is in strict
-rows and columns and the colours all blend together perfectly. To go back to the house, go south.  
+rows and columns and the colours all blend together perfectly. To go back to *the house*, go south.  
 
 
 
