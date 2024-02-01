@@ -26,7 +26,7 @@ from game_data import World, Item, Location, Player
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(0, 0)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = Player(3, 7)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "inventory", "score", "quit", "back"]
 
@@ -48,6 +48,40 @@ if __name__ == "__main__":
             for option in menu:
                 print(option)
             choice = input("\nChoose action: ")
+
+
+
+
+    def look(p: Player, w: World):
+        for line in w.get_location(p.x, p.y).long_description:
+            print(line)
+
+    def go(d:str, p: Player, w: World) -> bool:
+        """
+        Move the player in the direct, returning True if the move is valid and False if it is not
+        """
+        current_x = p.x
+        current_y = p.y
+
+        # Check direction to go
+        if d == 'north':
+            current_y -= 1
+        elif d == 'south':
+            current_y += 1
+        elif d == 'east':
+            current_x += 1
+        elif d == 'west':
+            current_x -= 1
+        else:
+            print("Invalid direction input, either type in north, south, east, or west")
+            return False
+
+        # check validity of destination
+        if 0 > current_x or current_x >= len(w.map[0]) or 0 > current_y or current_y >= len(w.map) or w.map[current_x][current_y] == -1:
+            print("Invalid direction to go, try again")
+            return True
+        return False
+
 
         # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
         #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if

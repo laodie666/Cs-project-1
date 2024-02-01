@@ -8,7 +8,7 @@ locations (instances of locations containing their description, interactable, in
 
 items.txt (T-card, Cheat Sheet, Lucky Pen) [x]
 
-Go (direction) []
+Go (direction) [x]
 
 Look []
 
@@ -33,10 +33,11 @@ Add on:
 
 Help method (list out the actions/player inputs and their purpose) []
 
-Interact []
+Interact [x]
   The specifics of interact should be in the location attribute. Each interactable location should mention they are
   interactable in their description. Preferably after interaction there will be chioces depending on console output
   with player picking numbers of choices (type in number from 1 to 3 for an option kinda thing).
+  - Initialize interacts in world in game data []
 
 Save & Load game []
   - establish a save game format []
@@ -56,4 +57,5 @@ Quests (read story quest file) [x]
 	- cheat sheet quest [x]
 	- lucky pen quest [x]
 	- T-card quest [x]
+	- Initialize dialogues in world in game data []
 	- ending []

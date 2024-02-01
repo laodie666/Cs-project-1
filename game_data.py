@@ -132,12 +132,14 @@ class Location:
         - name: name of location
         - short_description: short description in a string.
         - long_description: long description with each line stored in a list.
+        - visited: whether or not a location is visited already
+        - index: index of the location on the map
 
     Representation Invariants:
         - # TODO
     """
 
-    def __init__(self, name: str, short_description: str, long_description: list[str]) -> None:
+    def __init__(self, name: str, short_description: str, long_description: list[str], visited = False, index = -1) -> None:
         """
         Initialize a new location. with name, short description, and long description
         """
@@ -161,6 +163,8 @@ class Location:
         self.name = name
         self.short_description = short_description
         self.long_description = long_description
+        self.visited = visited
+        self.index = index
 
     def available_actions(self):
         """
@@ -168,6 +172,8 @@ class Location:
         The actions should depend on the items available in the location
         and the x,y position of this location on the world map.
         """
+
+
 
         # NOTE: This is just a suggested method
         # i.e. You may remove/modify/rename this as you like, and complete the
@@ -209,17 +215,17 @@ class Dialogue:
     """ Dialogue stored in recursive Structure
 
     Instance Attributes:
-        - name: name of this dialogue
         - player: whether it is the player speaking or not
         - content: content of the dialogue
-        - Dictionary of options: further dialogue options
+        - future_dialogue: further dialogue options in a dictionary
+        - status: status of dialogue, -1 being not started, 0 being completed, 1 being failed
 
     Representation Invariants:
         - # TODO
 
     """
 
-    def __init__(self, content: str, future_dialogue = None, name = '') -> None:
+    def __init__(self, content: str, future_dialogue = None, status = -1) -> None:
         """
         Content cant be empty as dialogue need content
         If there is no future dialogue it is defaulted as None
@@ -227,22 +233,24 @@ class Dialogue:
         """
         self.content = content
         self.future_dialogue = future_dialogue
-        self.name = name
+        self.status = status
+
 
     def Progress_dialogue(self):
         """
         method to proprogate through an entire dialogue tree
-
+        The status of the dialogue will be dependent on which end of the dialogue tree the player has arrived, which will be passed back up to the top.
         """
 
         if self.future_dialogue is not None:
-
             # if there is only one option then the player doesn't have to choose
             if len(self.future_dialogue) == 1:
                 # print own content
                 print(self.content)
-                # pass in only next one
-                self.future_dialogue[-1].Progress_dialogue()
+                # pass in status and go into the next iteration
+                self.status  = self.future_dialogue[-1].Progress_dialogue()
+                return self.status
+
            # player has to choose
             else:
                 # print own content
@@ -253,13 +261,15 @@ class Dialogue:
                     type(choice)
                     print(str(choice) + ")" + self.future_dialogue[choice].content)
 
-                #take input then proceed in that direction
+                #take input then proceed in that direction while passing up the status
                 user_choice = input("select option")
-                self.future_dialogue[int(user_choice)].Progress_dialogue()
+                self.status = self.future_dialogue[int(user_choice)].Progress_dialogue()
+                return self.status
 
         else:
             print(self.content)
             print("Dialogue ends")
+            return self.status
 
 class World:
     """A text adventure game world storing all location, item and map data.
@@ -331,13 +341,16 @@ class World:
 
         # Dialogues
 
-        j7 = Dialogue("Jean: Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!")
-        j6 = Dialogue("Jean: Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.")
-        j5 = Dialogue("Jean: Where are your manners!? Go back to school!",  name = 'Jean fail')
+        j7 = Dialogue("Jean: Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!", status = 0)
+        j6 = Dialogue("Jean: Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.", status = 0)
+        j5 = Dialogue("Jean: Where are your manners!? Go back to school!", status = 1)
         j4 = Dialogue("You: Happy Birthday Aunt Jean! Can I come in?",  {-1: j7})
         j3 = Dialogue("You: Hi Aunt Jean, have you seen my mom?",  {-1: j6})
         j2 = Dialogue("You: I don’t have time for you right now, let me in.",  {-1: j5})
         j1 = Dialogue("Jean: Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3:j4})
+
+
+        # TODO: finish rest of dialogue
 
         # lists of dialogues in form of location: dialogue
         self.dialogues = {5: j1}
@@ -375,7 +388,7 @@ class World:
         for line in lines:
             # next location
             if line == "END":
-                locations[position] = Location(name, short_description, long_description)
+                locations[position] = Location(name, short_description, long_description, index = position)
                 counter = 0
                 position = -1
                 name = ''
