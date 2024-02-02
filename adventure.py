@@ -151,6 +151,13 @@ if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = w.p
 
+    step_counter = 0
+
+    print("There is a 50 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
+    print("If the game is not completed before 50 steps, you get a bad ending.")
+    print()
+
+
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
 
@@ -203,13 +210,9 @@ if __name__ == "__main__":
             for commands in menu:
                 print(commands)
 
-            continue
-
         if choice == "actions":
             for action in w.available_actions(p.x, p.y):
                 print(action)
-
-            continue
 
         elif choice == "map":
             for line in w.map:
@@ -217,10 +220,9 @@ if __name__ == "__main__":
 
             print("You are at " + w.get_location(p.x, p.y).name + ", index of " + str(w.get_location(p.x, p.y).index))
 
-            continue
-
         elif "go" in choice:
             go(choice.split(" ")[1], p,  w)
+            step_counter += 1
 
         elif choice == "score":
             print(score(p, w))
@@ -237,12 +239,25 @@ if __name__ == "__main__":
 
         elif choice == "interact":
             interact(w, p)
+            step_counter += 1
 
         elif choice == "pick up":
             pick_up(w, p)
+            step_counter += 1
 
         elif choice == "talk":
             talk(w, p)
+            step_counter += 1
 
         else:
             print("invalid input, try again")
+
+        if step_counter == 30:
+            print("20 steps left")
+
+        if step_counter == 40:
+            print("10 steps left")
+
+        if step_counter == 50:
+            print("game over")
+            #TODO prompt
