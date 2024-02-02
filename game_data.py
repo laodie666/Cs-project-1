@@ -358,7 +358,7 @@ class World:
         m2 = Dialogue("Mom", "Did you say happy birthday to Jean?", {-1:m3})       
         m1 = Dialogue("Mom", "Hello!",{-1:m2})
 
-        g8 = Dialogue("Grandma", "OH MY DAYS, what kind of attitude is that? Do you not care about Mittens’s hygiene? Well, there goes my day since I’ll take forever to do my chores now. You should leave, I don’t have all day. ", status = 1)
+        g8 = Dialogue("Grandma", "OH MY DAYS, what kind of attitude is that? Do you not care about Mittens’s hygiene? Well, there goes my day since I’ll take forever to do my chores now. You should leave, I don’t have all day.", status = 1)
         g7 = Dialogue("Grandma", "Yes dear, you’re such a big help.", status = 0})
         g6 = Dialogue("You", "Grandma, You’re always like this, why can't you just think about my problems? I have an exam tomorrow.", {-1:g8})
         g5 = Dialogue("You", "Oh my gosh of course I’ll help you with your chores, how, are you okay?",{-1:g7})
@@ -366,6 +366,19 @@ class World:
         g3 = Dialogue("Grandma", "This is good timing though, I was going to do a few errands today but I broke my back the other day. So I was thinking …", {-1:g4})
         g2 = Dialogue("Grandma", "Oh, I wasn’t expecting you so the place is kind of messy from Mittens.", {-1:g3})
         g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in come in.", {-1:g2})
+
+        e7 = Dialogue("Eric", "Actually, I'm kind of busy today... Maybe another day.", status = 1)
+        e6 = Dialogue("Eric", "I was hoping you'd ask.", status = 0)
+        e5 = Dialogue("You", "Eh, well we can do that someday I guess. Sorry, I am only really here to study.", {-1:e7})
+        e4 = Dialogue("You", "Why don't we head over there right now, I'm kind of hungry.", {-1:e6})
+        e3 = Dialogue("You", "*thinking* I miss Eric, I should take some time to catch up with him before studying I think it would be a waste of time. I'm only here for his help, He might even be a little mad.", {1:e4, 2:e5})
+        e2 = Dialogue("Eric", "I've missed you and everyone else from High School. We used to have so much fun at the McDonald's.", {-1:e3})
+        e1 = Dialogue("Eric", "Hi, I haven’t seen you in a while.", {-1:e2})
+
+        em3 = Dialogue("Eric", "Which toy did you end up getting this time?", status = 0)
+        em2 = Dialogue("Eric", "You got a Happy Meal like always haha.", {-1:em3})
+        em1 = Dialogue("Eric", "Hey thanks, I really missed going out with you.", {-1: em2})
+        
 
      
 
