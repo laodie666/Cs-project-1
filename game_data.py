@@ -82,7 +82,7 @@ class Interaction:
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, Pre_prompt:str, Post_prompt: str, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: str, Post_prompt: str, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
@@ -182,7 +182,7 @@ class Item:
         - # TODO
     """
 
-    def __init__(self, name: str, score:int, prompt: str, description: [str]) -> None:
+    def __init__(self, name: str, score: int, description: [str]) -> None:
         """
         Initialize a new item, with name and description.
         """
@@ -198,7 +198,6 @@ class Item:
 
         self.name = name
         self.score = score
-        self.prompt = prompt
         self.description = description
 
 class Dialogue:
@@ -350,45 +349,45 @@ class World:
 
 
         # lists of interactable locations in form of location: interactable
-        self.interactables = {1: self.go_markham, 2:self.go_downtown}
+        self.interactables = {1: self.go_markham, 2: self.go_downtown}
 
         # Dialogues
 
-        j7 = Dialogue("Jean", "Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!", status = 0)
+        j7 = Dialogue("Jean", "Of course, did you come back just for my birthday, your mom is here too. Lovely surprise : )!", status = 0)
         j6 = Dialogue("Jean", "Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.", status = 0)
         j5 = Dialogue("Jean", "Where are your manners!? Go back to school!", status = 1)
         j4 = Dialogue("You", "Happy Birthday Aunt Jean! Can I come in?",  {-1: j7})
         j3 = Dialogue("You", "Hi Aunt Jean, have you seen my mom?",  {-1: j6})
         j2 = Dialogue("You", "I don’t have time for you right now, let me in.",  {-1: j5})
-        j1 = Dialogue("Jean", "Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3:j4})
+        j1 = Dialogue("Jean", "Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3: j4})
 
         m7 = Dialogue("Mom", "Oh gosh. Knowing you, you can’t take that. Here you go.", status = 0)
-        m6 = Dialogue("You", "School has been good, I have an exam tomorrow. Speaking of… Mom, you have my T-card, right? I need it for the exam tomorrow or else there is a 35% penalty.", {-1:m7})
-        m5 = Dialogue("Mom", "Oh yeah, I almost forgot too! Haha, but I made sure I remembered this year or else Jean would kill me. How is school so far, I didn’t expect you to come home, you were looking for me?", {-1:m6})
-        m4 = Dialogue("You", "Hi! I didn’t know it was Jean's birthday today. I was looking for you at home.", {-1:m5})
-        m3 = Dialogue("Mom", "She had made her signature brownies, but my bad they’re all gone now.", {-1:m4})
-        m2 = Dialogue("Mom", "Did you say happy birthday to Jean?", {-1:m3})
-        m1 = Dialogue("Mom", "Hello!",{-1:m2})
+        m6 = Dialogue("You", "School has been good, I have an exam tomorrow. Speaking of… Mom, you have my T-card, right? I need it for the exam tomorrow or else there is a 35% penalty.", {-1: m7})
+        m5 = Dialogue("Mom", "Oh yeah, I almost forgot too! Haha, but I made sure I remembered this year or else Jean would kill me. How is school so far, I didn’t expect you to come home, you were looking for me?", {-1: m6})
+        m4 = Dialogue("You", "Hi! I didn’t know it was Jean's birthday today. I was looking for you at home.", {-1: m5})
+        m3 = Dialogue("Mom", "She had made her signature brownies, but my bad they’re all gone now.", {-1: m4})
+        m2 = Dialogue("Mom", "Did you say happy birthday to Jean?", {-1: m3})
+        m1 = Dialogue("Mom", "Hello!",{-1: m2})
 
         g8 = Dialogue("Grandma", "OH MY DAYS, what kind of attitude is that? Do you not care about Mittens’s hygiene? Well, there goes my day since I’ll take forever to do my chores now. You should leave, I don’t have all day.", status = 1)
         g7 = Dialogue("Grandma", "Yes dear, you’re such a big help.", status = 0)
-        g6 = Dialogue("You", "Grandma, You’re always like this, why can't you just think about my problems? I have an exam tomorrow.", {-1:g8})
-        g5 = Dialogue("You", "Oh my gosh of course I’ll help you with your chores, how, are you okay?",{-1:g7})
-        g4 = Dialogue("Grandma", "Could you help me clean Mitten’s litter box and water the plants?", {1:g5, 2:g6})
-        g3 = Dialogue("Grandma", "This is good timing though, I was going to do a few errands today but I broke my back the other day. So I was thinking …", {-1:g4})
-        g2 = Dialogue("Grandma", "Oh, I wasn’t expecting you so the place is kind of messy from Mittens.", {-1:g3})
-        g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in come in.", {-1:g2})
+        g6 = Dialogue("You", "Grandma, You’re always like this, why can't you just think about my problems? I have an exam tomorrow.", {-1: g8})
+        g5 = Dialogue("You", "Oh my gosh of course I’ll help you with your chores, how, are you okay?",{-1: g7})
+        g4 = Dialogue("Grandma", "Could you help me clean Mitten’s litter box and water the plants?", {1: g5, 2: g6})
+        g3 = Dialogue("Grandma", "This is good timing though, I was going to do a few errands today but I broke my back the other day. So I was thinking …", {-1: g4})
+        g2 = Dialogue("Grandma", "Oh, I wasn’t expecting you so the place is kind of messy from Mittens.", {-1: g3})
+        g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in come in.", {-1: g2})
 
         e7 = Dialogue("Eric", "Actually, I'm kind of busy today... Maybe another day.", status = 1)
         e6 = Dialogue("Eric", "I was hoping you'd ask.", status = 0)
-        e5 = Dialogue("You", "Eh, well we can do that someday I guess. Sorry, I am only really here to study.", {-1:e7})
-        e4 = Dialogue("You", "Why don't we head over there right now, I'm kind of hungry.", {-1:e6})
-        e3 = Dialogue("You", "*thinking* I miss Eric, I should take some time to catch up with him before studying I think it would be a waste of time. I'm only here for his help, He might even be a little mad.", {1:e4, 2:e5})
-        e2 = Dialogue("Eric", "I've missed you and everyone else from High School. We used to have so much fun at the McDonald's.", {-1:e3})
-        e1 = Dialogue("Eric", "Hi, I haven’t seen you in a while.", {-1:e2})
+        e5 = Dialogue("You", "Eh, well we can do that someday I guess. Sorry, I am only really here to study.", {-1: e7})
+        e4 = Dialogue("You", "Why don't we head over there right now, I'm kind of hungry.", {-1: e6})
+        e3 = Dialogue("You", "*thinking* I miss Eric, I should take some time to catch up with him before studying I think it would be a waste of time. I'm only here for his help, He might even be a little mad.", {1: e4, 2: e5})
+        e2 = Dialogue("Eric", "I've missed you and everyone else from High School. We used to have so much fun at the McDonald's.", {-1: e3})
+        e1 = Dialogue("Eric", "Hi, I haven’t seen you in a while.", {-1: e2})
 
         em3 = Dialogue("Eric", "Which toy did you end up getting this time?", status = 0)
-        em2 = Dialogue("Eric", "You got a Happy Meal like always haha.", {-1:em3})
+        em2 = Dialogue("Eric", "You got a Happy Meal like always haha.", {-1: em3})
         em1 = Dialogue("Eric", "Hey thanks, I really missed going out with you.", {-1: em2})
 
         # lists of dialogues in form of location: dialogue
@@ -468,7 +467,6 @@ class World:
         lines = [line.strip() for line in items_data]
         counter = 0
         description = []
-        prompt = ''
         name = ''
         position = -1
         score = -1
@@ -476,11 +474,10 @@ class World:
         for line in lines:
             if line == "END":
                 counter = 0
-                items[position] = Item(name, score, prompt, description)
+                items[position] = Item(name, score, description)
                 name = ''
                 description = []
                 position = -1
-                prompt = ''
                 score = -1
                 continue
 
@@ -490,8 +487,6 @@ class World:
                 position = int(line)
             elif counter == 2:
                 score = int(line)
-            elif counter == 3:
-                prompt = line
             else:
                 description.append(line)
 
