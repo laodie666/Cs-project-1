@@ -329,9 +329,6 @@ class World:
         # Interact at Eric's house at progress 2 of the house ends the quest, and obtain the cheat sheet.
         self.Cheat_sheet_quest = Quest("Cheat_sheet_quest")
 
-
-
-
         # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
         # Failing the dialogue option with Grandma fail the quest. make progress go -1
         # Watering the plant with watering can increase progress by 1
@@ -360,9 +357,15 @@ class World:
         self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
                                                "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p)
 
-        self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.", "You are on the GO train. Safe travels.", self.p)
+        self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.",
+                                                "You are on the GO train. Safe travels.", self.p)
 
-        self.knock_jean =
+        self.knock_jean = Quest_progress_Interaction("Jean's definately home. Type <interact> to knock on her door.",
+                                                     "Jean answered the door, she looks shocked to see you there, afterall, you should be at school.", self.T_card_quest)
+
+        self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
+
+        self.cat_litter = Quest_progress_Interaction("Time for the moment of truth. Type <interact> to shovel the litter.", "You shovelled the litter. Why does something so little poop so much?", self.Lucky_pen_quest)
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {1: self.go_markham, 2: self.go_downtown}
