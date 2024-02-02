@@ -317,7 +317,8 @@ class World:
         self.items = self.load_items(items_data)
 
         # Entering parent house increase progress by 1: can only knock Jean's door with progress 1
-        # Finish talking to Jean increase progress by 1: can only go into Jean's living room with progress 2
+        # Knocking increase progress by 1: can only talk when progress is 2
+        # Finish talking to Jean increase progress by 1: can only go into Jean's living room with progress 3
         # If the mean dialogue option is picked when talking to Jean, the quest progress go to -1 and the quest ends.
         # Finish talking to Mom to end the quest: obtain T-card
         self.T_card_quest = Quest("T_card_quest")
@@ -361,7 +362,7 @@ class World:
 
         self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.", "You are on the GO train. Safe travels.", self.p)
 
-
+        self.knock_jean =
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {1: self.go_markham, 2: self.go_downtown}

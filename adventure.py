@@ -81,7 +81,9 @@ def go(d: str, player: Player, world: World):
         print("Invalid direction to go, try again. You can type map to see the map and where you are.")
 
     # T-card quest location restrictions
-    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress < 2:
+    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress < 1:
+        print("You don't really have a reason to see Jean")
+    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress == 2:
         print("Jean is still at the door, not letting you in.")
 
     # Cheat sheet quest locaiton restrictions
@@ -161,8 +163,11 @@ def talk(world: World, player: Player):
     completion = -1
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
-       # initiate dialogue
-        completion = world.dialogues[index].Progress_dialogue()
+        # Jean's dialogue can only be activated when at Jean's door and quest progress is 2
+        if index == 5 and world.T_card_quest.progress != 2:
+        else:
+            # initiate dialogue
+            completion = world.dialogues[index].Progress_dialogue()
 
     # grandma and mom give their item when quest end with dialogue
     if completion == 0:
