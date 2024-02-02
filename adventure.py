@@ -164,8 +164,12 @@ def talk(world: World, player: Player):
        # initiate dialogue
         completion = world.dialogues[index].Progress_dialogue()
 
+    # grandma and mom give their item when quest end with dialogue
     if completion == 0:
-        if
+        if index == 16:
+            player.inventory.append(index)
+        if index == 6:
+            player.inventory.append(index)
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
