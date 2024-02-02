@@ -131,8 +131,15 @@ def interact(world: World, player: Player):
     else:
         print("No interactable here")
 
+def pick_up(w: World, p: Player):
+    if index in w.items and index not in p.inventory:
+        p.inventory.append(index)
 
-    # Note: You may modify the code below as needed; the following starter template are just suggestions
+    else:
+        print("There is ")
+
+
+# Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
 
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
@@ -169,9 +176,6 @@ if __name__ == "__main__":
         # print either full description (first time visit) or brief description (every subsequent visit)
         print()
         print("What to do? \n")
-        print("Available actions:")
-        for action in w.available_actions(p.x, p.y):
-            print(action)
         print("type help to see all possible actions")
         print("type actions to see all the available actions at this location again")
         choice = input("\nEnter action: ")
@@ -203,7 +207,7 @@ if __name__ == "__main__":
 
             continue
 
-        if choice == "map":
+        elif choice == "map":
             for line in w.map:
                 print(line)
 
@@ -211,18 +215,27 @@ if __name__ == "__main__":
 
             continue
 
-        if "go" in choice:
+        elif "go" in choice:
             go(choice.split(" ")[1], p,  w)
 
-        if choice == "score":
+        elif choice == "score":
             print(score(p, w))
 
-        if choice == "inventory":
+        elif choice == "inventory":
             for item in p.inventory:
                 print(w.items[item])
 
-        if "inspect" in choice:
+        elif "inspect" in choice:
             inspect(w, int(choice.split(" ")[1]))
 
-        if choice == "quit":
+        elif choice == "quit":
             break
+
+        elif choice == "interact":
+            interact(w, p)
+
+        elif choice == "pick up":
+
+
+        else:
+            print("invalid input, try again")
