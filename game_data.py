@@ -82,7 +82,7 @@ class Interaction:
     Representation Invariants:
         - # TODO
     """
-    def __init__(self, Pre_prompt:[str], Post_prompt: [str], required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt:str, Post_prompt: str, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
