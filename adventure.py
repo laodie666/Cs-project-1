@@ -136,7 +136,10 @@ def interact(world: World, player: Player):
         if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
                 and interactable.required_item != -1 and interactable.required_item in p.inventory:
             interactable.special_action()
-    # TODO add sleeping trigger ending
+
+        if index == 2:
+            world.ending_quest += 1
+
     else:
         print("No interactable here")
 

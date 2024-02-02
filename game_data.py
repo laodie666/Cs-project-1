@@ -338,7 +338,7 @@ class World:
 
 
         #Interactions
-        # TODO add interact conditions
+
         self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
                                                "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p)
 
@@ -348,7 +348,7 @@ class World:
         self.knock_jean = Quest_progress_Interaction("Jean's definately home. Type <interact> to knock on her door.",
                                                      "Jean answered the door, she looks shocked to see you there, afterall, you should be at school.", self.T_card_quest, "T_card_quest", 1)
 
-        self.eat_happy_meal = Quest_progress_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", required_item = 13)
+        self.eat_happy_meal = Quest_progress_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", self.Cheat_sheet_quest, required_item = 13)
 
         self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
 
