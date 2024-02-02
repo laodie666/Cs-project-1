@@ -314,6 +314,8 @@ class World:
         self.Cheat_sheet_quest = Quest("Cheat_sheet_quest")
 
 
+
+
         # Talking to Grandma increase progress by 1: can only go into Grandma living room if progress is 1
         # Failing the dialogue option with Grandma fail the quest. make progress go -1
         # Watering the plant with watering can increase progress by 1
@@ -332,8 +334,10 @@ class World:
 
         self.p = Player(3, 7)
 
+        self.pick_up_prompt = {13: []}
 
-        # TODO: dialogue
+
+
 
         #Interactions
 
