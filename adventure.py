@@ -71,7 +71,7 @@ def go(d: str, player: Player, world: World):
     # check validity of destination
     if 0 > current_x or current_x >= len(world.map[0]) or 0 > current_y or current_y >= len(world.map) or \
             world.map[current_y][current_x] == -1:
-        print("Invalid direction to go, try again")
+        print("Invalid direction to go, try again. You can type map to see the map and where you are.")
 
     # T-card quest location restrictions
     elif current_x == 6 and current_y == 3 and w.T_card_quest.progress < 2:

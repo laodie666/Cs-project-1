@@ -12,7 +12,7 @@ Go (direction) [x]
 
 Look [x]
 
-Pick up []
+Pick up [x]
 
 Inventory [x]
 
@@ -20,7 +20,7 @@ Score [x]
 
 Step limit (50 steps max) []
 
-Quit []
+Quit [x]
 
 
 Notes: move limit, lose the game if max moves are reached, ability to win the game
@@ -41,15 +41,10 @@ Interact [x]
   with player picking numbers of choices (type in number from 1 to 3 for an option kinda thing).
   - Initialize interacts in world in game data []
 
-Save & Load game []
-  - establish a save game format []
-  - save and load into that file (5 Saves, empty save has attribute that shows its empty, save game
-    states like locations, items, quest progress) []
-
 Map method (output the map) [x]
 
 Character and dialogue []
-  - talk input []
+  - talk input [x]
   - dialogue options (number) [x]
   - quest design [x]
     - retrieve each item from a character
