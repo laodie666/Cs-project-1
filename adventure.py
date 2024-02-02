@@ -45,7 +45,16 @@ def look(player: Player, world: World):
 
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
-        print("There is a " + w.items[index].name + " here.")
+        if world.items[index].name != "T-card" or world.items[index].name != "Lucky Pen" or world.items[index].name != "Cheat Sheet":
+            print("There is a " + w.items[index].name + " here.")
+            if world.items[index] == "Watering can":
+                print("There is a watering can at the side. Type <pick up> to pick it up.")
+            elif world.items[index] == "Cat litter shovel":
+                print("There is a shovel right beside the litter box. Type <pick up> to pick it up.")
+            elif world.items[index] == "Happy Meal":
+                print("Type <pick up> to pick up your happy meal.")
+
+
 
 def go(d: str, player: Player, world: World):
     """
@@ -76,7 +85,7 @@ def go(d: str, player: Player, world: World):
         print("Jean is still at the door, not letting you in.")
 
     # Cheat sheet quest locaiton restrictions
-    elif current_x == 4 and current_y == 1 and w.Cheat_sheet_quest.progress < 1:
+    elif current_x == 2 and current_y == 1 and w.Cheat_sheet_quest.progress < 1:
         print("You aren't hungry and have no reason to go there.")
     # Can't go back to Eric's house before eating at macdonalds.
     elif current_x == 3 and current_y == 0 and w.Cheat_sheet_quest.progress == 1:
@@ -131,16 +140,27 @@ def interact(world: World, player: Player):
 
 def pick_up(world: World, player: Player):
     index = world.get_location(player.x, player.y).index
+
     if index in world.items and index not in player.inventory:
-        player.inventory.append(index)
-    else:
+
+        #story quest items can't be picked up, must be obtained by interaction
+        if world.items[index].name != "T-card" or world.items[index].name != "Lucky Pen" or world.items[index].name != "Cheat Sheet":
+            player.inventory.append(index)
+            if world.items[index] == "Watering can":
+                print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do it.")
+            elif world.items[index] == "Cat litter shovel":
+                print("You picked up the *litter shovel*.")
+            elif world.items[index] == "Happy Meal":
+                print("You picked up your *happy meal*. The toy is some skateboard keychain.")
+            return
+
         print("There is no item to pick up here")
 
 def talk(world: World, player: Player):
     index = world.get_location(player.x, player.y).index
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
-        print("You can talk to " + world.dialogues[index].target + "here.")
+        world.dialogues[index].Progress_dialogue()
 
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
@@ -180,8 +200,10 @@ if __name__ == "__main__":
             if index in w.dialogues and w.dialogues[index].status == -1:
                 print("There is a character that can be talked to here")
 
+            # check whether there is an item here to pick up.
             if index in w.items and index not in p.inventory:
-                print("There is an item here to be picked up")
+                if w.items[index].name != "T-card" or w.items[index].name != "Lucky Pen" or w.items[index].name != "Cheat Sheet":
+                    print("There is an item here to be picked up")
 
         # Depending on whether it's been visited before,
         # print either full description (first time visit) or brief description (every subsequent visit)
