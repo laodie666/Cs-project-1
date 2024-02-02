@@ -31,13 +31,26 @@ We should GO home now. Type <interact> to get back on the GO train.
 You are on the GO train. Safe travels.
 1
 Good job getting back home. You've had a long day. Type <interact> to sleep.
+
+
+ENDINGS:
 1)
 You got everything you need :)! You we're able to get good sleep in the night and complete the exam smoothly.
 Your final mark was 100%!
 2)
 Without your lucky pen, you were tossing and turning in your sleep. You overslept your alarm and got to the exam room late. 
-Nonetheless, with the cheat sheet and t-card, you got a 83% on the exam.
+Nonetheless, with the cheat sheet and t-card, you got a 83% on the exam. You passed!
 3)
 You didn't have your t-card for the exam and so you had a 35% deduction on the exam. 
-Even so, you were otherwise fully prepared meaning you earned the other 65%.
-
+Even so, you were otherwise fully prepared meaning you earned the other 65%. You passed!
+4)
+You didn't have your cheat sheet for the exam. You were in a good mindset but not well studied.
+You barely passed with a 52%.
+5)
+You only had a cheat sheet for the exam. You didn't pass but you got a 48%.
+6)
+You only had your lucky pen for the exam. You didn't pass but you got a 17%.
+7)
+You only had your t card for the exam. You didn't pass but you got a 35%.
+8)
+You took too long, the day is over. You won't make it in time for the exam. At least they drop one mark.
