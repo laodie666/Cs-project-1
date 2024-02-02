@@ -131,21 +131,20 @@ def interact(world: World, player: Player):
     else:
         print("No interactable here")
 
+
     # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
+
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(3, 7)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = w.p
 
-
-
-    while not w.ending_quest.progress != 2:
+    while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
 
         if location.visited == False:
             look(p, w)
 
             location.visited = True
-
 
         # short description, and showing what is there.
         else:
@@ -176,6 +175,7 @@ if __name__ == "__main__":
         print("type help to see all possible actions")
         print("type actions to see all the available actions at this location again")
         choice = input("\nEnter action: ")
+        print()
 
         if choice == "help":
             menu = ["map: print out the map and where you currently are"

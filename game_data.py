@@ -330,12 +330,19 @@ class World:
         # store all quests in  dictionary for easy access.
         self.Quests = {"Cheat_sheet_quest": self.Cheat_sheet_quest, "T_card_quest": self.T_card_quest, "Lucky_pen_quest": self.Lucky_pen_quest, "no_quest": self.no_quest, "ending_quest": self.ending_quest}
 
+        self.p = Player(3, 7)
+
 
         # TODO: dialogue
 
         #Interactions
 
-        self.go_markham = Teleport_Interaction()
+        self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
+                                               "Wow, you got a free ticket. Now you can make it to Markham safely.", self.p)
+
+        self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.", "You are on the GO train. Safe travels.", self.p)
+
+
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {}
@@ -499,7 +506,6 @@ class World:
     def available_actions(self, x, y):
         """
         Return the available actions in this location.
-
         """
 
         menu = ["map: print out the map and where you currently are"
@@ -512,8 +518,6 @@ class World:
                 "save: save the current game state into a save slot",
                 "load: load the game state from a save slot",
                 ]
-
-
 
         index = self.get_location(x, y)
         if index in self.items:
