@@ -25,8 +25,28 @@ from game_data import World, Item, Location, Player
 
 
 def look(player: Player, world: World):
+
+    index = world.get_location(player.x, player.y).index
+
     for description_line in world.get_location(player.x, player.y).long_description:
         print(description_line)
+
+        # check whether there is an interactable or not
+    if index in w.interactables:
+        # check whether the quest progression needed for this interaction and the needed items are met.
+        interactable = w.interactables[index]
+        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
+                and interactable.required_item != -1 and interactable.required_item in p.inventory:
+            print(interactable.Pre_prompt)
+
+    # check whether there is a dialogue here or not and making sure you have not had this dialogue.
+    if index in w.dialogues and w.dialogues[index].status == -1:
+        print("You can talk to " + w.dialogues[index].target + "here.")
+
+    # check whether there is an item here and print the item name and description here.
+    if index in w.items and index not in p.inventory:
+        print("There is an " + w.items[index].name + " here.")
+        print(w.items[index].description)
 
 
 def go(d: str, player: Player, world: World):
@@ -93,7 +113,7 @@ if __name__ == "__main__":
 
 
 
-    while not p.victory:
+    while not w.ending_quest.progress != 2:
         location = w.get_location(p.x, p.y)
 
         if location.visited == False:
@@ -107,14 +127,18 @@ if __name__ == "__main__":
             print(location.short_description)
             index = location.index
 
-            # check whether there is
+            # check whether there is an interactable or not
             if index in w.interactables:
-
+                # check whether the quest progression needed for this interaction is met.
                 interactable = w.interactables[index]
-                if interactable.required_quest_name in w.Quests and w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression:
+                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression:
                     print("This location can be interacted")
-            if index in w.dialogues and w.dialogues[index].status != -1:
+
+            # check whether there is a dialogue here or not and making sure you have not had this dialogue.
+            if index in w.dialogues and w.dialogues[index].status == -1:
                 print("There is a character that can be talked to here")
+
+
             if index in w.items and index not in p.inventory:
                 print("There is an item here to be picked up")
 

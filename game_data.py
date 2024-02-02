@@ -203,7 +203,7 @@ class Dialogue:
     """ Dialogue stored in recursive Structure
 
     Instance Attributes:
-        - player: whether it is the player speaking or not
+        - target: who is talking
         - content: content of the dialogue
         - future_dialogue: further dialogue options in a dictionary
         - status: status of dialogue, -1 being not started, 0 being completed, 1 being failed
@@ -213,12 +213,13 @@ class Dialogue:
 
     """
 
-    def __init__(self, content: str, future_dialogue = None, status = -1) -> None:
+    def __init__(self, target: str, content: str, future_dialogue = None, status = -1) -> None:
         """
         Content cant be empty as dialogue need content
         If there is no future dialogue it is defaulted as None
         name is defaulted as none as not all dialogue are important and require name
         """
+        self.target = target
         self.content = content
         self.future_dialogue = future_dialogue
         self.status = status
@@ -322,27 +323,31 @@ class World:
         # Place holder quest for interactions that doesn't require a quest active.
         self.no_quest = Quest("no_quest")
 
-        # Ending quest, start with 0 and end with 1 being when you return Markham
+        # Ending quest, start with 0 and end with 1 being when you return from Markham, and 2 being after player goes to sleep
         self.ending_quest = Quest("ending_quest")
 
         # store all quests in  dictionary for easy access.
         self.Quests = {"Cheat_sheet_quest": self.Cheat_sheet_quest, "T_card_quest": self.T_card_quest, "Lucky_pen_quest": self.Lucky_pen_quest, "no_quest": self.no_quest, "ending_quest": self.ending_quest}
 
 
+        # TODO: dialogue
+
         #Interactions
+
+        self.go_markham = Teleport_Interaction()
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {}
 
         # Dialogues
 
-        j7 = Dialogue("Jean: Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!", status = 0)
-        j6 = Dialogue("Jean: Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.", status = 0)
-        j5 = Dialogue("Jean: Where are your manners!? Go back to school!", status = 1)
-        j4 = Dialogue("You: Happy Birthday Aunt Jean! Can I come in?",  {-1: j7})
-        j3 = Dialogue("You: Hi Aunt Jean, have you seen my mom?",  {-1: j6})
-        j2 = Dialogue("You: I don’t have time for you right now, let me in.",  {-1: j5})
-        j1 = Dialogue("Jean: Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3:j4})
+        j7 = Dialogue("Jean", "Of course, did you come back just for my birthday, your mom is here too. Lovely surprise :)!", status = 0)
+        j6 = Dialogue("Jean", "Wow, I almost thought you were here for my birthday. Yeah, your mom is right here.", status = 0)
+        j5 = Dialogue("Jean", "Where are your manners!? Go back to school!", status = 1)
+        j4 = Dialogue("You", "Happy Birthday Aunt Jean! Can I come in?",  {-1: j7})
+        j3 = Dialogue("You", "Hi Aunt Jean, have you seen my mom?",  {-1: j6})
+        j2 = Dialogue("You", "I don’t have time for you right now, let me in.",  {-1: j5})
+        j1 = Dialogue("Jean", "Hel- OH, it's you, aren’t you supposed to be at school right now? What are you doing here?",  {1: j2, 2: j3, 3:j4})
 
 
         # TODO: finish rest of dialogue
