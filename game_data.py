@@ -515,8 +515,6 @@ class World:
                 "inspect: inspect *insert item* to see their description"
                 "score: check your current store based on the items you own",
                 "quit: quit the game",
-                "save: save the current game state into a save slot",
-                "load: load the game state from a save slot",
                 ]
 
         index = self.get_location(x, y)

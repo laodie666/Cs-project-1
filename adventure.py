@@ -195,8 +195,6 @@ if __name__ == "__main__":
                     "inspect: inspect *insert item* to see their description"
                     "score: check your current store based on the items you own",
                     "quit: quit the game",
-                    "save: save the current game state into a save slot",
-                    "load: load the game state from a save slot",
                     "interact: interact with whatever is in the current location",
                     "talk: talk to whoever is available to talk in the current location",
                     "pick up: pick up the item at the ccurrent location"
