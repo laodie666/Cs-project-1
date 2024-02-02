@@ -158,11 +158,14 @@ def pick_up(world: World, player: Player):
 
 def talk(world: World, player: Player):
     index = world.get_location(player.x, player.y).index
+    completion = -1
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
        # initiate dialogue
         completion = world.dialogues[index].Progress_dialogue()
 
+    if completion == 0:
+        if
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
