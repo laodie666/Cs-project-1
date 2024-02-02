@@ -394,6 +394,8 @@ class World:
         g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in come in.",
                       {-1: g2})
 
+        gk1 = Dialogue("Grandma", "You did a beautiful job sweetie. Here is your pen. Good luck on your exam!", status = 0)
+
         e7 = Dialogue("Eric", "Actually, I'm kind of busy today... Maybe another day.", status=1)
         e6 = Dialogue("Eric", "I was hoping you'd ask.", status=0)
         e5 = Dialogue("You", "Eh, well we can do that someday I guess. Sorry, I am only really here to study.",
