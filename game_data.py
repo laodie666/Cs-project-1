@@ -345,7 +345,7 @@ class World:
 
 
         # lists of interactable locations in form of location: interactable
-        self.interactables = {}
+        self.interactables = {1: self.go_markham, 2:self.go_downtown}
 
         # Dialogues
 

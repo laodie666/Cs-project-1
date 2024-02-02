@@ -136,7 +136,7 @@ def pick_up(w: World, p: Player):
         p.inventory.append(index)
 
     else:
-        print("There is ")
+        print("There is no item to pick up here")
 
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
@@ -172,7 +172,7 @@ if __name__ == "__main__":
             if index in w.items and index not in p.inventory:
                 print("There is an item here to be picked up")
 
-        # Depending on whether or not it's been visited before,
+        # Depending on whether it's been visited before,
         # print either full description (first time visit) or brief description (every subsequent visit)
         print()
         print("What to do? \n")
@@ -235,7 +235,7 @@ if __name__ == "__main__":
             interact(w, p)
 
         elif choice == "pick up":
-
+            pick_up(w, p)
 
         else:
             print("invalid input, try again")
