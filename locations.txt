@@ -120,6 +120,7 @@ Grandparents's Kitchen
 You are in your grandparents's kitchen. The *living room* is north.
 You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there for as long as you can remember. You can return to the living room north.
 END
+Eric's room
 17
 You are in Eric's room. To exit, go east.
 You are in Eric's room. His room is always so organized. You think about how you left your room back home. To exit, go east.
