@@ -127,21 +127,6 @@ class Teleport_Interaction (Interaction):
         elif self.player.x == 3 and self.player.y == 4:
             self.player.y = 6
 
-class Item_Interaction (Interaction):
-    """
-    inherit Interaction but change speciaal_action to increase obtain item for player
-    """
-
-    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, index: int, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
-        """
-        Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
-        """
-        super().__init__(Pre_prompt, Post_prompt, required_quest_name, required_quest_progress, required_item)
-        self.player = player
-        self.index = index
-    def special_action(self):
-        self.player.inventory.append(self.index)
-
 
 class Location:
     """A location in our text adventure game world.
@@ -363,7 +348,7 @@ class World:
         self.knock_jean = Quest_progress_Interaction("Jean's definately home. Type <interact> to knock on her door.",
                                                      "Jean answered the door, she looks shocked to see you there, afterall, you should be at school.", self.T_card_quest, "T_card_quest", 1)
 
-        self.eat_happy_meal = Item_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", 13)
+        self.eat_happy_meal = Quest_progress_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", required_item = 13)
 
         self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
 

@@ -98,8 +98,8 @@ McDonalds
 13
 You are at McDonalds. To go back to the road go east.
 You are at McDonalds. The smell of the resturant only makes you more hungry. You see families,
-highschoolers and construction workers. The line is long but you think that it wouldnt take long
-for everyone to get served. *The road* is east.
+highschoolers and construction workers. The line is long but you think that it wouldn't take long
+for everyone to get served. Your meal is now ready for you to pick up. *The road* is east.
 END
 Eric's House
 14
