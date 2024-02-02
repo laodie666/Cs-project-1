@@ -380,7 +380,7 @@ class World:
         em1 = Dialogue("Eric", "Hey thanks, I really missed going out with you.", {-1: em2})
 
         # lists of dialogues in form of location: dialogue
-        self.dialogues = {5: j1,}
+        self.dialogues = {5: j1, 6: m1, 9: g1, 14: e1, 13: em1}
 
 
 
