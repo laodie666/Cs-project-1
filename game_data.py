@@ -127,21 +127,6 @@ class Teleport_Interaction (Interaction):
         elif self.player.x == 3 and self.player.y == 4:
             self.player.y = 6
 
-class Item_Interaction (Interaction):
-    """
-    inherit Interaction but change speciaal_action to increase obtain item for player
-    """
-
-    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, index: int, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
-        """
-        Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
-        """
-        super().__init__(Pre_prompt, Post_prompt, required_quest_name, required_quest_progress, required_item)
-        self.player = player
-        self.index = index
-    def special_action(self):
-        self.player.inventory.append(self.index)
-
 
 class Location:
     """A location in our text adventure game world.

@@ -160,7 +160,8 @@ def talk(world: World, player: Player):
     index = world.get_location(player.x, player.y).index
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
-        world.dialogues[index].Progress_dialogue()
+       # initiate dialogue
+        completion = world.dialogues[index].Progress_dialogue()
 
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
