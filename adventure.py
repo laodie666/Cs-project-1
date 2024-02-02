@@ -136,7 +136,7 @@ def interact(world: World, player: Player):
         if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
                 and interactable.required_item != -1 and interactable.required_item in p.inventory:
             interactable.special_action()
-
+    # TODO add sleeping trigger ending
     else:
         print("No interactable here")
 
@@ -164,17 +164,33 @@ def talk(world: World, player: Player):
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
         # Jean's dialogue can only be activated when at Jean's door and quest progress is 2
-        if index == 5 and world.T_card_quest.progress != 2:
+        if index == 5 and world.T_card_quest.progress == 0:
+            print("You don't have a reason to visit Jean, you should probably go to your parent's house for the T-card")
+            return
+        elif index == 5 and world.T_card_quest.progress == 1:
+            print("You should probably knock first")
+            return
+        # Grandma's dialogue at kitchen can only be triggered when quest progress is 3.
+        elif index == 16 and world.Lucky_pen_quest.progress != 3:
+            print("You should do your grandma's requests first")
+            return
         else:
             # initiate dialogue
             completion = world.dialogues[index].Progress_dialogue()
 
-    # grandma and mom give their item when quest end with dialogue
-    if completion == 0:
-        if index == 16:
-            player.inventory.append(index)
-        if index == 6:
-            player.inventory.append(index)
+        # TODO finish talking progress quest.
+
+        # grandma and mom give their item when quest end with dialogue
+        if completion == 0:
+            if index == 16:
+                player.inventory.append(index)
+            if index == 6:
+                player.inventory.append(index)
+
+        #TODO fail dialogue
+
+    else:
+        print("There is no one to talk to here.")
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
@@ -294,3 +310,5 @@ if __name__ == "__main__":
         if step_counter == 50:
             print("game over")
             #TODO prompt
+
+# TODO ending after interaction.

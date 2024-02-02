@@ -353,19 +353,23 @@ class World:
 
 
         #Interactions
-
+        # TODO add interact conditions
         self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
                                                "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p)
 
-        self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.",
+        self.go_downtown = Teleport_Interaction("You should GO home now. Type <interact> to get back on the GO train.",
                                                 "You are on the GO train. Safe travels.", self.p)
 
         self.knock_jean = Quest_progress_Interaction("Jean's definately home. Type <interact> to knock on her door.",
-                                                     "Jean answered the door, she looks shocked to see you there, afterall, you should be at school.", self.T_card_quest)
+                                                     "Jean answered the door, she looks shocked to see you there, afterall, you should be at school.", self.T_card_quest, "T_card_quest", 1)
+
+        self.eat_happy_meal = Item_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", 13)
 
         self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
 
         self.cat_litter = Quest_progress_Interaction("Time for the moment of truth. Type <interact> to shovel the litter.", "You shovelled the litter. Why does something so little poop so much?", self.Lucky_pen_quest)
+
+        self.sleep = Quest_progress_Interaction("Good job getting back home. You've had a long day. Type <interact> to sleep.", "You quickly fell asleep after your long day", self.ending_quest, "ending_quest", 1)
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {1: self.go_markham, 2: self.go_downtown}
