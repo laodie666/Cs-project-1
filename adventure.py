@@ -36,8 +36,9 @@ def look(player: Player, world: World):
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
-        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
-                and interactable.required_item != -1 and interactable.required_item in p.inventory:
+        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
+                and interactable.required_item in p.inventory:
+            print()
             print(interactable.Pre_prompt)
 
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
@@ -118,12 +119,13 @@ def go(d: str, player: Player, world: World):
 def score(player: Player, world: World) -> int:
     score = 0
     for item in player.inventory:
-        score += world.items[item].score
+        if item in world.items:
+            score += world.items[item].score
 
     return score
 
 # print out the description of the item.
-def inspect(world: World, player: Player, item_position: int):
+def inspect(world: World, item_position: int):
     for line in world.items[item_position].description:
         print(line)
 
@@ -134,12 +136,14 @@ def interact(world: World, player: Player):
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
-        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
-                and interactable.required_item != -1 and interactable.required_item in p.inventory:
+        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
+                and interactable.required_item in p.inventory:
             interactable.special_action()
+        else:
+            print("No interactables here")
 
         if index == 2:
-            world.ending_quest += 1
+            world.ending_quest.progress += 1
 
     else:
         print("No interactable here")
@@ -224,6 +228,8 @@ if __name__ == "__main__":
 
     step_counter = 0
 
+    did_quit = False
+
     print("There is a 50 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
     print("If the game is not completed before 50 steps, you get a bad ending.")
     print()
@@ -231,6 +237,8 @@ if __name__ == "__main__":
 
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
+
+        print()
 
         if location.visited == False:
             look(p, w)
@@ -246,7 +254,7 @@ if __name__ == "__main__":
             if index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
                 interactable = w.interactables[index]
-                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression:
+                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress:
                     print("This location can be interacted")
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
@@ -294,9 +302,15 @@ if __name__ == "__main__":
 
             print("You are at " + w.get_location(p.x, p.y).name + ", index of " + str(w.get_location(p.x, p.y).index))
 
+        elif choice == "look":
+            look(p, w)
+
         elif "go" in choice:
-            go(choice.split(" ")[1], p,  w)
-            step_counter += 1
+            if len(choice.split(" ")) == 2:
+                go(choice.split(" ")[1], p,  w)
+                step_counter += 1
+            else:
+                print("Wrong number of words after go, remember to keep it to only being go north, go south, go east, go west")
 
         elif choice == "score":
             print(score(p, w))
@@ -306,20 +320,25 @@ if __name__ == "__main__":
                 print(w.items[item])
 
         elif "inspect" in choice:
-            item_name = choice.split(" ")[1]
-            item_index = -1
-            for index in w.items:
-                if w.items[index].name == item_name:
-                    item_index = index
-                    break
+            if len(choice.split(" ")) != 1:
+                item_name = choice.split(" ")[1]
+                item_index = -1
+                for index in w.items:
+                    if w.items[index].name == item_name:
+                        item_index = index
+                        break
 
-            if item_index not in p.inventory:
-                print("Item not found in inventory")
+                if item_index not in p.inventory:
+                    print("Item not found in inventory")
 
+                else:
+                    inspect(w, item_index)
             else:
-                inspect(w, p, item_index)
+                print("Empty string after inspect, remember to put a item name after inspect.")
+
 
         elif choice == "quit":
+            did_quit = True
             break
 
         elif choice == "interact":
@@ -335,7 +354,7 @@ if __name__ == "__main__":
             step_counter += 1
 
         elif "look up" in choice:
-            if choice.split(" ")[2].isnumeric():
+            if len(choice.split(" ")) < 2 or choice.split(" ")[2].isnumeric():
                 print("invalid index, remember to type in a valid index on the map after look up")
             else:
                 look_up(w, int(choice.split(" ")[2]))
@@ -349,7 +368,7 @@ if __name__ == "__main__":
         if step_counter == 40:
             print("10 steps left")
 
-        if step_counter == 50:
+        if step_counter >= 50:
 
             print("It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the exam.")
             print("As you are going back to your dorm, you are so tired you fell onto the road, and lost conciousness")
@@ -357,7 +376,10 @@ if __name__ == "__main__":
 
             print("game over")
 
-    if step_counter < 50:
+    if did_quit:
+        print("game quit")
+
+    elif step_counter < 50:
         score = score(p, w)
         if score == 100:
             print("You got everything you need :)! You we're able to get good sleep in the night and complete the exam smoothly.")

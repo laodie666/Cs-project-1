@@ -87,8 +87,9 @@ class Interaction:
         Initialize a new interaction. with location, required quest name, required quest progress, and required item
         """
 
+
         self.required_quest_name = required_quest_name
-        self.required_quest_progress: required_quest_progress
+        self.required_quest_progress = required_quest_progress
         self.required_item = required_item
         self.Post_prompt = Post_prompt
         self.Pre_prompt = Pre_prompt
@@ -101,7 +102,7 @@ class Quest_progress_Interaction (Interaction):
     inherit Interaction but change speciaal_action to increase quest progress
     """
 
-    def __init__(self, Pre_prompt: [str], Post_prompt: [str], quest: Quest, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], quest: Quest, required_quest_name = "no_quest", required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
@@ -114,7 +115,7 @@ class Teleport_Interaction (Interaction):
     """
     inherit Interaction but change speciaal_action to increase quest progress
     """
-    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, required_quest_name = "no_quest", required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
@@ -132,7 +133,7 @@ class Item_Interaction (Interaction):
     inherit Interaction but change speciaal_action to increase obtain item for player
     """
 
-    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, index: int, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, index: int, required_quest_name = "no_quest", required_quest_progress = 0, required_item = -1) -> None:
         """
         Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
         """
@@ -346,17 +347,14 @@ class World:
 
         self.p = Player(3, 7)
 
-        self.pick_up_prompt = {13: []}
-
-
 
 
         #Interactions
 
         self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
-                                               "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p)
+                                               "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p, "ending_quest",  0)
 
-        self.go_downtown = Teleport_Interaction("You should GO home now. Type <interact> to get back on the GO train.",
+        self.go_downtown = Teleport_Interaction("You can take the bus back to down town if you are happy with the items on you. Type <interact> to get back on the GO train.",
                                                 "You are on the GO train. Safe travels.", self.p)
 
         self.knock_jean = Quest_progress_Interaction("Jean's definately home. Type <interact> to knock on her door.",
@@ -373,7 +371,7 @@ class World:
         self.sleep = Quest_progress_Interaction("Good job getting back home. You've had a long day. Type <interact> to sleep.", "You quickly fell asleep after your long day", self.ending_quest, "ending_quest", 1)
 
         # lists of interactable locations in form of location: interactable
-        self.interactables = {1: self.go_markham, 2: self.go_downtown}
+        self.interactables = {1: self.go_markham, 2: self.go_downtown, 0: self.sleep, 5: self.knock_jean, 13: self.eat_happy_meal, 15: self.water_plants, 9: self.cat_litter, 17: self.make_cheat_sheet}
 
         # Dialogues
 
