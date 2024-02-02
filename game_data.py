@@ -355,11 +355,11 @@ class World:
         m5 = Dialogue("Mom", "Oh yeah, I almost forgot too! Haha, but I made sure I remembered this year or else Jean would kill me. How is school so far, I didn’t expect you to come home, you were looking for me?", {-1:m6})
         m4 = Dialogue("You", "Hi! I didn’t know it was Jean's birthday today. I was looking for you at home.", {-1:m5})
         m3 = Dialogue("Mom", "She had made her signature brownies, but my bad they’re all gone now.", {-1:m4})
-        m2 = Dialogue("Mom", "Did you say happy birthday to Jean?", {-1:m3})       
+        m2 = Dialogue("Mom", "Did you say happy birthday to Jean?", {-1:m3})
         m1 = Dialogue("Mom", "Hello!",{-1:m2})
 
         g8 = Dialogue("Grandma", "OH MY DAYS, what kind of attitude is that? Do you not care about Mittens’s hygiene? Well, there goes my day since I’ll take forever to do my chores now. You should leave, I don’t have all day.", status = 1)
-        g7 = Dialogue("Grandma", "Yes dear, you’re such a big help.", status = 0})
+        g7 = Dialogue("Grandma", "Yes dear, you’re such a big help.", status = 0)
         g6 = Dialogue("You", "Grandma, You’re always like this, why can't you just think about my problems? I have an exam tomorrow.", {-1:g8})
         g5 = Dialogue("You", "Oh my gosh of course I’ll help you with your chores, how, are you okay?",{-1:g7})
         g4 = Dialogue("Grandma", "Could you help me clean Mitten’s litter box and water the plants?", {1:g5, 2:g6})
@@ -378,15 +378,9 @@ class World:
         em3 = Dialogue("Eric", "Which toy did you end up getting this time?", status = 0)
         em2 = Dialogue("Eric", "You got a Happy Meal like always haha.", {-1:em3})
         em1 = Dialogue("Eric", "Hey thanks, I really missed going out with you.", {-1: em2})
-        
-
-     
-
-
-        # TODO: finish rest of dialogue
 
         # lists of dialogues in form of location: dialogue
-        self.dialogues = {5: j1}
+        self.dialogues = {5: j1,}
 
 
 
