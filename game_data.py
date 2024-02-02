@@ -480,6 +480,7 @@ class World:
                 "go: to go in one of the four directions, north, south, east, west",
                 "look: obtain the long description of the location",
                 "inventory: check your own inverntory",
+                "inspect: inspect *insert item* to see their description"
                 "score: check your current store based on the items you own",
                 "quit: quit the game",
                 "save: save the current game state into a save slot",

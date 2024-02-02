@@ -104,6 +104,7 @@ def go(d: str, player: Player, world: World):
     #  OR Method in Player class for move or updating inventory
     #  OR Method in Location class for updating location item info, or other location data etc....
 
+# return score of all items added up
 def score(player: Player, world: World) -> int:
     score = 0
     for item in player.inventory:
@@ -111,8 +112,12 @@ def score(player: Player, world: World) -> int:
 
     return score
 
+# print out the description of the item.
+def inspect(world: World, item_position: int):
+    for line in world.items[item_position].description:
+        print(line)
 
-# Note: You may modify the code below as needed; the following starter template are just suggestions
+    # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = Player(3, 7)  # set starting location of player; you may change the x, y coordinates here as appropriate
@@ -163,6 +168,7 @@ if __name__ == "__main__":
                     "go: to go in one of the four directions, north, south, east, west",
                     "look: obtain the long description of the location",
                     "inventory: check your own inverntory",
+                    "inspect: inspect *insert item* to see their description"
                     "score: check your current store based on the items you own",
                     "quit: quit the game",
                     "save: save the current game state into a save slot",
@@ -193,3 +199,13 @@ if __name__ == "__main__":
 
         if "go" in choice:
             go(choice.split(" ")[1], p,  w)
+
+        if choice == "score":
+            print(score(p, w))
+
+        if choice == "inventory":
+            for item in p.inventory:
+                print(w.items[item])
+
+        if "inspect" in choice:
+            inspect(w, int(choice.split(" ")[1]))
