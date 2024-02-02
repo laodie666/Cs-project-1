@@ -46,7 +46,7 @@ def look(player: Player, world: World):
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
         print("There is an " + w.items[index].name + " here.")
-        print(w.items[index].description)
+        print(w.items[index].prompt)
 
 
 def go(d: str, player: Player, world: World):

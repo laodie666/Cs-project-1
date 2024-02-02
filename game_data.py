@@ -182,7 +182,7 @@ class Item:
         - # TODO
     """
 
-    def __init__(self, name: str, score:int, description: list[str]) -> None:
+    def __init__(self, name: str, score:int, prompt: str, description: [str]) -> None:
         """
         Initialize a new item, with name and description.
         """
@@ -198,6 +198,7 @@ class Item:
 
         self.name = name
         self.score = score
+        self.prompt = prompt
         self.description = description
 
 class Dialogue:
@@ -342,7 +343,7 @@ class World:
         #Interactions
 
         self.go_markham = Teleport_Interaction("Through the crowd, you see a strange man, he is giving away free GO train tickets. How lucky. Type <interact> to take a free ticket. ",
-                                               "Wow, you got a free ticket. Now you can make it to Markham safely.", self.p)
+                                               "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p)
 
         self.go_downtown = Teleport_Interaction("We should GO home now. Type <interact> to get back on the GO train.", "You are on the GO train. Safe travels.", self.p)
 
@@ -467,6 +468,7 @@ class World:
         lines = [line.strip() for line in items_data]
         counter = 0
         description = []
+        prompt = ''
         name = ''
         position = -1
         score = -1
@@ -474,20 +476,22 @@ class World:
         for line in lines:
             if line == "END":
                 counter = 0
-                items[position] = Item(name, score, description)
+                items[position] = Item(name, score, prompt, description)
                 name = ''
                 description = []
                 position = -1
+                prompt = ''
                 score = -1
                 continue
 
             if counter == 0:
                 name = line
-
             elif counter == 1:
                 position = int(line)
             elif counter == 2:
                 score = int(line)
+            elif counter == 3:
+                prompt = line
             else:
                 description.append(line)
 

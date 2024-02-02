@@ -10,28 +10,34 @@ Lucky Pen
 9
 17
 You got your Lucky Pen!
-This pen has purple cat bobble head and a squishy grip. The familiar head bobbing puts you in a good mindset during exams. You can see the googly eyes falling off, you suspect Mittens had a vendetta.
-With this extra luck, your exam mark will increase by 17%.
+This pen has purple cat bobble head and a squishy grip. The familiar head bobbing puts you in a good mindset during exams.
+You can see the googly eyes falling off, you suspect Mittens had a vendetta. With this extra luck, your exam mark will
+increase by 17%.
 END
 T-card
 6
 35
 You found your T-card!
-You look down at your id picture, "Should I dye my hair again?". You hope the glare in your eyes will make the ta pass out and get you out of your exam.
-Now you will now be able to enter the exam without the 35% "no T-card" penalty.
+You look down at your id picture, "Should I dye my hair again?". You hope the glare in your eyes will make the ta pass
+out and get you out of your exam. Now you will now be able to enter the exam without the 35% "no T-card" penalty.
 END
 Watering can
 15
 0
-This is the watering can. It's already full. It's a cute elephant, the spout is it's trunk. You are now able to water the plants.
+You found the watering can!
+This is the watering can. It's already full. It's a cute elephant, the spout is it's trunk. You are now able to water
+the plants.
 END
 Cat litter shovel
 9
 0
-This is Mittens's litter shovel. It's kind of dusty from all it's use but grandma got the top of the line most durable one for sure!
+You found Mitten's little shovel!
+This is Mittens's litter shovel. It's kind of dusty from all it's use but grandma got the top of the line most durable
+one for sure!
 END
 Happy Meal
 13
 0
+you have obtained the happy meal!
 This is a happy meal. One cheeseburger, fries, chocolate milk, yogurt, fruit AND a toy. What a steal.
 END
