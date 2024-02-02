@@ -17,6 +17,7 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2024 CSC111 Teaching Team
 """
+from Tools.scripts.pickle2db import prog
 
 # Note: You may add in other import statements here as needed
 from game_data import World, Item, Location, Player
@@ -122,7 +123,7 @@ def score(player: Player, world: World) -> int:
     return score
 
 # print out the description of the item.
-def inspect(world: World, item_position: int):
+def inspect(world: World, player: Player, item_position: int):
     for line in world.items[item_position].description:
         print(line)
 
@@ -181,7 +182,16 @@ def talk(world: World, player: Player):
             # initiate dialogue
             completion = world.dialogues[index].Progress_dialogue()
 
-        # TODO finish talking progress quest.
+    # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
+    if completion == 0:
+        if index == 14:
+            world.Cheat_sheet_quest.progress += 1
+        if index == 6 and world.T_card_quest.progress == 3:
+            world.T_card_quest += 1
+            player.inventory.append(6)
+        elif index == 16 and world.Lucky_pen_quest == 3:
+            world.Lucky_pen_quest += 1
+            player.inventory.append(16)
 
         # grandma and mom give their item when quest end with dialogue
         if completion == 0:
@@ -190,10 +200,21 @@ def talk(world: World, player: Player):
             if index == 6:
                 player.inventory.append(index)
 
-        #TODO fail dialogue
+    if completion == 1:
+        print("Quest failed")
+
+        if index == 5:
+            world.T_card_quest.progress = -1
+        if index == 8:
+            world.Lucky_pen_quest = -1
+        if index == 14:
+            world.Cheat_sheet_quest = -1
 
     else:
         print("There is no one to talk to here.")
+
+def look_up(world: World, index: int):
+    print(world.locations[index].name)
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
@@ -247,7 +268,8 @@ if __name__ == "__main__":
         print()
 
         if choice == "help":
-            menu = ["map: print out the map and where you currently are"
+            menu = ["map: print out the map and where you currently are",
+                    "look up: look up the name of the location at an index on the map"
                     "go: to go in one of the four directions, north, south, east, west",
                     "look: obtain the long description of the location",
                     "inventory: check your own inverntory",
@@ -284,7 +306,18 @@ if __name__ == "__main__":
                 print(w.items[item])
 
         elif "inspect" in choice:
-            inspect(w, int(choice.split(" ")[1]))
+            item_name = choice.split(" ")[1]
+            item_index = -1
+            for index in w.items:
+                if w.items[index].name == item_name:
+                    item_index = index
+                    break
+
+            if item_index not in p.inventory:
+                print("Item not found in inventory")
+
+            else:
+                inspect(w, p, item_index)
 
         elif choice == "quit":
             break
@@ -301,6 +334,12 @@ if __name__ == "__main__":
             talk(w, p)
             step_counter += 1
 
+        elif "look up" in choice:
+            if choice.split(" ")[2].isnumeric():
+                print("invalid index, remember to type in a valid index on the map after look up")
+            else:
+                look_up(w, int(choice.split(" ")[2]))
+
         else:
             print("invalid input, try again")
 
@@ -311,7 +350,33 @@ if __name__ == "__main__":
             print("10 steps left")
 
         if step_counter == 50:
-            print("game over")
-            #TODO prompt
 
-# TODO ending after interaction.
+            print("It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the exam.")
+            print("As you are going back to your dorm, you are so tired you fell onto the road, and lost conciousness")
+            print("You woke up again at a hospital, realizing you have missed your exam and there is no retest, it is what it is.")
+
+            print("game over")
+
+    if step_counter < 50:
+        score = score(p, w)
+        if score == 100:
+            print("You got everything you need :)! You we're able to get good sleep in the night and complete the exam smoothly.")
+            print("Your final mark was 100%!")
+        elif score == 83:
+            print("Without your lucky pen, you were tossing and turning in your sleep. You overslept your alarm and got to the exam room late.")
+            print("Nonetheless, with the cheat sheet and t-card, you got a 83% on the exam. You passed!")
+        elif score == 65:
+            print("You didn't have your t-card for the exam and so you had a 35% deduction on the exam.")
+            print("Even so, you were otherwise fully prepared meaning you earned the other 65%. You passed!")
+        elif score == 52:
+            print("You didn't have your cheat sheet for the exam. You were in a good mindset but not well studied.")
+            print("You barely passed with a 52%.")
+        elif score == 48:
+            print("You only had a cheat sheet for the exam. You didn't pass but your studying paied off and you got a 48%.")
+        elif score == 17:
+            print("You only had your lucky pen for the exam. You didn't pass but you had passion during the exam and you got a 17%.")
+        elif score == 35:
+            print("You only had your t card for the exam. You didn't pass but you earned all the marks you could and you got a 35%.")
+        elif score == 0:
+            print("You went to Markham and came home empty handed. You went to bed hopeful. But on the exam you earned a devistating 0%.")
+            print("You took too long, the day is over. You won't make it in time for the exam. At least they drop one mark.")

@@ -31,8 +31,7 @@ Intersection
 You are at an intersection. A little down West is your *grandparents's house*, farther north is your friend *Eric's house* and *Mcdonalds* and to get to your *parent's house* and your *aunt Jean's house* you travel east.
 You are at an intersection and you ponder where to travel first. To the west lies your
 *grandparents's house*, a nostalgic haven, while northward awaits *Eric's house* and the tempting
-delights of *McDonald's*. Venture eastward for quests leading to your *parents' home* and *Aunt
-Jean's house*.
+delights of *McDonald's*. Venture eastward for quests leading to your *parents' home* and *Aunt Jean's house*.
 END
 Road 1
 4
@@ -65,7 +64,8 @@ END
 Grandparents's Door
 8
 You are at the door of your grandparents's house. You can return to *the intersection* by going east.
-You are at the door of your grandparents's house. You have always admired the plants they have in front this is where your love for hydrangeas come from. In the window, you see their cat Mittens.
+You are at the door of your grandparents's house. You have always admired the plants they have in front this is where
+your love for hydrangeas come from. In the window, you see their cat Mittens.
 END
 Grandparents's Living Room
 9
@@ -77,7 +77,8 @@ END
 Road To Friends House and McDonalds
 10
 This is the road between *the intersection* and *Erics house* and *McDonalds*. Go north to reach *Eric's house* or *McDonalds* and south to get back to *the intersection*.
-This is the road between the intersection and *Erics house* and *Mcdonalds*. Going down this road always makes you excited. All the fun things are here, you walked down this road a million times during summer breaks.
+This is the road between the intersection and *Erics house* and *Mcdonalds*. Going down this road always makes you excited.
+All the fun things are here, you walked down this road a million times during summer breaks.
 END
 Parent's House
 11
@@ -118,7 +119,8 @@ END
 Grandparents's Kitchen
 16
 You are in your grandparents's kitchen. The *living room* is north.
-You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there for as long as you can remember. You can return to the living room north.
+You are in your grandparents's kitchen. It's always been the same. The Meals & Memories are Made Here sign has been there
+for as long as you can remember. You can return to the living room north.
 END
 Eric's room
 17

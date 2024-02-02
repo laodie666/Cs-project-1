@@ -127,6 +127,20 @@ class Teleport_Interaction (Interaction):
         elif self.player.x == 3 and self.player.y == 4:
             self.player.y = 6
 
+class Item_Interaction (Interaction):
+    """
+    inherit Interaction but change speciaal_action to increase obtain item for player
+    """
+
+    def __init__(self, Pre_prompt: [str], Post_prompt: [str], player: Player, index: int, required_quest_name = 'no_quest', required_quest_progress = 0, required_item = -1) -> None:
+        """
+        Initialize a new interaction. with location, required quest name, required quest progress, required item, and the quest to update
+        """
+        super().__init__(Pre_prompt, Post_prompt, required_quest_name, required_quest_progress, required_item)
+        self.player = player
+        self.index = index
+    def special_action(self):
+        self.player.inventory.append(self.index)
 
 class Location:
     """A location in our text adventure game world.
@@ -353,6 +367,8 @@ class World:
         self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
 
         self.cat_litter = Quest_progress_Interaction("Time for the moment of truth. Type <interact> to shovel the litter.", "You shovelled the litter. Why does something so little poop so much?", self.Lucky_pen_quest)
+
+        self.make_cheat_sheet = Item_Interaction("You are ready to do work. Type <interact> to make your cheat sheet.", "You have made your cheat sheet, you are now better prepared for your exam.", self.p, 17,  "Cheat_sheet_quest", 2)
 
         self.sleep = Quest_progress_Interaction("Good job getting back home. You've had a long day. Type <interact> to sleep.", "You quickly fell asleep after your long day", self.ending_quest, "ending_quest", 1)
 
