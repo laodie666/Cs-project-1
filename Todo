@@ -10,7 +10,7 @@ items.txt (T-card, Cheat Sheet, Lucky Pen) [x]
 
 Go (direction) [x]
 
-Look []
+Look [x]
 
 Pick up []
 
@@ -46,11 +46,10 @@ Save & Load game []
   - save and load into that file (5 Saves, empty save has attribute that shows its empty, save game
     states like locations, items, quest progress) []
 
-Map method (output the map) []
+Map method (output the map) [x]
 
 Character and dialogue []
-  - talk to (person) []
-  - talk input [] 
+  - talk input []
   - dialogue options (number) [x]
   - quest design [x]
     - retrieve each item from a character
