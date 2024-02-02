@@ -131,12 +131,18 @@ def interact(world: World, player: Player):
     else:
         print("No interactable here")
 
-def pick_up(w: World, p: Player):
-    if index in w.items and index not in p.inventory:
-        p.inventory.append(index)
-
+def pick_up(world: World, player: Player):
+    index = world.get_location(player.x, player.y).index
+    if index in world.items and index not in player.inventory:
+        player.inventory.append(index)
     else:
         print("There is no item to pick up here")
+
+def talk(world: World, player: Player):
+    index = world.get_location(player.x, player.y).index
+    # check whether there is a dialogue here or not and making sure you have not had this dialogue.
+    if index in world.dialogues and world.dialogues[index].status == -1:
+        print("You can talk to " + world.dialogues[index].target + "here.")
 
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
@@ -236,6 +242,9 @@ if __name__ == "__main__":
 
         elif choice == "pick up":
             pick_up(w, p)
+
+        elif choice == "talk":
+            talk(w, p)
 
         else:
             print("invalid input, try again")
