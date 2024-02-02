@@ -31,7 +31,7 @@ def look(player: Player, world: World):
     for description_line in world.get_location(player.x, player.y).long_description:
         print(description_line)
 
-        # check whether there is an interactable or not
+    # check whether there is an interactable or not
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
@@ -116,6 +116,20 @@ def score(player: Player, world: World) -> int:
 def inspect(world: World, item_position: int):
     for line in world.items[item_position].description:
         print(line)
+
+
+def interact(world: World, player: Player):
+
+    index = world.get_location(player.x, player.y).index
+    if index in w.interactables:
+        # check whether the quest progression needed for this interaction and the needed items are met.
+        interactable = w.interactables[index]
+        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progression \
+                and interactable.required_item != -1 and interactable.required_item in p.inventory:
+            interactable.special_action()
+
+    else:
+        print("No interactable here")
 
     # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
@@ -209,3 +223,6 @@ if __name__ == "__main__":
 
         if "inspect" in choice:
             inspect(w, int(choice.split(" ")[1]))
+
+        if choice == "quit":
+            break
