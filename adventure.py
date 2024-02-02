@@ -104,6 +104,12 @@ def go(d: str, player: Player, world: World):
     #  OR Method in Player class for move or updating inventory
     #  OR Method in Location class for updating location item info, or other location data etc....
 
+def score(player: Player, world: World) -> int:
+    score = 0
+    for item in player.inventory:
+        score += world.items[item].score
+
+    return score
 
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
@@ -137,7 +143,6 @@ if __name__ == "__main__":
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
             if index in w.dialogues and w.dialogues[index].status == -1:
                 print("There is a character that can be talked to here")
-
 
             if index in w.items and index not in p.inventory:
                 print("There is an item here to be picked up")

@@ -175,6 +175,7 @@ class Item:
 
     Instance Attributes:
         - name: name
+        - score: score of the item
         - description: description of the item
 
     Representation Invariants:
