@@ -43,10 +43,12 @@ def look(player: Player, world: World):
 
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in w.dialogues and w.dialogues[index].status == -1:
+        print()
         print("You can talk to " + w.dialogues[index].target + "here.")
 
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
+        print()
         if world.items[index].name != "T-card" or world.items[index].name != "Lucky Pen" or world.items[index].name != "Cheat Sheet":
             print("There is a " + w.items[index].name + " here.")
             if world.items[index] == "Watering can":
@@ -94,6 +96,9 @@ def go(d: str, player: Player, world: World):
     # Can't go back to Eric's house before eating at macdonalds.
     elif current_x == 3 and current_y == 0 and w.Cheat_sheet_quest.progress == 1:
         print("Eric is waiting for you are Macdonalds.")
+    # failed quest or too early means you cant go to eric room to study
+    elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress != 2:
+        print("Eric isn't letting you into his room.")
 
     # Lucky pen quest location restrictions
     elif current_x == 0 and current_y == 3 and w.Lucky_pen_quest.progress < 1:
@@ -354,7 +359,7 @@ if __name__ == "__main__":
             step_counter += 1
 
         elif "look up" in choice:
-            if len(choice.split(" ")) < 2 or choice.split(" ")[2].isnumeric():
+            if len(choice.split(" ")) <= 2 or not choice.split(" ")[2].isnumeric():
                 print("invalid index, remember to type in a valid index on the map after look up")
             else:
                 look_up(w, int(choice.split(" ")[2]))
