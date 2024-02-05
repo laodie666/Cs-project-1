@@ -251,7 +251,7 @@ class Dialogue:
             # if there is only one option then the player doesn't have to choose
             if len(self.future_dialogue) == 1:
                 # print own content
-                print(self.content)
+                print(self.target + ": " + self.content)
                 # pass in status and go into the next iteration
                 self.status  = self.future_dialogue[-1].Progress_dialogue()
                 return self.status
@@ -259,7 +259,7 @@ class Dialogue:
            # player has to choose
             else:
                 # print own content
-                print(self.target + ": " + self.content)
+                print(self.content)
 
                 # print available options
                 for choice in self.future_dialogue:
