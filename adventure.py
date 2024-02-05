@@ -19,7 +19,7 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 """
 
 # Note: You may add in other import statements here as needed
-from game_data import World, Item, Location, Player
+from game_data import World, Player
 
 
 # Note: You may add helper functions, classes, etc. here as needed
@@ -38,25 +38,23 @@ def look(player: Player, world: World) -> None:
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
-        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
+        if w.quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
                 and interactable.required_item in p.inventory and index not in w.interacted:
             print()
-            print(interactable.Pre_prompt)
+            print(interactable.pre_prompt)
 
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in w.dialogues and w.dialogues[index].status == -1:
         print()
-        if not (player.x == 5 and player.y == 3) or world.T_card_quest.progress == 2:
-            if not (index == 16) or world.Lucky_pen_quest.progress == 3:
-                if not (index == 13) or 13 in p.inventory:
-                    if not (index == 17) or 17 in p.inventory:
-                        print("You can talk to " + w.dialogues[index].target + " here.")
+        if ((not (player.x == 5 and player.y == 3) or world.t_card_quest.progress == 2)
+                and (not (index == 16) or world.lucky_pen_quest.progress == 3)):
+            if (not (index == 13) or 13 in p.inventory) and (not (index == 17) or 17 in p.inventory):
+                print("You can talk to " + w.dialogues[index].target + " here.")
 
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
         print()
-        if (world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen"
-                and world.items[index].name != "Cheat Sheet"):
+        if world.items[index].name not in {'T-card', 'Lucky Pen', 'Cheat Sheet'}:
             print("There is a " + w.items[index].name + " here.")
             if world.items[index].name == "Watering can":
                 print("Type <pick up> to pick it up.")
@@ -66,14 +64,10 @@ def look(player: Player, world: World) -> None:
                 print("Type <pick up> to pick up your happy meal.")
 
 
-def go(d: str, player: Player, world: World) -> None:
+def go_helper(d: str, current_x: int, current_y: int) -> list[int]:
     """
-    Move the player in the direct, also take in quest progression into consideration for specific locations
+    go helper
     """
-    current_x = player.x
-    current_y = player.y
-
-    # Check direction to go
     if d == 'north':
         current_y -= 1
     elif d == 'south':
@@ -84,6 +78,22 @@ def go(d: str, player: Player, world: World) -> None:
         current_x -= 1
     else:
         print("Invalid direction input, either type in north, south, east, or west")
+        return []
+
+    return [current_x, current_y]
+
+
+def go(d: str, player: Player, world: World) -> None:
+    """
+    Move the player in the direct, also take in quest progression into consideration for specific locations
+    """
+    current_x = player.x
+    current_y = player.y
+
+    a = go_helper(d, current_x, current_y)
+    if len(a) != 0:
+        current_x = a[0]
+        current_y = a[1]
 
     # check validity of destination
     if 0 > current_x or current_x >= len(world.map[0]) or 0 > current_y or current_y >= len(world.map) or \
@@ -91,26 +101,26 @@ def go(d: str, player: Player, world: World) -> None:
         print("Invalid direction to go, try again. You can type map to see the map and where you are.")
 
     # T-card quest location restrictions
-    elif current_x == 5 and current_y == 3 and w.T_card_quest.progress < 1:
+    elif current_x == 5 and current_y == 3 and w.t_card_quest.progress < 1:
         print("You don't have a reason to visit Jean, you should probably go to your parent's house for the T-card")
-    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress <= 2:
+    elif current_x == 6 and current_y == 3 and w.t_card_quest.progress <= 2:
         print("Jean is still at the door, not letting you in.")
 
     # Cheat sheet quest locaiton restrictions
-    elif current_x == 2 and current_y == 1 and w.Cheat_sheet_quest.progress < 1:
+    elif current_x == 2 and current_y == 1 and w.cheat_sheet_quest.progress < 1:
         print("You aren't hungry and have no reason to go there.")
     # Can't go to Eric's room before eating at macdonalds.
-    elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == 0:
+    elif current_x == 4 and current_y == 0 and w.cheat_sheet_quest.progress == 0:
         print("You should probably talk to Eric first.")
-    elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == 1:
+    elif current_x == 4 and current_y == 0 and w.cheat_sheet_quest.progress == 1:
         print("Eric is waiting for you at Macdonalds to eat.")
     # failed quest or too early means you cant go to eric room to study
-    elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == -1:
+    elif current_x == 4 and current_y == 0 and w.cheat_sheet_quest.progress == -1:
         print("Eric isn't letting you into his room.")
 
     # Lucky pen quest location restrictions
-    elif current_x == 0 and current_y == 3 and w.Lucky_pen_quest.progress < 1:
-        if w.Lucky_pen_quest.progress == -1:
+    elif current_x == 0 and current_y == 3 and w.lucky_pen_quest.progress < 1:
+        if w.lucky_pen_quest.progress == -1:
             print("Grandma is not letting you in.")
         else:
             print("Grandma is still waiting for you to explain why you are here. ")
@@ -122,16 +132,16 @@ def go(d: str, player: Player, world: World) -> None:
 
 
 # return score of all items added up
-def score(player: Player, world: World) -> int:
+def player_score(player: Player, world: World) -> int:
     """
     return score of the player right now
     """
-    player_score = 0
+    p_score = 0
     for item in player.inventory:
         if item in world.items:
-            player_score += world.items[item].score
+            p_score += world.items[item].score
 
-    return player_score
+    return p_score
 
 
 # print out the description of the item.
@@ -151,17 +161,17 @@ def interact(world: World, player: Player) -> None:
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
-        if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
+        if w.quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
                 and interactable.required_item in p.inventory and index not in w.interacted:
             interactable.special_action()
-            print(interactable.Post_prompt)
+            print(interactable.post_prompt)
             w.interacted.add(index)
 
             if index == 2:
                 print()
                 print("You had a long day, time to go rest. ")
 
-            if world.Lucky_pen_quest.progress == 3:
+            if world.lucky_pen_quest.progress == 3:
                 print()
                 print("Good job, now go to the ktichen to talk to Grandma to pick up your lucky pen. ")
         else:
@@ -183,8 +193,7 @@ def pick_up(world: World, player: Player) -> None:
     if index in world.items and index not in player.inventory:
 
         # story quest items can't be picked up, must be obtained by interaction
-        if (world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[index].name
-                != "Cheat Sheet"):
+        if world.items[index].name not in {'T-card', 'Lucky Pen', 'Cheat Sheet'}:
             player.inventory.append(index)
             if world.items[index].name == "Watering can":
                 print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do \
@@ -198,6 +207,41 @@ def pick_up(world: World, player: Player) -> None:
         print("There is no item to pick up here")
 
 
+def talk_helper(completion: int, world: World, player: Player, index: int) -> None:
+    """
+    talk helper
+    """
+    # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
+    if completion == 0:
+        # Jean talk
+        if index == 5:
+            world.t_card_quest.progress += 1
+        # Eric talk
+        if index == 14:
+            world.cheat_sheet_quest.progress += 1
+        # Grandma talk
+        if index == 8:
+            world.lucky_pen_quest.progress += 1
+        # Finish T-card
+        if index == 6 and world.t_card_quest.progress == 3:
+            world.t_card_quest.progress += 1
+            player.inventory.append(6)
+        # Finish Lucky pen
+        if index == 16 and world.lucky_pen_quest.progress == 3:
+            world.lucky_pen_quest.progress += 1
+            player.inventory.append(16)
+
+    if completion == 1:
+        print("Quest failed")
+
+        if index == 5:
+            world.t_card_quest.progress = -1
+        if index == 8:
+            world.lucky_pen_quest.progress = -1
+        if index == 14:
+            world.cheat_sheet_quest.progress = -1
+
+
 def talk(world: World, player: Player) -> None:
     """
     Initiate dialogue at the current position if possible
@@ -207,15 +251,15 @@ def talk(world: World, player: Player) -> None:
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in world.dialogues and world.dialogues[index].status == -1:
         # Jean's dialogue can only be activated when at Jean's door and quest progress is 2
-        if index == 5 and world.T_card_quest.progress == 0:
+        if index == 5 and world.t_card_quest.progress == 0:
             print("You don't have a reason to visit Jean, you should probably go to your parent's house for the T-card")
             return
-        elif index == 5 and world.T_card_quest.progress == 1:
+        elif index == 5 and world.t_card_quest.progress == 1:
             print("You should probably knock first")
             return
 
         # Grandma's dialogue at kitchen can only be triggered when quest progress is 3.
-        elif index == 16 and world.Lucky_pen_quest.progress < 3:
+        elif index == 16 and world.lucky_pen_quest.progress < 3:
             print("You should do your grandma's requests first")
             return
 
@@ -232,60 +276,31 @@ def talk(world: World, player: Player) -> None:
             if index == 16:
                 world.dialogues[index].status = 0
                 completion = 0
-
-    # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
-    if completion == 0:
-        # Jean talk
-        if index == 5:
-            world.T_card_quest.progress += 1
-        # Eric talk
-        if index == 14:
-            world.Cheat_sheet_quest.progress += 1
-        # Grandma talk
-        if index == 8:
-            world.Lucky_pen_quest.progress += 1
-        # Finish T-card
-        if index == 6 and world.T_card_quest.progress == 3:
-            world.T_card_quest.progress += 1
-            player.inventory.append(6)
-        # Finish Lucky pen
-        if index == 16 and world.Lucky_pen_quest.progress == 3:
-            world.Lucky_pen_quest.progress += 1
-            player.inventory.append(16)
-
-    if completion == 1:
-        print("Quest failed")
-
-        if index == 5:
-            world.T_card_quest.progress = -1
-        if index == 8:
-            world.Lucky_pen_quest.progress = -1
-        if index == 14:
-            world.Cheat_sheet_quest.progress = -1
-
     else:
         print("There is no one to talk to here.")
 
+    talk_helper(completion, world, player, index)
 
-def debug(p: Player, w: World) -> None:
+
+def debug(player: Player, world: World) -> None:
     """
     debug current state of the game returnes relevant info
     """
     print("Player index")
-    print(w.get_location(p.x, p.y).index)
+    print(world.get_location(player.x, player.y).index)
     print("Player location")
-    print(str(p.x) + " " + str(p.y))
+    print(str(player.x) + " " + str(player.y))
     print("Quests")
-    print(w.T_card_quest.name + " " + str(w.T_card_quest.progress))
-    print(w.Cheat_sheet_quest.name + " " + str(w.Cheat_sheet_quest.progress))
-    print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress))
+    print(world.t_card_quest.name + " " + str(world.t_card_quest.progress))
+    print(world.cheat_sheet_quest.name + " " + str(world.cheat_sheet_quest.progress))
+    print(world.lucky_pen_quest.name + " " + str(world.lucky_pen_quest.progress))
     print("Visted")
-    print(w.get_location(p.x, p.y).visited)
+    print(world.get_location(player.x, player.y).visited)
     print("Inventory")
-    print(p.inventory)
-    if w.get_location(p.x, p.y).index in w.dialogues:
+    print(player.inventory)
+    if world.get_location(player.x, player.y).index in world.dialogues:
         print("there is dialogue")
-        print("status: " + str(w.dialogues[w.get_location(p.x, p.y).index].status))
+        print("status: " + str(world.dialogues[world.get_location(player.x, player.y).index].status))
 
 
 def look_up(world: World, index: int) -> None:
@@ -297,8 +312,8 @@ def look_up(world: World, index: int) -> None:
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
-
-    w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
+    with open("map.txt") as world_map, open("locations.txt") as locations, open("items.txt") as items:
+        w = World(world_map, locations, items)
     p = w.p
 
     step_counter = 0
@@ -325,7 +340,7 @@ if __name__ == "__main__":
     print("If the game is not completed before 60 steps, you get a bad ending.")
     print()
 
-    while not w.ending_quest.progress == 2:
+    while w.ending_quest.progress != 2:
         location = w.get_location(p.x, p.y)
 
         print()
@@ -335,7 +350,7 @@ if __name__ == "__main__":
 
             # Arriving at parent house increase progress by 1
             if p.x == 4 and p.y == 2 and not w.get_location(p.x, p.y).visited:
-                w.T_card_quest.progress += 1
+                w.t_card_quest.progress += 1
 
             w.get_location(p.x, p.y).visited = True
 
@@ -348,7 +363,7 @@ if __name__ == "__main__":
             if player_index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
                 local_interactable = w.interactables[player_index]
-                if (w.Quests[
+                if (w.quests[
                     local_interactable.required_quest_name].progress == local_interactable.required_quest_progress
                         and player_index not in w.interacted):
 
@@ -356,16 +371,15 @@ if __name__ == "__main__":
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
             if player_index in w.dialogues and w.dialogues[player_index].status == -1:
-                if not (p.x == 5 and p.y == 3) or w.T_card_quest.progress == 2:
-                    if not (player_index == 16) or w.Lucky_pen_quest.progress == 3:
+                if not (p.x == 5 and p.y == 3) or w.t_card_quest.progress == 2:
+                    if not (player_index == 16) or w.lucky_pen_quest.progress == 3:
                         if not (player_index == 13) or 13 in p.inventory:
                             if not (player_index == 17) or 17 in p.inventory:
                                 print("You can talk to " + w.dialogues[player_index].target + " here.")
 
             # check whether there is an item here to pick up.
             if player_index in w.items and player_index not in p.inventory:
-                if (w.items[player_index].name != "T-card" and w.items[player_index].name != "Lucky Pen"
-                        and w.items[player_index].name != "Cheat Sheet"):
+                if w.items[player_index].name not in {'T-card', 'Lucky Pen', 'Cheat Sheet'}:
                     print("There is an item here to be picked up")
 
         # Depending on whether it's been visited before,
@@ -409,7 +423,8 @@ if __name__ == "__main__":
 
         elif "go" in choice:
             if len(choice.split(" ")) == 2:
-                go(choice.split(" ")[1], p, w)
+                direction = choice.split(" ")[1]
+                go(direction, p, w)
                 step_counter += 1
             else:
                 print(
@@ -417,7 +432,8 @@ if __name__ == "__main__":
                      west")
 
         elif choice == "score":
-            print(score(p, w))
+            score = player_score(p, w)
+            print(score)
 
         elif choice == "inventory":
             for current_item in p.inventory:
@@ -497,7 +513,7 @@ if __name__ == "__main__":
         print("game quit")
 
     elif step_counter < 60:
-        score = score(p, w)
+        score = player_score(p, w)
         if score == 100:
             print(
                 "You got everything you need :)! You we're able to get good sleep in the night and complete the exam \
@@ -541,4 +557,5 @@ if __name__ == "__main__":
     python_ta.check_all(config={
         'max-line-length': 120,
         'extra-imports': ['hashlib', 'game_data'],
+        "forbidden-io-functions": []
     })
