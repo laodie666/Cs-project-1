@@ -301,7 +301,7 @@ class Dialogue:
                 # print own content
                 print(self.target + ": " + self.content)
                 # pass in status and go into the next iteration
-                self.status = self.future_dialogue[-1].Progress_dialogue()
+                self.status = self.future_dialogue[-1].progress_dialogue()
                 return self.status
 
             # player has to choose
@@ -318,7 +318,7 @@ class Dialogue:
                 while True:
                     user_choice = input("select option")
                     if user_choice.isnumeric() and int(user_choice) in self.future_dialogue:
-                        self.status = self.future_dialogue[int(user_choice)].Progress_dialogue()
+                        self.status = self.future_dialogue[int(user_choice)].progress_dialogue()
                         break
                     else:
                         print("invalid input, try again")

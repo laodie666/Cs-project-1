@@ -272,7 +272,7 @@ def talk(world: World, player: Player) -> None:
 
         else:
             # initiate dialogue
-            completion = world.dialogues[index].Progress_dialogue()
+            completion = world.dialogues[index].progress_dialogue()
             if index == 16:
                 world.dialogues[index].status = 0
                 completion = 0
