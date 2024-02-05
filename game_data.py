@@ -445,9 +445,10 @@ class World:
         em2 = Dialogue("Eric", "You got a Happy Meal like always haha.", {-1: em3})
         em1 = Dialogue("Eric", "Hey thanks, I really missed going out with you.", {-1: em2})
 
-        er3 = Dialogue("You", "Wow, I sure got some good studying in. My cheat sheet looks perfect.", status=0)
+        er5 = Dialogue("You", "Thank you for studying with me, I'll try my best on the exam. See you next time!", status=0)
+        er4 = Dialogue("Eric", "Good for you, good luck on your exams :D", {-1: er5})
+        er3 = Dialogue("You", "Wow, I sure got some good studying in. My cheat sheet looks perfect.", {-1: er4})
         er2 = Dialogue("You", "...aaannd. Done!", {-1: er3})
-
         er1 = Dialogue("Eric", "I think I'm done studying, how about you?", {-1: er2})
 
         # lists of dialogues in form of location: dialogue
