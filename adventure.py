@@ -200,11 +200,17 @@ def talk(world: World, player: Player):
 
     # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
     if completion == 0:
+        # Jean talk
+        if index == 5:
+            world.T_card_quest += 1
+        # Eric talk
         if index == 14:
             world.Cheat_sheet_quest.progress += 1
+        # Finish T-card
         if index == 6 and world.T_card_quest.progress == 3:
             world.T_card_quest += 1
             player.inventory.append(6)
+        # Finish Lucky pen
         elif index == 16 and world.Lucky_pen_quest == 3:
             world.Lucky_pen_quest += 1
             player.inventory.append(16)
