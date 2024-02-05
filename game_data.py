@@ -267,8 +267,13 @@ class Dialogue:
                     print(str(choice) + ")" + self.future_dialogue[choice].content)
 
                 #take input then proceed in that direction while passing up the status
-                user_choice = input("select option")
-                self.status = self.future_dialogue[int(user_choice)].Progress_dialogue()
+                while True:
+                    user_choice = input("select option")
+                    if user_choice.isnumeric() and int(user_choice) in self.future_dialogue:
+                        self.status = self.future_dialogue[int(user_choice)].Progress_dialogue()
+                        break
+                    else:
+                        print("invalid input, try again")
                 return self.status
 
         else:
@@ -417,7 +422,7 @@ class World:
         g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in come in.",
                       {-1: g2})
 
-        gk1 = Dialogue("Grandma", "You did a beautiful job sweetie. Here is your pen. Good luck on your exam!", status = 0)
+        gk1 = Dialogue("Grandma", "You did a beautiful job sweetie. Here is your pen. Good luck on your exam!", )
 
         e7 = Dialogue("Eric", "Actually, I'm kind of busy today... Maybe another day.", status=1)
         e6 = Dialogue("Eric", "I was hoping you'd ask.", status=0)

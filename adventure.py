@@ -199,6 +199,7 @@ def talk(world: World, player: Player):
         elif index == 5 and world.T_card_quest.progress == 1:
             print("You should probably knock first")
             return
+
         # Grandma's dialogue at kitchen can only be triggered when quest progress is 3.
         elif index == 16 and world.Lucky_pen_quest.progress < 3:
             print("You should do your grandma's requests first")
@@ -206,6 +207,8 @@ def talk(world: World, player: Player):
         else:
             # initiate dialogue
             completion = world.dialogues[index].Progress_dialogue()
+            if index == 16:
+                world.dialogues[index].status = 0
 
     # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
     if completion == 0:
