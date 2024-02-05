@@ -172,11 +172,11 @@ def pick_up(world: World, player: Player):
         #story quest items can't be picked up, must be obtained by interaction
         if world.items[index].name != "T-card" or world.items[index].name != "Lucky Pen" or world.items[index].name != "Cheat Sheet":
             player.inventory.append(index)
-            if world.items[index] == "Watering can":
+            if world.items[index].name == "Watering can":
                 print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do it.")
-            elif world.items[index] == "Cat litter shovel":
+            elif world.items[index].name == "Cat litter shovel":
                 print("You picked up the *litter shovel*.")
-            elif world.items[index] == "Happy Meal":
+            elif world.items[index].name == "Happy Meal":
                 print("You picked up your *happy meal*. The toy is some skateboard keychain.")
             return
 
