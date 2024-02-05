@@ -104,7 +104,7 @@ for everyone to get served. Your meal is now ready for you to pick up. *The road
 END
 Eric's House
 14
-You are at Eric's House. To return to *the road*, go south.
+You are at Eric's House. To return to *the road*, go south. To go to *Eric's room*, go east.
 You are at Eric's House. You've been coming here since you were a kid. Its basically your childhood
 home too. Their family is covered in sports equiptment, family pictures while camping and Eric's
 various horsebackriding medals. You've always thought Eric's family was very gung-ho. You can leave
@@ -126,3 +126,4 @@ Eric's room
 17
 You are in Eric's room. To exit, go east.
 You are in Eric's room. His room is always so organized. You think about how you left your room back home. To exit, go east.
+END

@@ -438,7 +438,7 @@ class World:
         e1 = Dialogue("Eric", "Hi, I haven’t seen you in a while.", {-1: e2})
 
         em5 = Dialogue("Eric",
-                       "Wow its so cool! *Eric pretends to play with it for a while and the both of you laugh* Lets head back now. we can study in my room.",
+                       "Wow its so cool! *Eric pretends to play with it for a while and the both of you laugh*",
                        status=0)
         em4 = Dialogue("You", "Its a little skateboard keychain, I think its pretty cool.", {-1: em5})
         em3 = Dialogue("Eric", "Which toy did you end up getting this time?", {-1: em4})
@@ -447,7 +447,8 @@ class World:
 
         er3 = Dialogue("You", "Wow, I sure got some good studying in. My cheat sheet looks perfect.", status=0)
         er2 = Dialogue("You", "...aaannd. Done!", {-1: er3})
-        er1 = Dialogue("Eric", "Lets get down to business, we're going to be here for a while...", {-1: er2})
+
+        er1 = Dialogue("Eric", "I think I'm done studying, how about you?", {-1: er2})
 
         # lists of dialogues in form of location: dialogue
         self.dialogues = {5: j1, 6: m1, 8: g1, 14: e1, 13: em1, 17: er1, 16: gk1}
@@ -582,7 +583,7 @@ class World:
         index = self.get_location(x, y).index
         if index in self.items and index not in self.p.inventory:
             print()
-            if self.items[index].name != "T-card" or self.items[index].name != "Lucky Pen" or self.items[
+            if self.items[index].name != "T-card" and self.items[index].name != "Lucky Pen" and self.items[
                 index].name != "Cheat Sheet":
                 menu.append("pick up: pick up the item at the ccurrent location")
 
@@ -595,7 +596,8 @@ class World:
         if index in self.dialogues and self.dialogues[index].status == -1:
             if not (self.p.x == 5 and self.p.y == 3) or self.T_card_quest.progress == 2:
                 if not (index == 16) or self.Lucky_pen_quest.progress == 3:
-                    menu.append("talk: talk to whoever is available to talk in the current location")
+                    if not (index == 17) or 17 in p.inventory:
+                        menu.append("talk: talk to whoever is available to talk in the current location")
 
         return menu
 
