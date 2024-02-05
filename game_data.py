@@ -277,7 +277,7 @@ class Dialogue:
                 return self.status
 
         else:
-            print(self.content)
+            print(self.target + ": " + self.content)
             print("Dialogue ends")
             return self.status
 
