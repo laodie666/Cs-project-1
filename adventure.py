@@ -104,6 +104,10 @@ def go(d: str, player: Player, world: World):
     elif current_x == 0 and current_y == 3 and w.Lucky_pen_quest.progress < 1:
         print("Grandma is still waiting for you to explain why you are here. ")
 
+
+    elif current_x == 4 and current_y == 2 and world.get_location(current_x, current_y).visited == False:
+        w.T_card_quest.progress += 1
+
     # valid move
     else:
         p.x = current_x
