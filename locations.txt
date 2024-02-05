@@ -63,9 +63,9 @@ house* and east is the *intersection*.
 END
 Grandparents's Door
 8
-You are at the door of your grandparents's house. You can return to *the intersection* by going east.
+You are at the door of your grandparents's house. You can return to *the intersection* by going east, and you can go inside by going west.
 You are at the door of your grandparents's house. You have always admired the plants they have in front this is where
-your love for hydrangeas come from. In the window, you see their cat Mittens.
+your love for hydrangeas come from. In the window, you see their cat Mittens. You can go inside by going west and *the intersection* is east.
 END
 Grandparents's Living Room
 9
