@@ -38,6 +38,7 @@ talk
 go south
 go west
 pick up
+interact
 talk
 go east
 go north
