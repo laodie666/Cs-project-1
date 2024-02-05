@@ -209,6 +209,7 @@ def talk(world: World, player: Player):
             completion = world.dialogues[index].Progress_dialogue()
             if index == 16:
                 world.dialogues[index].status = 0
+                completion = 0
 
     # triggers when completing a dialogue REQUIRE HEAVY DEBUGGING
     if completion == 0:
