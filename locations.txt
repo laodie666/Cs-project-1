@@ -44,7 +44,7 @@ END
 Jean's Door
 5
 You are at aunt Jean's door. *The intersection* is to your west.
-You are at aunt Jean's door. She is probably home.
+You are at aunt Jean's door. She is probably home. To go inside, go east. But she should let you in first.
 END
 Jean's Living Room
 6
