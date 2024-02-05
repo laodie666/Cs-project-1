@@ -465,7 +465,7 @@ if __name__ == "__main__":
         if step_counter == 55:
             print("5 steps left")
 
-        if step_counter >= 50:
+        if step_counter >= 60:
 
             print("It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the exam.")
             print("As you are going back to your dorm, you are so tired you fell onto the road, and lost conciousness")
@@ -476,7 +476,7 @@ if __name__ == "__main__":
     if did_quit:
         print("game quit")
 
-    elif step_counter < 50:
+    elif step_counter < 60:
         score = score(p, w)
         if score == 100:
             print("You got everything you need :)! You we're able to get good sleep in the night and complete the exam smoothly.")
@@ -501,3 +501,10 @@ if __name__ == "__main__":
             print("You took too long, the day is over. You won't make it in time for the exam. At least they drop one mark.")
 
     print("Game Over, thank you for playing!")
+
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'extra-imports': ['hashlib', 'game_data'],
+    })
