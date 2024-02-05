@@ -188,7 +188,9 @@ class Location:
         - index: index of the location on the map
 
     Representation Invariants:
-        - # TODO
+        - self.name != ""
+        - self.short_description != ""
+        - self.long_description != []
     """
     name: str
     short_description: str
