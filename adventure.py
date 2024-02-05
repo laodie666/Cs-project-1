@@ -17,16 +17,18 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2024 CSC111 Teaching Team
 """
-from Tools.scripts.pickle2db import prog
 
 # Note: You may add in other import statements here as needed
 from game_data import World, Item, Location, Player
+
 
 # Note: You may add helper functions, classes, etc. here as needed
 
 
 def look(player: Player, world: World):
-
+    """
+    Print long info about the current player location
+    """
     index = world.get_location(player.x, player.y).index
 
     for description_line in world.get_location(player.x, player.y).long_description:
@@ -50,12 +52,11 @@ def look(player: Player, world: World):
                     if not (index == 17) or 17 in p.inventory:
                         print("You can talk to " + w.dialogues[index].target + " here.")
 
-
-
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
         print()
-        if world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[index].name != "Cheat Sheet":
+        if world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[
+            index].name != "Cheat Sheet":
             print("There is a " + w.items[index].name + " here.")
             if world.items[index].name == "Watering can":
                 print("Type <pick up> to pick it up.")
@@ -63,7 +64,6 @@ def look(player: Player, world: World):
                 print("Type <pick up> to pick it up.")
             elif world.items[index].name == "Happy Meal":
                 print("Type <pick up> to pick up your happy meal.")
-
 
 
 def go(d: str, player: Player, world: World):
@@ -103,7 +103,7 @@ def go(d: str, player: Player, world: World):
     elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == 0:
         print("You should probably talk to Eric first.")
     elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == 1:
-        print("Eric is waiting for you are Macdonalds to eat.")
+        print("Eric is waiting for you at Macdonalds to eat.")
     # failed quest or too early means you cant go to eric room to study
     elif current_x == 4 and current_y == 0 and w.Cheat_sheet_quest.progress == -1:
         print("Eric isn't letting you into his room.")
@@ -121,23 +121,11 @@ def go(d: str, player: Player, world: World):
         p.y = current_y
 
 
-
-
-
-
-    # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
-    #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
-    #  the choice the player made was just a movement, so only updating player's position is enough to change the
-    #  location to the next appropriate location
-    #  Possibilities:
-    #  A helper function such as do_action(w, p, location, choice)
-    #  OR A method in World class w.do_action(p, location, choice)
-    #  OR Check what type of action it is, then modify only player or location accordingly
-    #  OR Method in Player class for move or updating inventory
-    #  OR Method in Location class for updating location item info, or other location data etc....
-
 # return score of all items added up
 def score(player: Player, world: World) -> int:
+    """
+    return score of the player right now
+    """
     score = 0
     for item in player.inventory:
         if item in world.items:
@@ -145,14 +133,20 @@ def score(player: Player, world: World) -> int:
 
     return score
 
+
 # print out the description of the item.
 def inspect(world: World, item_position: int):
+    """
+    inspect the item
+    """
     for line in world.items[item_position].description:
         print(line)
 
 
 def interact(world: World, player: Player):
-
+    """
+    interact with the interactable in the current location
+    """
     index = world.get_location(player.x, player.y).index
     if index in w.interactables:
         # check whether the quest progression needed for this interaction and the needed items are met.
@@ -179,16 +173,22 @@ def interact(world: World, player: Player):
     else:
         print("No interactable here")
 
+
 def pick_up(world: World, player: Player):
+    """
+    pick up item in the current location if possible
+    """
     index = world.get_location(player.x, player.y).index
 
     if index in world.items and index not in player.inventory:
 
-        #story quest items can't be picked up, must be obtained by interaction
-        if world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[index].name != "Cheat Sheet":
+        # story quest items can't be picked up, must be obtained by interaction
+        if (world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[index].name
+                != "Cheat Sheet"):
             player.inventory.append(index)
             if world.items[index].name == "Watering can":
-                print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do it.")
+                print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do \
+                it.")
             elif world.items[index].name == "Cat litter shovel":
                 print("You picked up the *litter shovel*.")
             elif world.items[index].name == "Happy Meal":
@@ -197,7 +197,11 @@ def pick_up(world: World, player: Player):
 
         print("There is no item to pick up here")
 
+
 def talk(world: World, player: Player):
+    """
+    Initiate dialogue at the current position if possible
+    """
     index = world.get_location(player.x, player.y).index
     completion = -1
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
@@ -262,9 +266,13 @@ def talk(world: World, player: Player):
     else:
         print("There is no one to talk to here.")
 
-def debug (p:Player, w:World):
+
+def debug(p: Player, w: World):
+    """
+    debug current state of the game returnes relevant info
+    """
     print("Player index")
-    print(w.get_location(p.x,p.y).index)
+    print(w.get_location(p.x, p.y).index)
     print("Player location")
     print(str(p.x) + " " + str(p.y))
     print("Quests")
@@ -275,12 +283,17 @@ def debug (p:Player, w:World):
     print(w.get_location(p.x, p.y).visited)
     print("Inventory")
     print(p.inventory)
-    if w.get_location(p.x,p.y).index in w.dialogues:
+    if w.get_location(p.x, p.y).index in w.dialogues:
         print("there is dialogue")
-        print("status: "+ str(w.dialogues[w.get_location(p.x,p.y).index].status))
+        print("status: " + str(w.dialogues[w.get_location(p.x, p.y).index].status))
+
 
 def look_up(world: World, index: int):
+    """
+    look up the location name given the index
+    """
     print(world.locations[index].name)
+
 
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
@@ -292,7 +305,6 @@ if __name__ == "__main__":
 
     did_quit = False
 
-
     print("You're back at your dorm at U of T, your visit back home to Markham to see your grandparents is over. ")
     print("Back to the school mindset. What did you have to do again?")
     print(" OH RIGHT! You have an exam tomorrow, but wait...")
@@ -300,32 +312,32 @@ if __name__ == "__main__":
     print("And you didn't study so you have no cheat sheet.")
     print("And where is your lucky pen?")
     print("Okay so where to start:")
-    print("Your mom took your T-card because her friend wouldn't believe you got into U of T while you were in Markham.")
+    print(
+        "Your mom took your T-card because her friend wouldn't believe you got into U of T while you were in Markham.")
     print("You can make a cheat sheet with your friend Eric back in Markham.")
     print("And you were studying at your grandparents so your pen must be there.")
     print("Time gather the items!")
     print()
 
-
-    print("There is a 60 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
+    print(
+        "There is a 60 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 \
+        step")
     print("If the game is not completed before 60 steps, you get a bad ending.")
     print()
 
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
 
-
         print()
 
-        if location.visited == False:
+        if not location.visited:
             look(p, w)
 
             # Arriving at parent house increase progress by 1
-            if p.x == 4 and p.y == 2 and w.get_location(p.x, p.y).visited == False:
+            if p.x == 4 and p.y == 2 and not w.get_location(p.x, p.y).visited:
                 w.T_card_quest.progress += 1
 
             w.get_location(p.x, p.y).visited = True
-
 
         # short description, and showing what is there.
         else:
@@ -336,7 +348,10 @@ if __name__ == "__main__":
             if index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
                 interactable = w.interactables[index]
-                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress and index not in w.interacted:
+                if w.Quests[
+                    interactable.required_quest_name].progress == interactable.required_quest_progress and index not in\
+                        w.interacted:
+
                     print("This location can be interacted, type <interact> to interact.")
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
@@ -349,7 +364,8 @@ if __name__ == "__main__":
 
             # check whether there is an item here to pick up.
             if index in w.items and index not in p.inventory:
-                if w.items[index].name != "T-card" and w.items[index].name != "Lucky Pen" and w.items[index].name != "Cheat Sheet":
+                if (w.items[index].name != "T-card" and w.items[index].name != "Lucky Pen" and w.items[index].name !=
+                        "Cheat Sheet"):
                     print("There is an item here to be picked up")
 
         # Depending on whether it's been visited before,
@@ -393,10 +409,12 @@ if __name__ == "__main__":
 
         elif "go" in choice:
             if len(choice.split(" ")) == 2:
-                go(choice.split(" ")[1], p,  w)
+                go(choice.split(" ")[1], p, w)
                 step_counter += 1
             else:
-                print("Wrong number of words after go, remember to keep it to only being go north, go south, go east, go west")
+                print(
+                    "Wrong number of words after go, remember to keep it to only being go north, go south, go east, go\
+                     west")
 
         elif choice == "score":
             print(score(p, w))
@@ -425,7 +443,6 @@ if __name__ == "__main__":
                     inspect(w, item_index)
             else:
                 print("Empty string after inspect, remember to put a item name after inspect.")
-
 
         elif choice == "quit":
 
@@ -466,10 +483,13 @@ if __name__ == "__main__":
             print("5 steps left")
 
         if step_counter >= 60:
-
-            print("It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the exam.")
+            print(
+                "It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the \
+                exam.")
             print("As you are going back to your dorm, you are so tired you fell onto the road, and lost conciousness")
-            print("You woke up again at a hospital, realizing you have missed your exam and there is no retest, it is what it is.")
+            print(
+                "You woke up again at a hospital, realizing you have missed your exam and there is no retest, it is \
+                what it is.")
 
             print("game over")
 
@@ -479,10 +499,14 @@ if __name__ == "__main__":
     elif step_counter < 60:
         score = score(p, w)
         if score == 100:
-            print("You got everything you need :)! You we're able to get good sleep in the night and complete the exam smoothly.")
+            print(
+                "You got everything you need :)! You we're able to get good sleep in the night and complete the exam \
+                smoothly.")
             print("Your final mark was 100%!")
         elif score == 83:
-            print("Without your lucky pen, you were tossing and turning in your sleep. You overslept your alarm and got to the exam room late.")
+            print(
+                "Without your lucky pen, you were tossing and turning in your sleep. You overslept your alarm and got \
+                to the exam room late.")
             print("Nonetheless, with the cheat sheet and t-card, you got a 83% on the exam. You passed!")
         elif score == 65:
             print("You didn't have your t-card for the exam and so you had a 35% deduction on the exam.")
@@ -491,14 +515,24 @@ if __name__ == "__main__":
             print("You didn't have your cheat sheet for the exam. You were in a good mindset but not well studied.")
             print("You barely passed with a 52%.")
         elif score == 48:
-            print("You only had a cheat sheet for the exam. You didn't pass but your studying paied off and you got a 48%.")
+            print(
+                "You only had a cheat sheet for the exam. You didn't pass but your studying paied off and you got a \
+                48%.")
         elif score == 17:
-            print("You only had your lucky pen for the exam. You didn't pass but you had passion during the exam and you got a 17%.")
+            print(
+                "You only had your lucky pen for the exam. You didn't pass but you had passion during the exam and you \
+                got a 17%.")
         elif score == 35:
-            print("You only had your t card for the exam. You didn't pass but you earned all the marks you could and you got a 35%.")
+            print(
+                "You only had your t card for the exam. You didn't pass but you earned all the marks you could and you \
+                got a 35%.")
         elif score == 0:
-            print("You went to Markham and came home empty handed. You went to bed hopeful. But on the exam you earned a devistating 0%.")
-            print("You took too long, the day is over. You won't make it in time for the exam. At least they drop one mark.")
+            print(
+                "You went to Markham and came home empty handed. You went to bed hopeful. But on the exam you earned a \
+                devistating 0%.")
+            print(
+                "You took too long, the day is over. You won't make it in time for the exam. At least they drop one \
+                mark.")
 
     print("Game Over, thank you for playing!")
 
