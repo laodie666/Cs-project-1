@@ -1,0 +1,61 @@
+go north
+interact
+go north
+go east
+go north
+go south
+go east
+interact
+talk
+2
+go east
+talk
+inventory
+go west
+go west
+go west
+go west
+go west
+talk
+1
+go west
+pick up
+inventory
+interact
+go north
+pick up
+inventory
+interact
+go south
+go south
+talk
+inventory
+go north
+go east
+go east
+go east
+go north
+go north
+go north
+talk
+1
+go south
+go west
+pick up
+inventory
+interact
+talk
+go east
+go north
+go east
+interact
+inventory
+go west
+go south
+go south
+go south
+go south
+interact
+go south
+interact
+
