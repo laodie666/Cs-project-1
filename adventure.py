@@ -113,6 +113,9 @@ def go(d: str, player: Player, world: World):
         p.x = current_x
         p.y = current_y
 
+        location.visited = True
+
+
     # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
     #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
     #  the choice the player made was just a movement, so only updating player's position is enough to change the
@@ -251,8 +254,6 @@ if __name__ == "__main__":
 
         if location.visited == False:
             look(p, w)
-
-            location.visited = True
 
         # short description, and showing what is there.
         else:
