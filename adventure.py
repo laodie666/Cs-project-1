@@ -25,7 +25,7 @@ from game_data import World, Item, Location, Player
 # Note: You may add helper functions, classes, etc. here as needed
 
 
-def look(player: Player, world: World):
+def look(player: Player, world: World) -> None:
     """
     Print long info about the current player location
     """
@@ -55,8 +55,8 @@ def look(player: Player, world: World):
     # check whether there is an item here and print the item name and description here.
     if index in w.items and index not in p.inventory:
         print()
-        if world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen" and world.items[
-            index].name != "Cheat Sheet":
+        if (world.items[index].name != "T-card" and world.items[index].name != "Lucky Pen"
+                and world.items[index].name != "Cheat Sheet"):
             print("There is a " + w.items[index].name + " here.")
             if world.items[index].name == "Watering can":
                 print("Type <pick up> to pick it up.")
@@ -66,7 +66,7 @@ def look(player: Player, world: World):
                 print("Type <pick up> to pick up your happy meal.")
 
 
-def go(d: str, player: Player, world: World):
+def go(d: str, player: Player, world: World) -> None:
     """
     Move the player in the direct, also take in quest progression into consideration for specific locations
     """
@@ -126,16 +126,16 @@ def score(player: Player, world: World) -> int:
     """
     return score of the player right now
     """
-    score = 0
+    player_score = 0
     for item in player.inventory:
         if item in world.items:
-            score += world.items[item].score
+            player_score += world.items[item].score
 
-    return score
+    return player_score
 
 
 # print out the description of the item.
-def inspect(world: World, item_position: int):
+def inspect(world: World, item_position: int) -> None:
     """
     inspect the item
     """
@@ -143,7 +143,7 @@ def inspect(world: World, item_position: int):
         print(line)
 
 
-def interact(world: World, player: Player):
+def interact(world: World, player: Player) -> None:
     """
     interact with the interactable in the current location
     """
@@ -174,7 +174,7 @@ def interact(world: World, player: Player):
         print("No interactable here")
 
 
-def pick_up(world: World, player: Player):
+def pick_up(world: World, player: Player) -> None:
     """
     pick up item in the current location if possible
     """
@@ -198,7 +198,7 @@ def pick_up(world: World, player: Player):
         print("There is no item to pick up here")
 
 
-def talk(world: World, player: Player):
+def talk(world: World, player: Player) -> None:
     """
     Initiate dialogue at the current position if possible
     """
@@ -267,7 +267,7 @@ def talk(world: World, player: Player):
         print("There is no one to talk to here.")
 
 
-def debug(p: Player, w: World):
+def debug(p: Player, w: World) -> None:
     """
     debug current state of the game returnes relevant info
     """
@@ -288,7 +288,7 @@ def debug(p: Player, w: World):
         print("status: " + str(w.dialogues[w.get_location(p.x, p.y).index].status))
 
 
-def look_up(world: World, index: int):
+def look_up(world: World, index: int) -> None:
     """
     look up the location name given the index
     """
@@ -342,30 +342,30 @@ if __name__ == "__main__":
         # short description, and showing what is there.
         else:
             print(location.short_description)
-            index = location.index
+            player_index = location.index
             print()
             # check whether there is an interactable or not
-            if index in w.interactables:
+            if player_index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
-                interactable = w.interactables[index]
-                if w.Quests[
-                    interactable.required_quest_name].progress == interactable.required_quest_progress and index not in\
-                        w.interacted:
+                local_interactable = w.interactables[player_index]
+                if (w.Quests[
+                    local_interactable.required_quest_name].progress == local_interactable.required_quest_progress
+                        and player_index not in w.interacted):
 
                     print("This location can be interacted, type <interact> to interact.")
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
-            if index in w.dialogues and w.dialogues[index].status == -1:
+            if player_index in w.dialogues and w.dialogues[player_index].status == -1:
                 if not (p.x == 5 and p.y == 3) or w.T_card_quest.progress == 2:
-                    if not (index == 16) or w.Lucky_pen_quest.progress == 3:
-                        if not (index == 13) or 13 in p.inventory:
-                            if not (index == 17) or 17 in p.inventory:
-                                print("You can talk to " + w.dialogues[index].target + " here.")
+                    if not (player_index == 16) or w.Lucky_pen_quest.progress == 3:
+                        if not (player_index == 13) or 13 in p.inventory:
+                            if not (player_index == 17) or 17 in p.inventory:
+                                print("You can talk to " + w.dialogues[player_index].target + " here.")
 
             # check whether there is an item here to pick up.
-            if index in w.items and index not in p.inventory:
-                if (w.items[index].name != "T-card" and w.items[index].name != "Lucky Pen" and w.items[index].name !=
-                        "Cheat Sheet"):
+            if player_index in w.items and player_index not in p.inventory:
+                if (w.items[player_index].name != "T-card" and w.items[player_index].name != "Lucky Pen"
+                        and w.items[player_index].name != "Cheat Sheet"):
                     print("There is an item here to be picked up")
 
         # Depending on whether it's been visited before,
@@ -399,8 +399,8 @@ if __name__ == "__main__":
                 print(action)
 
         elif choice == "map":
-            for line in w.map:
-                print(line)
+            for row in w.map:
+                print(row)
 
             print("You are at " + w.get_location(p.x, p.y).name + ", index of " + str(w.get_location(p.x, p.y).index))
 
@@ -420,9 +420,9 @@ if __name__ == "__main__":
             print(score(p, w))
 
         elif choice == "inventory":
-            for item in p.inventory:
-                if item != -1:
-                    print(w.items[item].name)
+            for current_item in p.inventory:
+                if current_item != -1:
+                    print(w.items[current_item].name)
 
             if len(p.inventory) == 1:
                 print("You have no item right now.")
@@ -431,9 +431,9 @@ if __name__ == "__main__":
             if len(choice.split(" ")) != 1:
                 item_name = choice.split(" ")[1]
                 item_index = -1
-                for index in w.items:
-                    if w.items[index].name == item_name:
-                        item_index = index
+                for player_index in w.items:
+                    if w.items[player_index].name == item_name:
+                        item_index = player_index
                         break
 
                 if item_index not in p.inventory:
