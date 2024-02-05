@@ -102,10 +102,10 @@ def go(d: str, player: Player, world: World):
         print("Eric isn't letting you into his room.")
 
     # Lucky pen quest location restrictions
-    elif current_x == 0 and current_y == 3:
+    elif current_x == 0 and current_y == 3 and w.Lucky_pen_quest.progress < 1:
         if w.Lucky_pen_quest.progress == -1:
             print("Grandma is not letting you in.")
-        elif w.Lucky_pen_quest.progress < 1:
+        else:
             print("Grandma is still waiting for you to explain why you are here. ")
 
     # valid move
