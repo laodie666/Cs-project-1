@@ -335,9 +335,9 @@ if __name__ == "__main__":
     print()
 
     print(
-        "There is a 60 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 \
+        "There is a 80 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 \
 step")
-    print("If the game is not completed before 60 steps, you get a bad ending.")
+    print("If the game is not completed before 80 steps, you get a bad ending.")
     print()
 
     while w.ending_quest.progress != 2:
@@ -489,16 +489,16 @@ west")
         else:
             print("invalid input, try again")
 
-        if step_counter == 40:
+        if step_counter == 60:
             print("20 steps left")
 
-        if step_counter == 50:
+        if step_counter == 70:
             print("10 steps left")
 
-        if step_counter == 55:
+        if step_counter == 75:
             print("5 steps left")
 
-        if step_counter >= 60:
+        if step_counter >= 80:
             print(
                 "It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the \
 exam.")
@@ -508,11 +508,12 @@ exam.")
 what it is.")
 
             print("game over")
+            break
 
     if did_quit:
         print("game quit")
 
-    elif step_counter < 60:
+    elif step_counter < 80:
         score = player_score(p, w)
         if score == 100:
             print(
