@@ -88,7 +88,7 @@ def go(d: str, player: Player, world: World):
     # T-card quest location restrictions
     elif current_x == 5 and current_y == 3 and w.T_card_quest.progress < 1:
         print("You don't have a reason to visit Jean, you should probably go to your parent's house for the T-card")
-    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress == 2:
+    elif current_x == 6 and current_y == 3 and w.T_card_quest.progress <= 2:
         print("Jean is still at the door, not letting you in.")
 
     # Cheat sheet quest locaiton restrictions
