@@ -110,7 +110,7 @@ def go(d: str, player: Player, world: World):
         p.x = current_x
         p.y = current_y
 
-        location.visited = True
+        w.get_location(p.x, p.y).visited = True
 
     # Arriving at parent house increase progress by 1
     if current_x == 4 and current_y == 2 and world.get_location(current_x, current_y).visited == False:
