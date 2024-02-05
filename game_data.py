@@ -594,7 +594,7 @@ class World:
 
         if index in self.dialogues and self.dialogues[index].status == -1:
             if not (self.p.x == 5 and self.p.y == 3) or self.T_card_quest.progress == 2:
-                if not (index == 16) or self.Lucky_pen_quest == 3:
+                if not (index == 16) or self.Lucky_pen_quest.progress == 3:
                     menu.append("talk: talk to whoever is available to talk in the current location")
 
         return menu

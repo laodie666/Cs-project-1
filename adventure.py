@@ -45,7 +45,8 @@ def look(player: Player, world: World):
     if index in w.dialogues and w.dialogues[index].status == -1:
         print()
         if not (player.x == 5 and player.y == 3) or world.T_card_quest.progress == 2:
-            if not (index == 16) or world.Lucky_pen_quest == 3:
+            if not (index == 16) or world.Lucky_pen_quest.progress == 3:
+
                 print("You can talk to " + w.dialogues[index].target + " here.")
 
 
@@ -325,7 +326,7 @@ if __name__ == "__main__":
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
             if index in w.dialogues and w.dialogues[index].status == -1:
                 if not (p.x == 5 and p.y == 3) or w.T_card_quest.progress == 2:
-                    if not (index == 16) or w.Lucky_pen_quest == 3:
+                    if not (index == 16) or w.Lucky_pen_quest.progress == 3:
                         print("You can talk to " + w.dialogues[index].target + " here.")
 
             # check whether there is an item here to pick up.
