@@ -427,40 +427,40 @@ class World:
 
         go_markham = TeleportInteraction(
             "Through the crowd, you see a strange man, he is giving away free GO train tickets. \
-            How lucky. Type <interact> to take a free ticket. ",
+How lucky. Type <interact> to take a free ticket. ",
             "Wow, you got a free ticket. With that ticket you have made it to Markham safely.", self.p, "ending_quest",
             0)
 
         go_downtown = TeleportInteraction(
             "You can take the bus back to down town if you are happy with the items on you.\
-             Type <interact> to get back on the GO train.",
+Type <interact> to get back on the GO train.",
             "You are on the GO train. Safe travels.", self.p)
 
         knock_jean = QuestProgressInteraction("Jean's definately home. Type <interact> to knock on her door.",
                                               "Jean answered the door, she looks shocked to see you \
-                                                     there, afterall, you should be at school.",
+there, afterall, you should be at school.",
                                               self.t_card_quest, "T_card_quest", 1)
 
         eat_happy_meal = QuestProgressInteraction("Gurgle. You're hungry. Type <interact> to eat.",
                                                   "You ate your cheeseburger. It was great. \
-                                                         You feel like you've \
-                                                         turned back time.  You feel it's time to back to Eric's room \
-                                                         to study.", self.cheat_sheet_quest, required_item=13)
+You feel like you've \
+turned back time.  You feel it's time to back to Eric's room \
+to study.", self.cheat_sheet_quest, required_item=13)
 
         water_plants = QuestProgressInteraction("Now theres only one thing to do. \
         Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.",
                                                 self.lucky_pen_quest, required_item=15)
 
         cat_litter = QuestProgressInteraction("Time for the moment of truth. Type <interact> to shovel\
-         the litter.", "You shovelled the litter. \
-         Why does something so little poop so much?", self.lucky_pen_quest, required_item=9)
+the litter.", "You shovelled the litter. \
+Why does something so little poop so much?", self.lucky_pen_quest, required_item=9)
 
         make_cheat_sheet = ItemInteraction("You are ready to do work. Type <interact> to\
-         make your cheat sheet.", "You have made your cheat sheet, you are now better prepared for your exam.", self.p,
+make your cheat sheet.", "You have made your cheat sheet, you are now better prepared for your exam.", self.p,
                                            17, "Cheat_sheet_quest", 2)
 
         sleep = QuestProgressInteraction("Good job getting back home. You've had a long day.\
-         Type <interact> to sleep.", "You quickly fell asleep after your long day", self.ending_quest, "ending_quest",
+Type <interact> to sleep.", "You quickly fell asleep after your long day", self.ending_quest, "ending_quest",
                                          1)
 
         # lists of interactable locations in form of location: interactable
@@ -487,11 +487,11 @@ class World:
         m7 = Dialogue("Mom", "Oh gosh. Knowing you, you can’t take that. Here you go.", status=0)
         m6 = Dialogue("You",
                       "School has been good, I have an exam tomorrow. Speaking of… Mom, you have my T-card, \
-                      right? I need it for the exam tomorrow or else there is a 35% penalty.",
+right? I need it for the exam tomorrow or else there is a 35% penalty.",
                       {-1: m7})
         m5 = Dialogue("Mom",
                       "Oh yeah, I almost forgot too! Haha, but I made sure I remembered this year or else Jean \
-                      would kill me. How is school so far, I didn’t expect you to come home, you were looking for me?",
+would kill me. How is school so far, I didn’t expect you to come home, you were looking for me?",
                       {-1: m6})
         m4 = Dialogue("You", "Hi! I didn’t know it was Jean's birthday today. I was looking for you at home.", {-1: m5})
         m3 = Dialogue("Mom", "She had made her signature brownies, but my bad they’re all gone now.", {-1: m4})
@@ -500,42 +500,42 @@ class World:
 
         g8 = Dialogue("Grandma",
                       "OH MY DAYS, what kind of attitude is that? Do you not care about Mittens’s hygiene?\
-                       Well, there goes my day since I’ll take forever to do my chores now. You should leave,\
-                        I don’t have all day.",
+Well, there goes my day since I’ll take forever to do my chores now. You should leave,\
+I don’t have all day.",
                       status=1)
         g7 = Dialogue("Grandma", "Yes dear, you’re such a big help.", status=0)
         g6 = Dialogue("You",
                       "Grandma, You’re always like this, why can't you just think about my problems? I have\
-                       an exam tomorrow.",
+an exam tomorrow.",
                       {-1: g8})
         g5 = Dialogue("You", "Oh my gosh of course I’ll help you with your chores, how, are you okay?", {-1: g7})
         g4 = Dialogue("Grandma", "Could you help me clean Mitten’s litter box and water the plants?", {1: g5, 2: g6})
         g3 = Dialogue("Grandma",
                       "This is good timing though, I was going to do a few errands today but I broke my back \
-                      the other day. So I was thinking …",
+the other day. So I was thinking …",
                       {-1: g4})
         g2 = Dialogue("Grandma", "Oh, I wasn’t expecting you so the place is kind of messy from Mittens.",
                       {-1: g3})
         g1 = Dialogue("Grandma", "Hi sweetie, Oh you must have walked a long way to get here. Come in \
-        come in.",
+come in.",
                       {-1: g2})
 
         gk1 = Dialogue("Grandma", "You did a beautiful job sweetie. Here is your pen. Good luck on your\
-         exam!", )
+exam!", )
 
         e7 = Dialogue("Eric", "Actually, I'm kind of busy today... Maybe another day.", status=1)
         e6 = Dialogue("Eric", "I was hoping you'd ask.", status=0)
         e5 = Dialogue("You", "Eh, well we can do that someday I guess. Sorry, I am only really here to \
-        study.", {-1: e7})
+study.", {-1: e7})
         e4 = Dialogue("You", "Why don't we head over there right now, I'm kind of hungry.",
                       {-1: e6})
         e3 = Dialogue("You",
                       "*thinking* I miss Eric, I should take some time to catch up with him before studying \
-                      I think it would be a waste of time. I'm only here for his help, He might even be a little mad.",
+I think it would be a waste of time. I'm only here for his help, He might even be a little mad.",
                       {1: e4, 2: e5})
         e2 = Dialogue("Eric",
                       "I've missed you and everyone else from High School. We used to have so much fun at the\
-                       McDonald's.",
+McDonald's.",
                       {-1: e3})
         e1 = Dialogue("Eric", "Hi, I haven’t seen you in a while.", {-1: e2})
 

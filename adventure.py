@@ -197,7 +197,7 @@ def pick_up(world: World, player: Player) -> None:
             player.inventory.append(index)
             if world.items[index].name == "Watering can":
                 print("You pick up the *watering can*. It's kind of heavy so good thing your grandma didn't have to do \
-                it.")
+it.")
             elif world.items[index].name == "Cat litter shovel":
                 print("You picked up the *litter shovel*.")
             elif world.items[index].name == "Happy Meal":
@@ -322,7 +322,7 @@ if __name__ == "__main__":
 
     print("You're back at your dorm at U of T, your visit back home to Markham to see your grandparents is over. ")
     print("Back to the school mindset. What did you have to do again?")
-    print(" OH RIGHT! You have an exam tomorrow, but wait...")
+    print("OH RIGHT! You have an exam tomorrow, but wait...")
     print("Where is your T-card, you need that to get in.")
     print("And you didn't study so you have no cheat sheet.")
     print("And where is your lucky pen?")
@@ -336,7 +336,7 @@ if __name__ == "__main__":
 
     print(
         "There is a 60 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 \
-        step")
+step")
     print("If the game is not completed before 60 steps, you get a bad ending.")
     print()
 
@@ -429,7 +429,7 @@ if __name__ == "__main__":
             else:
                 print(
                     "Wrong number of words after go, remember to keep it to only being go north, go south, go east, go\
-                     west")
+west")
 
         elif choice == "score":
             score = player_score(p, w)
@@ -501,11 +501,11 @@ if __name__ == "__main__":
         if step_counter >= 60:
             print(
                 "It is too late outsie and you have yet to go sleep, you are unable to get enough sleep before the \
-                exam.")
+exam.")
             print("As you are going back to your dorm, you are so tired you fell onto the road, and lost conciousness")
             print(
                 "You woke up again at a hospital, realizing you have missed your exam and there is no retest, it is \
-                what it is.")
+what it is.")
 
             print("game over")
 
@@ -517,12 +517,12 @@ if __name__ == "__main__":
         if score == 100:
             print(
                 "You got everything you need :)! You we're able to get good sleep in the night and complete the exam \
-                smoothly.")
+smoothly.")
             print("Your final mark was 100%!")
         elif score == 83:
             print(
                 "Without your lucky pen, you were tossing and turning in your sleep. You overslept your alarm and got \
-                to the exam room late.")
+to the exam room late.")
             print("Nonetheless, with the cheat sheet and t-card, you got a 83% on the exam. You passed!")
         elif score == 65:
             print("You didn't have your t-card for the exam and so you had a 35% deduction on the exam.")
@@ -533,22 +533,22 @@ if __name__ == "__main__":
         elif score == 48:
             print(
                 "You only had a cheat sheet for the exam. You didn't pass but your studying paied off and you got a \
-                48%.")
+48%.")
         elif score == 17:
             print(
                 "You only had your lucky pen for the exam. You didn't pass but you had passion during the exam and you \
-                got a 17%.")
+got a 17%.")
         elif score == 35:
             print(
                 "You only had your t card for the exam. You didn't pass but you earned all the marks you could and you \
-                got a 35%.")
+got a 35%.")
         elif score == 0:
             print(
                 "You went to Markham and came home empty handed. You went to bed hopeful. But on the exam you earned a \
-                devistating 0%.")
+devistating 0%.")
             print(
                 "You took too long, the day is over. You won't make it in time for the exam. At least they drop one \
-                mark.")
+mark.")
 
     print("Game Over, thank you for playing!")
 
