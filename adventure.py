@@ -56,11 +56,11 @@ def look(player: Player, world: World):
         print()
         if world.items[index].name != "T-card" or world.items[index].name != "Lucky Pen" or world.items[index].name != "Cheat Sheet":
             print("There is a " + w.items[index].name + " here.")
-            if world.items[index] == "Watering can":
-                print("There is a watering can at the side. Type <pick up> to pick it up.")
-            elif world.items[index] == "Cat litter shovel":
-                print("There is a shovel right beside the litter box. Type <pick up> to pick it up.")
-            elif world.items[index] == "Happy Meal":
+            if world.items[index].name == "Watering can":
+                print("Type <pick up> to pick it up.")
+            elif world.items[index].name == "Cat litter shovel":
+                print("Type <pick up> to pick it up.")
+            elif world.items[index].name == "Happy Meal":
                 print("Type <pick up> to pick up your happy meal.")
 
 
@@ -326,7 +326,7 @@ if __name__ == "__main__":
                 # check whether the quest progression needed for this interaction is met.
                 interactable = w.interactables[index]
                 if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress and index not in w.interacted:
-                    print("This location can be interacted")
+                    print("This location can be interacted, type <interact> to interact.")
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
             if index in w.dialogues and w.dialogues[index].status == -1:
@@ -392,6 +392,9 @@ if __name__ == "__main__":
             for item in p.inventory:
                 if item != -1:
                     print(w.items[item].name)
+
+            if len(p.inventory) == 1:
+                print("You have no item right now.")
 
         elif "inspect" in choice:
             if len(choice.split(" ")) != 1:
