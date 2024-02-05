@@ -263,6 +263,20 @@ if __name__ == "__main__":
     did_quit = False
 
 
+    print("You're back at your dorm at U of T, your visit back home to Markham to see your grandparents is over. ")
+    print("Back to the school mindset. What did you have to do again?")
+    print(" OH RIGHT! You have an exam tomorrow, but wait...")
+    print("Where is your T-card, you need that to get in.")
+    print("And you didn't study so you have no cheat sheet.")
+    print("And where is your lucky pen?")
+    print("Okay so where to start:")
+    print("Your mom took your T-card because her friend wouldn't believe you got into U of T while you were in Markham.")
+    print("You can make a cheat sheet with your friend Eric back in Markham.")
+    print("And you were studying at your grandparents so your pen must be there.")
+    print("Time gather the items!")
+    print()
+
+
     print("There is a 50 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
     print("If the game is not completed before 50 steps, you get a bad ending.")
     print()
@@ -356,7 +370,8 @@ if __name__ == "__main__":
 
         elif choice == "inventory":
             for item in p.inventory:
-                print(w.items[item])
+                if item != -1:
+                    print(w.items[item].name)
 
         elif "inspect" in choice:
             if len(choice.split(" ")) != 1:
