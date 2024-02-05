@@ -307,8 +307,8 @@ if __name__ == "__main__":
     print()
 
 
-    print("There is a 50 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
-    print("If the game is not completed before 50 steps, you get a bad ending.")
+    print("There is a 60 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
+    print("If the game is not completed before 60 steps, you get a bad ending.")
     print()
 
     while not w.ending_quest.progress == 2:
@@ -456,11 +456,14 @@ if __name__ == "__main__":
         else:
             print("invalid input, try again")
 
-        if step_counter == 30:
+        if step_counter == 40:
             print("20 steps left")
 
-        if step_counter == 40:
+        if step_counter == 50:
             print("10 steps left")
+
+        if step_counter == 55:
+            print("5 steps left")
 
         if step_counter >= 50:
 
