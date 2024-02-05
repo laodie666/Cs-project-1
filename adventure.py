@@ -260,17 +260,18 @@ if __name__ == "__main__":
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
 
-        # Arriving at parent house increase progress by 1
-        if p.x == 4 and p.y == 2 and w.get_location(p.x, p.y).visited == False:
-            w.T_card_quest.progress += 1
-
-
-        w.get_location(p.x, p.y).visited = True
 
         print()
 
         if location.visited == False:
             look(p, w)
+
+            # Arriving at parent house increase progress by 1
+            if p.x == 4 and p.y == 2 and w.get_location(p.x, p.y).visited == False:
+                w.T_card_quest.progress += 1
+
+            w.get_location(p.x, p.y).visited = True
+
 
         # short description, and showing what is there.
         else:
