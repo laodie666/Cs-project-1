@@ -28,3 +28,18 @@ go south
 talk
 go north
 go east
+go east
+go east
+go north
+go north
+go north
+talk
+1
+go south
+go west
+pick up
+talk
+go east
+go north
+
+
