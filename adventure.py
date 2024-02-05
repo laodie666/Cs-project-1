@@ -160,8 +160,13 @@ def interact(world: World, player: Player):
             print(interactable.Post_prompt)
             w.interacted.add(index)
 
+            if index == 2:
+                print()
+                print("You had a long day, time to go rest. ")
+
             if world.Lucky_pen_quest.progress == 3:
-                print("Good job, now go to the ktichen to talk to Grandma to pick up your lucky pen")
+                print()
+                print("Good job, now go to the ktichen to talk to Grandma to pick up your lucky pen. ")
         else:
             print("No interactables here")
 
@@ -475,3 +480,5 @@ if __name__ == "__main__":
         elif score == 0:
             print("You went to Markham and came home empty handed. You went to bed hopeful. But on the exam you earned a devistating 0%.")
             print("You took too long, the day is over. You won't make it in time for the exam. At least they drop one mark.")
+
+    print("Game Over, thank you for playing!")
