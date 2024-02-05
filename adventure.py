@@ -44,7 +44,7 @@ def look(player: Player, world: World):
     # check whether there is a dialogue here or not and making sure you have not had this dialogue.
     if index in w.dialogues and w.dialogues[index].status == -1:
         print()
-        if not (player.x == 5 and player.y == 3) or world.get_location(4, 2).visited  == True:
+        if not (player.x == 5 and player.y == 3) or world.T_card_quest == 2:
             print("You can talk to " + w.dialogues[index].target + " here.")
 
     # check whether there is an item here and print the item name and description here.
@@ -152,6 +152,7 @@ def interact(world: World, player: Player):
         if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
                 and interactable.required_item in p.inventory:
             interactable.special_action()
+            print(interactable.Post_prompt)
         else:
             print("No interactables here")
 
