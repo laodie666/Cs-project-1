@@ -42,5 +42,14 @@ interact
 talk
 go east
 go north
-
+go east
+interact
+go west
+go south
+go south
+go south
+go south
+interact
+go south
+interact
 
