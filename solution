@@ -1,0 +1,30 @@
+go north
+interact
+go north
+go east
+go north
+go south
+go east
+interact
+talk
+2
+go east
+talk
+go west
+go west
+go west
+go west
+go west
+talk
+1
+go west
+pick up
+interact
+go north
+pick up
+interact
+go south
+go south
+talk
+go north
+go east
