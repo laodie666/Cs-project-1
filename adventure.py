@@ -208,11 +208,11 @@ def talk(world: World, player: Player):
             world.Cheat_sheet_quest.progress += 1
         # Finish T-card
         if index == 6 and world.T_card_quest.progress == 3:
-            world.T_card_quest += 1
+            world.T_card_quest.progress += 1
             player.inventory.append(6)
         # Finish Lucky pen
         elif index == 16 and world.Lucky_pen_quest == 3:
-            world.Lucky_pen_quest += 1
+            world.Lucky_pen_quest.progress += 1
             player.inventory.append(16)
 
     if completion == 1:
@@ -221,9 +221,9 @@ def talk(world: World, player: Player):
         if index == 5:
             world.T_card_quest.progress = -1
         if index == 8:
-            world.Lucky_pen_quest = -1
+            world.Lucky_pen_quest.progress = -1
         if index == 14:
-            world.Cheat_sheet_quest = -1
+            world.Cheat_sheet_quest.progress = -1
 
     else:
         print("There is no one to talk to here.")
