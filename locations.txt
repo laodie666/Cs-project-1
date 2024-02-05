@@ -86,7 +86,7 @@ You are in your parent's house. To leave to *the road* you go south.
 You are in your parent's house. This is your childhood home. You can see your little brother,
 James, taking over the place. He should be at school right now. You see his action figures and
 algebra textbooks but you don't see your mom. You look at the calendar and you see that today is
-marked: "Jean's Birthday"
+marked: "Jean's Birthday", your mom is probably at Jean's place to celebrate her birthday.
 END
 Eric's Neighbourhood
 12
