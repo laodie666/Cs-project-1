@@ -259,7 +259,7 @@ class Dialogue:
            # player has to choose
             else:
                 # print own content
-                print(self.content)
+                print(self.target + ": " + self.content)
 
                 # print available options
                 for choice in self.future_dialogue:

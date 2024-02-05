@@ -209,6 +209,9 @@ def talk(world: World, player: Player):
         # Eric talk
         if index == 14:
             world.Cheat_sheet_quest.progress += 1
+        # Grandma talk
+        if index == 8:
+            world.Lucky_pen_quest.progress += 1
         # Finish T-card
         if index == 6 and world.T_card_quest.progress == 3:
             world.T_card_quest.progress += 1
