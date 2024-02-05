@@ -229,7 +229,7 @@ def talk(world: World, player: Player):
             world.T_card_quest.progress += 1
             player.inventory.append(6)
         # Finish Lucky pen
-        if index == 16 and world.Lucky_pen_quest == 3:
+        if index == 16 and world.Lucky_pen_quest.progress == 3:
             world.Lucky_pen_quest.progress += 1
             player.inventory.append(16)
 
