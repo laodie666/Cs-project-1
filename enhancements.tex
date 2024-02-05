@@ -20,10 +20,43 @@
 \item Describe your enhancement \#1 here
 	\begin{itemize}
 	\item Brief description of what the enhancement is (if it's a puzzle, also describe what steps the player must take to solve it):
-	\item Complexity level (choose from low/medium/high):
+ \\One of our enhancements is quests which are a new class. We have one quest to obtain each item that needs to be retrieved. It is class we made that keeps track of each quest's progress.
+	\item Complexity level: Medium
 	\item Reasons you believe this is the complexity level (e.g. mention implementation details, how much code did you have to add/change from the baseline, what challenges did you face, etc.)
+ \\Our quests are very important to the functionality of the game. The quest class keeps track of quest progressions which manages which actions are available. For example, until you go to your parent's house, you cannot knock on Jean's door. This was difficult to implement since we had to plan out what points of each quest needed progression and keep track of the progression since it all came from player input. It was also difficult to keep the progression chronological and make sure the player did not complete step 3 before step 2. 
 	% Feel free to add more subheadings if you need
 	\end{itemize}
+
+\item Describe your enhancement \#2 here
+	\begin{itemize}
+	\item Brief description of what the enhancement is (if it's a puzzle, also describe what steps the player must take to solve it):
+ \\Another one of our enhancements is interaction. Interactions are a new class that represents each possible interaction. For example, getting on the go train or watering the plants.  
+	\item Complexity level: High
+	\item Reasons you believe this is the complexity level (e.g. mention implementation details, how much code did you have to add/change from the baseline, what challenges did you face, etc.)
+ \\For interaction
+
+\end{itemize}
+ 
+\item Describe your enhancement \#3 here
+	\begin{itemize}
+	\item Brief description of what the enhancement is (if it's a puzzle, also describe what steps the player must take to solve it):
+ \\Another one of our enhancements is dialogue. This enhancement manages all the dialogue including the people talking, dialogue choices as well as different endings for each dialogue option.
+	\item Complexity level: High
+	\item Reasons you believe this is the complexity level (e.g. mention implementation details, how much code did you have to add/change from the baseline, what challenges did you face, etc.)
+ \\For dialogue, we made a new class that keeps track of the target which is the person speaking, the content, which is the actual dialogue and the dialogue status which is the status of the dialogue. We also had future dialogue, which is another instance of the dialogue class that contains all the rest of the dialogue from that point. We implemented a recursive structure for all dialogues which is helpful for cases where there are multiple dialogue options. It was difficult to keep track of the dialogue options.
+	% Feel free to add more subheadings if you need
+	\end{itemize}
+ 
+ \item Describe your enhancement \#4 here
+	\begin{itemize}
+	\item Brief description of what the enhancement is (if it's a puzzle, also describe what steps the player must take to solve it):
+ \\Another one of our enhancements is multiple endings. We have eight endings based on the combination of which exam items are collected. Based on how important each item is, the final exam score given to the player changes and this would mean they either pass or fail the exam. 
+	\item Complexity level: Low
+	\item Reasons you believe this is the complexity level (e.g. mention implementation details, how much code did you have to add/change from the baseline, what challenges did you face, etc.)
+ \\Depending on which items are in the player's inventory, a different score is generated since each item holds a score. Using these unique scores, we know which combination of items was collected and can output a ending statement based on that. 
+	% Feel free to add more subheadings if you need
+	\end{itemize}
+
 
 % Uncomment below section if you have more enhancements; copy-paste as many times as needed
 %\item Describe your enhancement here
