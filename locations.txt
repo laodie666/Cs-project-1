@@ -44,7 +44,7 @@ END
 Jean's Door
 5
 You are at aunt Jean's door. *The intersection* is to your west.
-You are at aunt Jean's door. It doesn't take super hearing to know that she has guests over.
+You are at aunt Jean's door. She is probably home.
 END
 Jean's Living Room
 6
