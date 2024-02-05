@@ -231,6 +231,14 @@ def talk(world: World, player: Player):
     else:
         print("There is no one to talk to here.")
 
+def debug (p:Player, w:World):
+    print("Player location")
+    print(str(p.x) + " " + str(p.y))
+    print("Quests")
+    print(w.T_card_quest.name + " " + str(w.T_card_quest.progress_))
+    print(w.Cheat_sheet_quest.name + " " + str(w.Cheat_sheet_quest.progress_))
+    print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress_))
+
 def look_up(world: World, index: int):
     print(world.locations[index].name)
 
@@ -370,6 +378,9 @@ if __name__ == "__main__":
                 print("invalid index, remember to type in a valid index on the map after look up")
             else:
                 look_up(w, int(choice.split(" ")[2]))
+
+        elif choice == "debug":
+            debug()
 
         else:
             print("invalid input, try again")
