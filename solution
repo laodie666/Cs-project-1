@@ -10,6 +10,7 @@ talk
 2
 go east
 talk
+inventory
 go west
 go west
 go west
@@ -19,13 +20,16 @@ talk
 1
 go west
 pick up
+inventory
 interact
 go north
 pick up
+inventory
 interact
 go south
 go south
 talk
+inventory
 go north
 go east
 go east
@@ -38,12 +42,14 @@ talk
 go south
 go west
 pick up
+inventory
 interact
 talk
 go east
 go north
 go east
 interact
+inventory
 go west
 go south
 go south
