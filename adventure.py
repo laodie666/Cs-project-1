@@ -197,7 +197,7 @@ def talk(world: World, player: Player):
             print("You should probably knock first")
             return
         # Grandma's dialogue at kitchen can only be triggered when quest progress is 3.
-        elif index == 16 and world.Lucky_pen_quest.progress != 3:
+        elif index == 16 and world.Lucky_pen_quest.progress < 3:
             print("You should do your grandma's requests first")
             return
         else:

@@ -445,7 +445,7 @@ class World:
         er1 = Dialogue("Eric", "Lets get down to business, we're going to be here for a while...", {-1: er2})
 
         # lists of dialogues in form of location: dialogue
-        self.dialogues = {5: j1, 6: m1, 8: g1, 14: e1, 13: em1, 17: er1}
+        self.dialogues = {5: j1, 6: m1, 8: g1, 14: e1, 13: em1, 17: er1, 16: gk1}
 
 
 
