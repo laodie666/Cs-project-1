@@ -202,7 +202,7 @@ def talk(world: World, player: Player):
     if completion == 0:
         # Jean talk
         if index == 5:
-            world.T_card_quest += 1
+            world.T_card_quest.progress += 1
         # Eric talk
         if index == 14:
             world.Cheat_sheet_quest.progress += 1
@@ -229,6 +229,8 @@ def talk(world: World, player: Player):
         print("There is no one to talk to here.")
 
 def debug (p:Player, w:World):
+    print("Player index")
+    print(w.get_location(p.x,p.y).index)
     print("Player location")
     print(str(p.x) + " " + str(p.y))
     print("Quests")
