@@ -467,7 +467,7 @@ Type <interact> to sleep.", "You quickly fell asleep after your long day", self.
 
         # lists of interactable locations in form of location: interactable
         self.interactables = {1: go_markham, 2: go_downtown, 0: sleep, 5:
-                              knock_jean, 13: eat_happy_meal,
+            knock_jean, 13: eat_happy_meal,
                               15: water_plants, 9: cat_litter, 17: make_cheat_sheet}
 
         self.interacted = set()
