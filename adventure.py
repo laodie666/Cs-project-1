@@ -235,9 +235,9 @@ def debug (p:Player, w:World):
     print("Player location")
     print(str(p.x) + " " + str(p.y))
     print("Quests")
-    print(w.T_card_quest.name + " " + str(w.T_card_quest.progress_))
-    print(w.Cheat_sheet_quest.name + " " + str(w.Cheat_sheet_quest.progress_))
-    print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress_))
+    print(w.T_card_quest.name + " " + str(w.T_card_quest.progress))
+    print(w.Cheat_sheet_quest.name + " " + str(w.Cheat_sheet_quest.progress))
+    print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress))
 
 def look_up(world: World, index: int):
     print(world.locations[index].name)
