@@ -362,9 +362,9 @@ class World:
 
         self.eat_happy_meal = Quest_progress_Interaction("Gurgle. You're hungry. Type <interact> to eat.", "You ate your cheeseburger. It was great. You feel like you've turned back time. You feel it's time to back to Eric's room to study.", self.Cheat_sheet_quest, required_item = 13)
 
-        self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest)
+        self.water_plants = Quest_progress_Interaction("Now theres only one thing to do. Type <interact> to water the plants", "You watered the plants. You feel refreshed in the process.", self.Lucky_pen_quest,  required_item=15)
 
-        self.cat_litter = Quest_progress_Interaction("Time for the moment of truth. Type <interact> to shovel the litter.", "You shovelled the litter. Why does something so little poop so much?", self.Lucky_pen_quest)
+        self.cat_litter = Quest_progress_Interaction("Time for the moment of truth. Type <interact> to shovel the litter.", "You shovelled the litter. Why does something so little poop so much?", self.Lucky_pen_quest,  required_item=9)
 
         self.make_cheat_sheet = Item_Interaction("You are ready to do work. Type <interact> to make your cheat sheet.", "You have made your cheat sheet, you are now better prepared for your exam.", self.p, 17,  "Cheat_sheet_quest", 2)
 
@@ -373,6 +373,7 @@ class World:
         # lists of interactable locations in form of location: interactable
         self.interactables = {1: self.go_markham, 2: self.go_downtown, 0: self.sleep, 5: self.knock_jean, 13: self.eat_happy_meal, 15: self.water_plants, 9: self.cat_litter, 17: self.make_cheat_sheet}
 
+        self.interacted = set()
         # Dialogues
 
         j7 = Dialogue("Jean",
@@ -573,15 +574,22 @@ class World:
                 "quit: quit the game",
                 ]
 
-        index = self.get_location(x, y)
-        if index in self.items:
-            menu.append("pick up: pick up the item at the ccurrent location")
+        index = self.get_location(x, y).index
+        if index in self.items and index not in self.p.inventory:
+            print()
+            if self.items[index].name != "T-card" or self.items[index].name != "Lucky Pen" or self.items[
+                index].name != "Cheat Sheet":
+                menu.append("pick up: pick up the item at the ccurrent location")
 
         if index in self.interactables:
-            menu.append("interact: interact with whatever is in the current location")
+            interactable = self.interactables[index]
+            if self.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
+                    and interactable.required_item in self.p.inventory and index not in self.interacted:
+                menu.append("interact: interact with whatever is in the current location")
 
-        if index in self.dialogues:
-            menu.append("talk: talk to whoever is available to talk in the current location")
+        if index in self.dialogues and self.dialogues[index].status == -1:
+            if not (self.p.x == 5 and self.p.y == 3) or self.T_card_quest.progress == 2:
+                menu.append("talk: talk to whoever is available to talk in the current location")
 
         return menu
 

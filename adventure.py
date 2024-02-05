@@ -37,7 +37,7 @@ def look(player: Player, world: World):
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
         if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
-                and interactable.required_item in p.inventory:
+                and interactable.required_item in p.inventory and index not in w.interacted:
             print()
             print(interactable.Pre_prompt)
 
@@ -151,9 +151,10 @@ def interact(world: World, player: Player):
         # check whether the quest progression needed for this interaction and the needed items are met.
         interactable = w.interactables[index]
         if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress \
-                and interactable.required_item in p.inventory:
+                and interactable.required_item in p.inventory and index not in w.interacted:
             interactable.special_action()
             print(interactable.Post_prompt)
+            w.interacted.add(index)
         else:
             print("No interactables here")
 
@@ -245,6 +246,8 @@ def debug (p:Player, w:World):
     print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress))
     print("Visted")
     print(w.get_location(p.x, p.y).visited)
+    print("Inventory")
+    print(p.inventory)
 
 def look_up(world: World, index: int):
     print(world.locations[index].name)
@@ -259,10 +262,10 @@ if __name__ == "__main__":
 
     did_quit = False
 
+
     print("There is a 50 step count limit in this game, moving, talking, picking up items, and interacting all cost 1 step")
     print("If the game is not completed before 50 steps, you get a bad ending.")
     print()
-
 
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
@@ -289,7 +292,7 @@ if __name__ == "__main__":
             if index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
                 interactable = w.interactables[index]
-                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress:
+                if w.Quests[interactable.required_quest_name].progress == interactable.required_quest_progress and index not in w.interacted:
                     print("This location can be interacted")
 
             # check whether there is a dialogue here or not and making sure you have not had this dialogue.
