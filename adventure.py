@@ -155,6 +155,8 @@ def interact(world: World, player: Player):
             interactable.special_action()
             print(interactable.Post_prompt)
             w.interacted.add(index)
+            if interactable.required_quest_name == "Lucky_pen_quest" and world.Lucky_pen_quest.progress == 3:
+                print("Good job, now go to the ktichen to talk to Grandma to pick up your lucky pen")
         else:
             print("No interactables here")
 
@@ -301,7 +303,7 @@ if __name__ == "__main__":
         else:
             print(location.short_description)
             index = location.index
-
+            print()
             # check whether there is an interactable or not
             if index in w.interactables:
                 # check whether the quest progression needed for this interaction is met.
