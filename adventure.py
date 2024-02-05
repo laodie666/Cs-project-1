@@ -380,7 +380,7 @@ if __name__ == "__main__":
                 look_up(w, int(choice.split(" ")[2]))
 
         elif choice == "debug":
-            debug()
+            debug(p, w)
 
         else:
             print("invalid input, try again")
