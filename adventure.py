@@ -258,6 +258,9 @@ def debug (p:Player, w:World):
     print(w.get_location(p.x, p.y).visited)
     print("Inventory")
     print(p.inventory)
+    if index in w.dialogues:
+        print("there is dialogue")
+        print("status: "+ w.dialogues[index].status)
 
 def look_up(world: World, index: int):
     print(world.locations[index].name)
