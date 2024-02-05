@@ -209,13 +209,6 @@ def talk(world: World, player: Player):
             world.Lucky_pen_quest += 1
             player.inventory.append(16)
 
-        # grandma and mom give their item when quest end with dialogue
-        if completion == 0:
-            if index == 16:
-                player.inventory.append(index)
-            if index == 6:
-                player.inventory.append(index)
-
     if completion == 1:
         print("Quest failed")
 
