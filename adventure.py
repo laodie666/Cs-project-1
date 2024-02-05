@@ -110,11 +110,7 @@ def go(d: str, player: Player, world: World):
         p.x = current_x
         p.y = current_y
 
-        # Arriving at parent house increase progress by 1
-        if current_x == 4 and current_y == 2 and world.get_location(current_x, current_y).visited == False:
-            w.T_card_quest.progress += 1
 
-        w.get_location(p.x, p.y).visited = True
 
 
 
@@ -264,6 +260,13 @@ if __name__ == "__main__":
     while not w.ending_quest.progress == 2:
         location = w.get_location(p.x, p.y)
 
+        # Arriving at parent house increase progress by 1
+        if p.x == 4 and p.y == 2 and w.get_location(p.x, p.y).visited == False:
+            w.T_card_quest.progress += 1
+
+
+        w.get_location(p.x, p.y).visited = True
+
         print()
 
         if location.visited == False:
@@ -363,6 +366,7 @@ if __name__ == "__main__":
 
 
         elif choice == "quit":
+
             did_quit = True
             break
 
