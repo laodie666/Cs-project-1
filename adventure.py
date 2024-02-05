@@ -238,6 +238,8 @@ def debug (p:Player, w:World):
     print(w.T_card_quest.name + " " + str(w.T_card_quest.progress))
     print(w.Cheat_sheet_quest.name + " " + str(w.Cheat_sheet_quest.progress))
     print(w.Lucky_pen_quest.name + " " + str(w.Lucky_pen_quest.progress))
+    print("Visted")
+    print(w.get_location(p.x, p.y).visited)
 
 def look_up(world: World, index: int):
     print(world.locations[index].name)
